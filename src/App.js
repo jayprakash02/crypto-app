@@ -4,7 +4,7 @@ import BlogCard from "./components/Card";
 import Login from "./components/Login";
 
 import Navbar from "./components/Navbar";
-import Sidebar from "./components/Sidebar";
+
 
 import Blog from "./pages/Blog";
 import Dashboard from "./pages/Dashboard/index";
@@ -18,6 +18,7 @@ import Legal from "./pages/Legal";
 import Resources from "./pages/Resources";
 import Referral from "./pages/Referral"; 
 import Signup from "./pages/Signup";
+import ExrtaBonus from "./pages/ExrtaBonus";
 
 function App() {
   return (
@@ -33,6 +34,8 @@ function App() {
           <Route path="trade" element={<Trade />} />
           <Route path="earning" element={<Earning />} />
           <Route path="refferal" element={<Referral />} />
+          <Route path="extrabonus" element={<ExrtaBonus />} />
+
           <Route path="legal" element={<Legal />} />
           <Route path="resources" element={<Resources />} />
         </Route>

@@ -165,8 +165,8 @@ const Overview = () => {
           <h1 className="text-xl pl-2 mb-2 mt-8 ">Refer and earn</h1>
           <div className="w-full flex px-2  justify-between">
             {/* left  */}
-            <div className="rounded-xl p-4 max-w-[600px] max-h-[250px]  w-full bg-gradient-to-r from-indigo-400 to-fuchsia-500  text-gray-900">
-              <h1 className="text-xl pl-4 mb-2">Referral link</h1>
+            <div className="rounded-xl p-4 max-w-[600px]  max-h-[250px]  w-full bg-gradient-to-r from-indigo-400 to-fuchsia-500  text-gray-900">
+              <h1 className="text-2xl font-semibold pl-4 pt-4 mb-8">Referral link</h1>
               <div className="w-full pl-4 mb-4 relative flex">
                 <div className="bg-neutral-900 text-2xl text-white rounded-lg px-4 py-1">
                   Left link

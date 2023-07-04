@@ -42,9 +42,9 @@ const Home = () => {
           loop="true"
           muted="true"
           class="absolute z-0 w-auto 
-            max-w-full object-cover max-h-screen "
+            min-w-full object-cover max-h-screen "
         >
-          <source src="./images/video/bgvideo3.mp4" />
+          <source src="./images/video/bgmain.mp4" />
         </video>
         {/* <img src="./images/animation/mainintro.gif" className=""/> */}
         <div className="flex w-full max-w-7xl top-40 absolute items-center">
@@ -110,10 +110,10 @@ const Home = () => {
             </div> */}
 
       {/* What is OZo Trade  */}
-      <div className="w-full flex h-full mt-44 mb-24 relative justify-center items-center  ">
+      <div className="w-full flex h-full   relative justify-center items-center  ">
         <img
-          src="./images/image.png"
-          className="z-0 opacity-100 max-w-full object-contain  w-full  "
+          src="./images/bgmain2.jpg"
+          className="z-0 opacity-100 max-w-full object-cover min-h-screen h-full  w-full  "
         />
         {/* <video
           autoplay="true"
@@ -500,80 +500,97 @@ any queries or concerns promptly and effectively.
       {/* </div> */}
 
       {/* Design 1  */}
-      <div className="w-full min-h-[100vh] relative flex mb-16 mt-28  items-center  ">
-        <img
-          src="./images/skydiving.jpg"
-          className="z-0 opacity-80 object-cover max-w-full "
-        />
+      <div className="font-poppins mb-24 max-w-full  w-full max-h-[110vh]">
+        <m.h1
+          initial={{ y: -50, opacity: 0 }}
+          whileInView={{
+            y: 0,
+            opacity: 1,
+            transition: {
+              duration: 0.8,
+              delay: 0.25,
+              ease: "anticipate",
+            },
+          }}
+          className="text-6xl text-center  font-semibold  mt-12"
+        >
+          Finance simplified,
+          <br />
+          in your language
+        </m.h1>
 
-        <div className=" absolute px-52 w-full font-poppins   bg-opacity-40 py-[202px] ">
-          <m.h1
-            className="text-7xl font-bold  mb-6"
-            initial={{ x: -50, opacity: 0 }}
-            whileInView={{
-              x: 0,
-              opacity: 1,
-              transition: {
-                duration: 0.5,
-                ease: "anticipate",
-              },
-            }}
-            // viewport={{ once: true }}
-          >
-            we take your money <br />
-            matters seriously
-          </m.h1>
-          <m.p
-            className="text-3xl font-semibold mb-4   "
-            initial={{ x: -50, opacity: 0 }}
-            whileInView={{
-              x: 0,
-              opacity: 1,
-              transition: {
-                duration: 1.4,
-                ease: "anticipate",
-              },
-            }}
-            // viewport={{ once: true }}
-          >
-            so that you don’t have to.
-          </m.p>
-          <m.p
-            className="text-xl font-semibold mb-10 "
-            initial={{ x: -50, opacity: 0 }}
-            whileInView={{
-              x: 0,
-              opacity: 1,
-              transition: {
-                duration: 1.6,
-                ease: "anticipate",
-              },
-            }}
-            // viewport={{ once: true }}
-          >
-            At One Ozo, we are dedicated to expertly managing your money matters,<br/> providing a secure and reliable 
-platform, so you can have peace of mind <br/>and enjoy worry-free financial stability.
-
-          </m.p>
+        <div className="w-full mt-24 flex justify-center space-x-14 items-center">
           <m.button
-            className="rounded-full bg-white px-14 py-6 "
             initial={{ opacity: 0, scale: 0 }}
             whileInView={{
               opacity: 1,
               scale: 1,
               transition: {
-                duration: 2.0,
+                duration: 1.0,
+                delay: 0.35,
                 ease: "anticipate",
               },
             }}
-            // viewport={{ once: true }}
+            className="text-white w-56 border-2  py-4 shadow-grey-700 shadow-2xl  hover:text-white transition ease-in-out delay-150 hover:scale-95  hover:translate-y-1 rounded-full  font-semibold text-lg tracking-wide"
           >
-            <span className="text-black text-2xl font-semibold">
-              Experience the upgrade
-            </span>{" "}
+            Youtube
+          </m.button>
+          <m.button
+            initial={{ opacity: 0, scale: 0 }}
+            whileInView={{
+              opacity: 1,
+              scale: 1,
+              transition: {
+                duration: 1.6,
+                delay: 0.9,
+                ease: "anticipate",
+              },
+            }}
+            className="text-white w-56 border-2 py-4 shadow-grey-700 shadow-2xl  hover:text-white transition ease-in-out delay-150 hover:scale-95  hover:translate-y-1 rounded-full  font-semibold text-lg tracking-wide"
+          >
+            Blogs
           </m.button>
         </div>
       </div>
+
+      <div className="font-poppins  flex justify-center w-full relative h-full max-h-[50vh] text-black">
+        <div className="max-w-[380px] max-h-[280px] ease-in-out z-10 duration-300 h-full hover:rotate-0 hover:z-50 hover:cursor-pointer transform transition delay-300 hover:-translate-y-36 absolute left-[280px] bottom-6  -rotate-6 px-6 py-8 w-full bg-white rounded-2xl shadow-xl">
+          <h2 className="mb-4 text-gray-600">Lorem ipsum</h2>
+          <p>
+            lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book.
+          </p>
+        </div>
+
+        <div className="max-w-[420px] absolute z-20 left-[500px] ease-in-out  duration-300 bottom-0 hover:z-50  hover:rotate-0 hover:cursor-pointer transform transition delay-300 hover:-translate-y-36  rotate-12 max-h-[250px] h-full  rounded-2xl bg-white  p-3">
+          <img src="./images/yt2.jpg" className="rounded-2xl" />
+        </div>
+        <div className="max-w-[420px] absolute z-30 bottom-12 hover:rotate-0  duration-300 ease-in-out hover:z-50 hover:cursor-pointer transform transition delay-300 hover:-translate-y-36 -rotate-3 right-[500px]  max-h-[250px] h-full rounded-2xl bg-white  p-3">
+          <img src="./images/yt1.jpg" className="rounded-2xl" />
+        </div>
+
+        <div className="max-w-[380px] rotate-6 hover:rotate-0 hover:z-50  duration-300 ease-in-out hover:cursor-pointer transform delay-300 hover:-translate-y-36 z-40 -bottom-12 absolute right-[320px]  px-6 py-8   w-full bg-white rounded-2xl shadow-xl">
+          <h2 className="mb-4 text-gray-600">Word of the day</h2>
+          <h2 className="mb-4 text-3xl">Additionally Survillence Measure</h2>
+
+          <p className="text-gray-500">
+            rem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book.
+          </p>
+        </div>
+        <div className="w-full min-h-[200px] h-full mt-[350px] z-50 px-6 py-8  bg-black  shadow-xl">
+          <div></div>
+        </div>
+      </div>
+
+      <div className="w-full max-h-[100px] h-full   px-6 py-8    shadow-xl">
+        <div></div>
+      </div>
+    
 
       <div className="flex  mx-auto min-h-[100vh] font-poppins relative  w-full  justify-center items-center">
         {/* left  */}
@@ -994,96 +1011,82 @@ Ozo and experience the power of trust in your investment endeavors
       </div>
 
       {/* youtube videos oage  */}
-      <div className="font-poppins mb-24 max-w-full  w-full max-h-[110vh]">
-        <m.h1
-          initial={{ y: -50, opacity: 0 }}
-          whileInView={{
-            y: 0,
-            opacity: 1,
-            transition: {
-              duration: 0.8,
-              delay: 0.25,
-              ease: "anticipate",
-            },
-          }}
-          className="text-6xl text-center  font-semibold  mt-12"
-        >
-          Finance simplified,
-          <br />
-          in your language
-        </m.h1>
 
-        <div className="w-full mt-24 flex justify-center space-x-14 items-center">
-          <m.button
-            initial={{ opacity: 0, scale: 0 }}
+      <div className="w-full min-h-[100vh] relative flex mb-16 mt-28  items-center  ">
+        <img
+          src="./images/skydiving.jpg"
+          className="z-0 opacity-80 object-cover max-w-full "
+        />
+
+        <div className=" absolute px-52 w-full font-poppins   bg-opacity-40 py-[202px] ">
+          <m.h1
+            className="text-7xl font-bold  mb-6"
+            initial={{ x: -50, opacity: 0 }}
             whileInView={{
+              x: 0,
               opacity: 1,
-              scale: 1,
               transition: {
-                duration: 1.0,
-                delay: 0.35,
+                duration: 0.5,
                 ease: "anticipate",
               },
             }}
-            className="text-white w-56 border-2  py-4 shadow-grey-700 shadow-2xl  hover:text-white transition ease-in-out delay-150 hover:scale-95  hover:translate-y-1 rounded-full  font-semibold text-lg tracking-wide"
+            // viewport={{ once: true }}
           >
-            Youtube
-          </m.button>
-          <m.button
-            initial={{ opacity: 0, scale: 0 }}
+            we take your money <br />
+            matters seriously
+          </m.h1>
+          <m.p
+            className="text-3xl font-semibold mb-4   "
+            initial={{ x: -50, opacity: 0 }}
             whileInView={{
+              x: 0,
               opacity: 1,
-              scale: 1,
+              transition: {
+                duration: 1.4,
+                ease: "anticipate",
+              },
+            }}
+            // viewport={{ once: true }}
+          >
+            so that you don’t have to.
+          </m.p>
+          <m.p
+            className="text-xl font-semibold mb-10 "
+            initial={{ x: -50, opacity: 0 }}
+            whileInView={{
+              x: 0,
+              opacity: 1,
               transition: {
                 duration: 1.6,
-                delay: 0.9,
                 ease: "anticipate",
               },
             }}
-            className="text-white w-56 border-2 py-4 shadow-grey-700 shadow-2xl  hover:text-white transition ease-in-out delay-150 hover:scale-95  hover:translate-y-1 rounded-full  font-semibold text-lg tracking-wide"
+            // viewport={{ once: true }}
           >
-            Blogs
+            At One Ozo, we are dedicated to expertly managing your money matters,<br/> providing a secure and reliable 
+platform, so you can have peace of mind <br/>and enjoy worry-free financial stability.
+
+          </m.p>
+          <m.button
+            className="rounded-full bg-white px-14 py-6 "
+            initial={{ opacity: 0, scale: 0 }}
+            whileInView={{
+              opacity: 1,
+              scale: 1,
+              transition: {
+                duration: 2.0,
+                ease: "anticipate",
+              },
+            }}
+            // viewport={{ once: true }}
+          >
+            <span className="text-black text-2xl font-semibold">
+              Experience the upgrade
+            </span>{" "}
           </m.button>
         </div>
       </div>
-
-      <div className="font-poppins  flex justify-center w-full relative h-full max-h-[50vh] text-black">
-        <div className="max-w-[380px] max-h-[280px] ease-in-out z-10 duration-300 h-full hover:rotate-0 hover:z-50 hover:cursor-pointer transform transition delay-300 hover:-translate-y-36 absolute left-[280px] bottom-6  -rotate-6 px-6 py-8 w-full bg-white rounded-2xl shadow-xl">
-          <h2 className="mb-4 text-gray-600">Lorem ipsum</h2>
-          <p>
-            lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book.
-          </p>
-        </div>
-
-        <div className="max-w-[420px] absolute z-20 left-[500px] ease-in-out  duration-300 bottom-0 hover:z-50  hover:rotate-0 hover:cursor-pointer transform transition delay-300 hover:-translate-y-36  rotate-12 max-h-[250px] h-full  rounded-2xl bg-white  p-3">
-          <img src="./images/yt2.jpg" className="rounded-2xl" />
-        </div>
-        <div className="max-w-[420px] absolute z-30 bottom-12 hover:rotate-0  duration-300 ease-in-out hover:z-50 hover:cursor-pointer transform transition delay-300 hover:-translate-y-36 -rotate-3 right-[500px]  max-h-[250px] h-full rounded-2xl bg-white  p-3">
-          <img src="./images/yt1.jpg" className="rounded-2xl" />
-        </div>
-
-        <div className="max-w-[380px] rotate-6 hover:rotate-0 hover:z-50  duration-300 ease-in-out hover:cursor-pointer transform delay-300 hover:-translate-y-36 z-40 -bottom-12 absolute right-[320px]  px-6 py-8   w-full bg-white rounded-2xl shadow-xl">
-          <h2 className="mb-4 text-gray-600">Word of the day</h2>
-          <h2 className="mb-4 text-3xl">Additionally Survillence Measure</h2>
-
-          <p className="text-gray-500">
-            rem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book.
-          </p>
-        </div>
-        <div className="w-full min-h-[200px] h-full mt-[350px] z-50 px-6 py-8  bg-black  shadow-xl">
-          <div>afsevsevse</div>
-        </div>
-      </div>
-
-      <div className="w-full max-h-[100px] h-full   px-6 py-8    shadow-xl">
-        <div></div>
-      </div>
+  
       {/* FAQ  */}
 
       <div className="w-full my-28 ">

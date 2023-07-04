@@ -65,7 +65,7 @@ const AboutUs = () => {
       </m.h1>
 
       <div className="w-full min-h-[110vh] mt-12 relative  flex justify-center items-center flex-col ">
-        <img src="./images/designbg1.jpg" className="opacity-60" />
+        <img src="./images/aboutusbg.jpg" className="opacity-60" />
         <div className="mx-auto max-w-6xl  w-full flex justify-center items-center flex-col absolute">
           <m.p  initial={{ opacity: 0,y:-50 }}
               whileInView={{

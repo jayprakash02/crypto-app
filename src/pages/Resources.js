@@ -88,7 +88,7 @@ reinforcing trust through engaging and informative multimedia support.
                 }}
                 className="max-w-[150px] w-full min-h-[150px] bg-white "
               >
-                <p>lsfvs</p>
+                <p className="text-transparent">lsfvs</p>
               </m.div>
               <m.div
                 initial={{ opacity: 0, x: 50 }}
@@ -101,7 +101,7 @@ reinforcing trust through engaging and informative multimedia support.
                     ease: "anticipate",
                   },
                 }}
-                className="max-w-[150] min-h-[150px]  flex justify-center  items-center rounded-full text-purple-500 bg-purple-500 "
+                className="max-w-[150] min-h-[150px]  flex justify-center text-transparent  items-center rounded-full text-purple-500 bg-purple-500 "
               >
                 "fsvvsdkmvlsdm,wmw f,me ,m ea m, s"
               </m.div>
@@ -118,7 +118,7 @@ reinforcing trust through engaging and informative multimedia support.
                     ease: "anticipate",
                   },
                 }}
-                className="max-w-[150] min-h-[150px]  flex justify-center  items-center rounded-l-full text-gray-500 bg-gray-500 "
+                className="max-w-[150] min-h-[150px] text-transparent flex justify-center  items-center rounded-l-full text-gray-500 bg-gray-500 "
               >
                 sdvhbsdvknakvlk aslv akvksvkkkjnvkjs,
               </m.div>
@@ -133,7 +133,7 @@ reinforcing trust through engaging and informative multimedia support.
                     ease: "anticipate",
                   },
                 }}
-                className="max-w-[150] min-h-[150px]  flex justify-center  items-center rounded-full text-red-500 bg-red-500"
+                className="max-w-[150] min-h-[150px]  text-transparent flex justify-center  items-center rounded-full text-red-500 bg-red-500"
               >
                 lkmcealmk;adnksvs
               </m.div>
@@ -208,7 +208,7 @@ reinforcing trust through engaging and informative multimedia support.
       </div>
 
       <div className="w-full relative">
-        <img src="./images/resources.png"/>
+        <img src="./images/trade2.jpg"/>
         <div className="w-full max-w-7xl absolute top-28 right-20 flex justify-between  mx-auto">
         <div className="w-[350px] ml-28 text-center">
           <m.h1  initial={{opacity:0,y:-50 }}

@@ -1,42 +1,40 @@
 import { Menu, MenuItem } from "@mui/material";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import {motion as m } from "framer-motion"
+import { motion as m } from "framer-motion";
+import { AiOutlineCaretDown, AiOutlineCaretUp } from "react-icons/ai";
 const Navbar = () => {
- 
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-  
- 
+  const [open, setOpen] = useState(false);
+
   return (
     <m.div>
-      <div  initial={{ y: -50, opacity: 0 }}
-            whileInView={{
-              y: 0,
-              opacity: 1,
-              transition: {
-                duration: 2.0,
-                delay:0.7,
-                ease: "anticipate",
-              },
-            }}  class="flex flex-wrap z-10">
+      <div
+        initial={{ y: -50, opacity: 0 }}
+        whileInView={{
+          y: 0,
+          opacity: 1,
+          transition: {
+            duration: 2.0,
+            delay: 0.7,
+            ease: "anticipate",
+          },
+        }}
+        class="flex flex-wrap z-10"
+      >
         <section class="relative mx-auto">
           {/*//        <!-- navbar -->*/}
           <nav class="flex justify-between  bg-black text-opacity-100 text-white w-screen">
             <div class="px-5 xl:px-12 py-2 flex w-full items-center">
-             
               {/*//            <!-- Nav Links -->*/}
               <ul class="hidden md:flex px-4 mx-auto font-semibold font-poppins text-sm text-gray-400 items-center font-heading space-x-12 ">
-              <a class="text-3xl  font-bold font-heading" href="#">
-                <img class="h-10 pt-2 pl-2" src="./images/navlogo.png" alt="logo" />
-                {/*Logo Here.*/}     
-              </a>
+                <a class="text-3xl  font-bold font-heading" href="#">
+                  <img
+                    class="h-10 pt-2 pl-2"
+                    src="./images/navlogo.png"
+                    alt="logo"
+                  />
+                  {/*Logo Here.*/}
+                </a>
                 <li>
                   <Link class="hover:text-gray-200" to="/">
                     Home
@@ -47,20 +45,31 @@ const Navbar = () => {
                     Trade
                   </Link>
                 </li>
-                <li>
-                <div class="relative">
-  <button id="dropdown-btn" class="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none">
-    Dropdown
-  </button>
-  <ul id="dropdown-menu" class="absolute hidden bg-white text-gray-700 py-2 rounded  shadow-lg mt-2">
-    <li class="px-4 py-2 hover:bg-gray-200">Option 1</li>
-    <li class="px-4 py-2 hover:bg-gray-200">Option 2</li>
-    <li class="px-4 py-2 hover:bg-gray-200">Option 3</li>
-  </ul>
-</div>
-
-
-
+                <li className="relative">
+                  <button
+                    onClick={() => setOpen((prev) => !prev)}
+                    className="flex items-center space-x-2"
+                  >
+                    <span> Earning</span>
+                    {!open ? (
+                      <AiOutlineCaretDown className="h-8 text-white" />
+                    ) : (
+                      <AiOutlineCaretUp className="h-8 text-white" />
+                    )}
+                  </button>
+                  {!open && (
+                    <div className="absolute z-10 text-sm font-light  min-w-[200px]  space-y-2  w-full rounded-lg bg-opacity-60  bg-black top-16  text-white">
+                        <div className="hover:bg-gray-900 px-4 py-3  rounded-lg"> 
+                          <Link to="earning">Investment</Link>
+                        </div>
+                        <div className="hover:bg-gray-900 px-4  py-3   rounded-lg">
+                          <Link to="refferal">Referral and Binary</Link>
+                        </div>
+                        <div className="hover:bg-gray-900 px-4  py-3   rounded-lg">
+                          <Link to="extrabonus">Extra bonus for referral</Link>
+                        </div>
+                    </div>
+                  )}
                 </li>
                 <li>
                   <Link class="hover:text-gray-200" to="/resources">
@@ -88,13 +97,15 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <Link to="/dashboard" className="" href="#">
-                <img class="h-14  " src="./images/dashboard2.png" alt="logo" />
-                     
-              </Link>
-
+                  <img
+                    class="h-14  "
+                    src="./images/dashboard2.png"
+                    alt="logo"
+                  />
+                </Link>
               </ul>
               {/*//            <!-- Header Icons -->*/}
-{/*               
+              {/*               
              <div class="hidden xl:flex  space-x-5 items-center">
                 <Link class="hover:text-gray-200">
                   <svg
@@ -150,7 +161,6 @@ const Navbar = () => {
                   </svg>
                 </Link>
               </div> */}
-
             </div>
             {/*//          <!-- Responsive navbar -->*/}
             <a class="xl:hidden flex mr-6 items-center" href="#">

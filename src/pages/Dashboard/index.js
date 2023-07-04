@@ -16,16 +16,17 @@ const Dashboard = () => {
 
 
   return (
-    <div className="w-full bg-black min-h-[110vh] font-poppins">
-      <div className="w-full flex flex-col  items-center pt-10 min-h-[180px] pb-5 bg-gradient-to-tr from-fuchsia-950 to-black">
-        <div className="rounded-full  z-0 flex justify-between items-center bg-neutral-900 py-2 w-full max-w-7xl px-6 mx-auto">
+    <div className="w-full bg-[#0d0d0d] min-h-[110vh] font-poppins">
+      <div className="w-full flex flex-col  items-center mb-16  max-h-[180px] relative ">
+        <img src="./images/dashboard/header.png" className="max-h-[240px] object-cover w-full" />
+        <div className="rounded-full  absolute top-12 z-0 flex justify-between items-center bg-neutral-900 py-2 w-full max-w-7xl px-6 mx-auto">
           <div className="flex ">
-            <img src="./images/logo.png" className="w-10" />
+            <img src="./images/logo.png" className="w-12" />
             <h1 className="text-2xl z-10 font-medium text-white">ONE OZO</h1>
           </div>
 
           <div className="">
-            <ul className="flex  text-[16px]  items-center space-x-8">
+            <ul className="flex  text-[14px]  items-center font-medium space-x-6">
               <li className="  focus-within:bg-white focus-within:text-gray-900 rounded-full  px-2 py-1 ">
                 <button onClick={() => setNav("Overview")}> Overview </button>
               </li>
@@ -79,7 +80,7 @@ const Dashboard = () => {
           </div>
         </div>
         {nav == "Investment" && (
-          <div className="w-full flex justify-center items-center min-h-[10vh]">
+          <div className="w-full absolute top-32 flex justify-center items-center min-h-[10vh]">
             <div className="max-w-[38rem] mt-6  flex space-x-10 w-full rounded-full border-2  ">
               <button
                 onClick={() => setinvestmentState("Package")}
@@ -103,7 +104,7 @@ const Dashboard = () => {
           </div>
         )}
         {nav == "Genealogy" && (
-          <div className="w-full flex justify-center items-center min-h-[10vh]">
+          <div className="w-full  absolute top-32 flex justify-center items-center min-h-[10vh]">
             <div className="max-w-[18rem] mt-6  flex justify-between w-full rounded-full border-2  ">
               <button
                 onClick={() => setgenealogyState("Referral")}
@@ -122,7 +123,7 @@ const Dashboard = () => {
         )}
 
         {nav == "Tickets" && (
-          <div className="w-full flex justify-center items-center min-h-[10vh]">
+          <div className="w-full  absolute top-32 flex justify-center items-center pb-5 min-h-[10vh]">
             <div className="max-w-[20rem] mt-6  flex justify-between w-full rounded-full border-2  ">
               <button
                 onClick={() => setTickets("Submit")}
@@ -143,7 +144,7 @@ const Dashboard = () => {
 
 
 {nav == "Reports" && (
-          <div className="w-full flex justify-center items-center min-h-[10vh]">
+          <div className="w-full  absolute top-32 flex justify-center items-center min-h-[10vh]">
             <div className="max-w-[40rem] mt-6  flex justify-between w-full rounded-full border-2  ">
               <button
                 onClick={() => setReportState("roi")}

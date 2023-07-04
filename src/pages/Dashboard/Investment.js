@@ -190,7 +190,7 @@ const Offline = () => {
     <div className="min-h-[80vh] bg-neutral-900 w-full ">
       <div className="max-w-6xl flex justify-center items-center flex-col mx-auto w-full">
         <div className="max-w-[380px] mt-14 w-full flex rounded-2xl bg-neutral-800">
-          <div className="max-w-[150px] w-full"></div>0
+          <div className="max-w-[150px] w-full"></div>
           <div className="ml-6 p-6">
             <h1 className="text-lg font-bold ">
               Perfect Money ID
@@ -217,7 +217,7 @@ const Offline = () => {
             <div>
               <p className="mb-2">Enter Amount</p>
               <input className="px-2 py-2 rounded-lg bg-black w-full" />
-   *         </div>
+          </div>
 
             <div>
               <p className="mb-2">Package Name</p>
