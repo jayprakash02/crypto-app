@@ -62,9 +62,17 @@ const Signup = () => {
             setLoading(false); // Stop loading
 
             if (response.data.success) {
-              // Success case
+              const { token, userId } = response.data;
+              const userData = {
+                token: token,
+                email: formData.email,
+                userId: userId,
+              };
+
+              localStorage.setItem("user_data", JSON.stringify(userData));
+
               toast.success("Registration successful");
-              navigate("/Dashboard");
+              navigate("/dashboard");
             } else {
               toast.error("Something went wromg");
             }
