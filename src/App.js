@@ -1,7 +1,7 @@
 
 import { Route, Routes ,Outlet} from "react-router-dom";
 import BlogCard from "./components/Card";
-import Login from "./components/Login";
+import Login from "./pages/Login";
 
 import Navbar from "./components/Navbar";
 
@@ -30,7 +30,6 @@ function App() {
           <Route path="aboutus" element={<AboutUs />} />
           <Route path="contact" element={<ContactUs />} />
           <Route path="blog" element={<Blog />} />
-          <Route path="login" element={<Login />} />
           <Route path="trade" element={<Trade />} />
           <Route path="earning" element={<Earning />} />
           <Route path="refferal" element={<Referral />} />
@@ -41,6 +40,9 @@ function App() {
         </Route>
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="signup" element={<Signup />} />
+        <Route path="login" element={<Login />} />
+
+
         
 
       </Routes>

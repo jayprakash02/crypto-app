@@ -4,6 +4,7 @@ import { toast } from "react-hot-toast";
 import { baseURL } from "../constants/Constant";
 import { FiLoader } from "react-icons/fi";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 const Signup = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -32,6 +33,7 @@ const Signup = () => {
 
       if (e.target.value.length === 7) {
         fetchSponsorName(e.target.value);
+
       }
     } else {
       setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -55,7 +57,7 @@ const Signup = () => {
           password: formData.confirmPassword,
         };
 
-        // Send the data to the backend API
+        // Send the data to the backend API 
         axios
           .post(baseURL + "/api/users/signup", requestData)
           .then((response) => {
@@ -97,6 +99,7 @@ const Signup = () => {
       .get(baseURL + `/api/users/name/${sponsorId}`)
       .then((response) => {
         const { data } = response;
+        console.log('response',response);
 
         if (data.success) {
           setFormData({
@@ -134,9 +137,8 @@ const Signup = () => {
       <div className="w-1/2 px-24 text-center absolute top-20 ">
         <h1 className="mb-6 text-5xl font-semibold">Welcome to one ozo</h1>
         <p className="mb-6">
-          Please register if you don't have an account and
-          <br />
-          login if you already have an account
+         
+          <Link to="/login" className="font-semibold">Login</Link> if you already have an account
         </p>
 
         <div className="flex space-x-6 mb-4 max-w-[350px] text-center font-semibold items-center">
