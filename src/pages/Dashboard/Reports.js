@@ -1,4 +1,5 @@
 import React from "react";
+import ROI from "./reports/ROI";
 
 const Reports = ({ reportState }) => {
   return (
@@ -12,22 +13,6 @@ const Reports = ({ reportState }) => {
 };
 
 export default Reports;
-
-const ROI = () => {
-  return (
-    <>
-      <h1 className="text-4xl px-12 mb-8">ROI Report</h1>
-
-      <div className="bg-black w-full px-12 py-4 justify-between flex ">
-        <div className="">SI No</div>
-        <div className="">Date</div>
-        <div className="">Package</div>
-        <div className="">Percentage</div>
-        <div className="">Amount</div>
-      </div>
-    </>
-  );
-};
 
 const RI = () => {
   return (
