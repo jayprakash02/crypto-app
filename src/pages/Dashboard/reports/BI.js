@@ -13,7 +13,7 @@ export const BI = () => {
       axios
         .get(
           baseURL +
-            `/api/roi-transactions/${userData.userId}?email=${userData.email}`,
+            `/api/binary-transactions/${userData.userId}?email=${userData.email}`,
           {
             headers,
           }

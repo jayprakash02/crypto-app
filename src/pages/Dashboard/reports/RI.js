@@ -13,7 +13,7 @@ export const RI = () => {
       axios
         .get(
           baseURL +
-            `/api/roi-transactions/${userData.userId}?email=${userData.email}`,
+            `/api/referral-transactions/${userData.userId}?email=${userData.email}`,
           {
             headers,
           }

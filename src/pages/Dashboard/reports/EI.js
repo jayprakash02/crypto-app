@@ -13,7 +13,7 @@ export const EI = () => {
       axios
         .get(
           baseURL +
-            `/api/roi-transactions/${userData.userId}?email=${userData.email}`,
+            `/api/career-rewards/${userData.userId}?email=${userData.email}`,
           {
             headers,
           }
