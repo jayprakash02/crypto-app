@@ -1,26 +1,51 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { FiLoader } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { baseURL } from "../constants/Constant";
+import { toast } from "react-hot-toast";  
 
 const Login = () => {
+   const navigate = useNavigate()
   const [loginForm, setLoginState] = useState({
     email: "",
     password: "",
   });
+  console.log('asjbdjas', loginForm);
  const  handleChange = (e )=>{
         setLoginState({
           ...loginForm,[e.target.name]: e.target.value,
-
         })
   }
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e)   => {
     e.preventDefault();
-    console.log(loginForm,"login data ")
+    console.log(loginForm,"login data ");
+    try {
+      await axios.post(`${baseURL}/api/users/signin`,loginForm).then((res)=>{
+        console.log('res', res);
+        if(res.data.success && res.data.token){
+          toast.success("Registration successful");
+          navigate("/dashboard");
+          console.log('response', res);
+          const userData = {
+            token: res.data.token,
+            email: loginForm.email,
+            userId: res.data.userId,
+          };
+          localStorage.setItem("user_data", JSON.stringify(userData));
+        } 
+      })
+      .catch((err=>{
+      console.log(err);
+      toast.error("Something went wrong! Check your email and password");
 
-
-    // axios.post(baseURL + "/api/users/signup",loginForm).then((res) =>)
+      }))
+      
+    } catch (error) {
+      console.log(error);
+    }
+   
+    
   };
 
 
@@ -68,6 +93,7 @@ const Login = () => {
           >
             Login
           </button>
+
         </div>
       </div>
     </div>
