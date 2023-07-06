@@ -5,7 +5,7 @@ import { baseURL } from "../constants/Constant";
 import { FiLoader } from "react-icons/fi";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
-const Signup = () => {
+const Signup = ({setIsLoggedIn}) => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     sponsor: "",
@@ -74,6 +74,7 @@ const Signup = () => {
               localStorage.setItem("user_data", JSON.stringify(userData));
 
               toast.success("Registration successful");
+              setIsLoggedIn(true)
               navigate("/dashboard");
             } else {
               toast.error("Something went wromg");
@@ -303,7 +304,7 @@ const Signup = () => {
             )}
           </button>
           <p className="text-center my-2 text-sm">
-            Already have an account? sign in
+          <Link to="/login" className="font-semibold">  Already have an account? sign in</Link>
           </p>
         </div>
       </div>

@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion as m } from "framer-motion";
 import { AiOutlineCaretDown, AiOutlineCaretUp } from "react-icons/ai";
-const Navbar = () => {
+const Navbar = ({isLoggedIn}) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -96,13 +96,14 @@ const Navbar = () => {
                     Blog
                   </Link>
                 </li>
-                <Link to="/dashboard" className="" href="#">
+                {isLoggedIn ? (   <Link to="/dashboard" className="" href="#">
                   <img
                     class="h-14  "
                     src="./images/dashboard2.png"
                     alt="logo"
                   />
-                </Link>
+                </Link>) :<Link to="/login">Login</Link>
+               }
               </ul>
               {/*//            <!-- Header Icons -->*/}
               {/*               

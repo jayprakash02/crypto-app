@@ -1,6 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import { toast } from "react-hot-toast";
 
 const Overview = () => {
+  // Overview state
+  const [totalInvestmentRevenue, setTotalInvestmentRevenue] =
+    useState("981.567.000");
+
+  const [totalReturns, settotalReturns] = useState("129.897.000");
+  const [totalReturnsTarget, settotalReturnsTarget] = useState("250.800.000");
+
+  const [totalWithdrawal, settotalWithdrawal] = useState("450000");
+  const [totalWithdrawalRemaining, settotalWithdrawalRemaining] =
+    useState("999.980");
+
+  const [totalEarning, settotalEarning] = useState("95851");
+  const [totalEarningByPercentage, settotalEarningByPercentage] =
+    useState("95");
+
+  // Referral Links
+  // left link
+  // right link
+  const [LeftReferral, setLeftReferral] = useState(" Left Link dummy");
+  const [RightReferral, setRightReferral] = useState(" Right Link dummy");
+  const [copyState, setcopyState] = useState(false);
+
   return (
     <div className="bg-black max-w-full">
       <div className="flex w-full  py-4 px-8">
@@ -19,7 +43,9 @@ const Overview = () => {
                 <h3 className="font-medium text-lg">Total investment</h3>
               </div>
               <div className="pl-2">
-                <h2 className="text-2xl font-medium mb-2">$981.567.000</h2>
+                <h2 className="text-2xl font-medium mb-2">
+                  ${totalInvestmentRevenue}
+                </h2>
                 <p className="text-gray-500">
                   90-Day <span className="text-[#29CD0E]">+5.599</span>
                 </p>
@@ -37,9 +63,10 @@ const Overview = () => {
                 <h3 className="font-medium text-lg">Total returns</h3>
               </div>
               <div className="pl-2">
-                <h2 className="text-2xl font-medium mb-2">$129.897.000</h2>
+                <h2 className="text-2xl font-medium mb-2">${totalReturns}</h2>
                 <p className="text-gray-500">
-                  Target: <span className="text-gray-500">$250.800.000</span>
+                  Target:{" "}
+                  <span className="text-gray-500">${totalReturnsTarget}</span>
                 </p>
               </div>
             </div>
@@ -55,9 +82,14 @@ const Overview = () => {
                 <h3 className="font-medium text-lg">Total withdrawal</h3>
               </div>
               <div className="pl-2">
-                <h2 className="text-2xl font-medium mb-2">-$450.000</h2>
+                <h2 className="text-2xl font-medium mb-2">
+                  -${totalWithdrawal}
+                </h2>
                 <p className="text-gray-500">
-                  Remaining <span className="text-gray-500">999.980</span>
+                  Remaining{" "}
+                  <span className="text-gray-500">
+                    {totalWithdrawalRemaining}
+                  </span>
                 </p>
               </div>
             </div>
@@ -166,23 +198,50 @@ const Overview = () => {
           <div className="w-full flex px-2  justify-between">
             {/* left  */}
             <div className="rounded-xl p-4 max-w-[600px]  max-h-[250px]  w-full bg-gradient-to-r from-indigo-400 to-fuchsia-500  text-gray-900">
-              <h1 className="text-2xl font-semibold pl-4 pt-4 mb-8">Referral link</h1>
-              <div className="w-full pl-4 mb-4 relative flex">
-                <div className="bg-neutral-900 text-2xl text-white rounded-lg px-4 py-1">
-                  Left link
-                </div>
-                <button className="border-t-2 w-full max-w-[430px]  text-transparent absolute left-28 top-0 py-[6px] border-r-2 border-b-2 bg-transparent px-4 border-neutral-900 rounded-t-lg  rounded-r-lg  rounded-b-lg">
-                  {"n"}
+              <h1 className="text-2xl font-semibold pl-4 pt-4 mb-8">
+                Referral link
+              </h1>
+              {/* 1st button  */}
+              <CopyToClipboard
+              text={LeftReferral}
+                onCopy={() => {
+                  setcopyState(true);
+                  if(copyState)toast.success("Copy Successfully");
+                  console.log("left referral",LeftReferral)
+                }}
+              >
+                {/* button to copy text  */}
+                <button className="w-full ml-4 max-w-[540px] text-left mb-4 relative flex">
+                  <div className="bg-neutral-900 text-2xl text-white rounded-lg px-6 py-1">
+                    Left link
+                  </div>
+                  <div className="border-t-2 w-full max-w-[410px]  text-neutral-900 font-medium absolute left-32 top-0 py-[6px] border-r-2 border-b-2 bg-transparent px-4 border-neutral-900 rounded-t-lg  rounded-r-lg  rounded-b-lg">
+                    {LeftReferral}
+                  </div>
                 </button>
-              </div>
-              <div className="w-full pl-4 relative flex">
-                <div className="bg-neutral-900 text-2xl text-white rounded-lg px-4 py-1">
-                  Right link
-                </div>
-                <button className="border-t-2 w-full  max-w-[430px] text-transparent absolute left-28 top-0 py-[6px] border-r-2 border-b-2 bg-transparent px-4 border-neutral-900 rounded-t-lg  rounded-r-lg  rounded-b-lg">
-                  {" n"}
+              </CopyToClipboard>
+              {/* 2nd button  */}
+              <CopyToClipboard
+              text={RightReferral}
+                onCopy={() => {
+                  setcopyState(true);
+                  if(copyState)toast.success("Copy Successfully");
+                  console.log("right referral",RightReferral)
+                  
+
+                }}
+              >
+                {/* button to copy text  */}
+
+                <button className="w-full max-w-[540px] text-left  ml-4 relative flex">
+                  <div className="bg-neutral-900 text-2xl text-white rounded-lg px-6 py-1">
+                    Right link
+                  </div>
+                  <div className="border-t-2 w-full font-medium text-neutral-900 max-w-[400px] text-transparent absolute left-36 top-0 py-[6px] border-r-2 border-b-2 bg-transparent px-4 border-neutral-900 rounded-t-lg  rounded-r-lg  rounded-b-lg">
+                    {RightReferral}
+                  </div>
                 </button>
-              </div>
+              </CopyToClipboard>
             </div>
             {/* right  */}
             <div className="bg-zinc-900 p-4 rounded-3xl">
@@ -277,14 +336,14 @@ const Overview = () => {
           </h2>
           <div className="bg-gray-800 border-2 text-center rounded-xl my-6 max-w-[200px] w-full mx-auto py-4 border-zinc-400  ">
             <p>Total Earning</p>
-            <p className="text-xl ">$989.450</p>
+            <p className="text-xl ">${totalEarning}</p>
           </div>
 
           <div className="w-full p-2 flex justify-center my-8 ">
-          <div className="rounded-full border-4 min-h-[220px] border-fuchsia-700 w-full max-w-[220px] flex justify-center items-center">
-          <h2 className="text-4xl">95%</h2>
-          </div>
+            <div className="rounded-full border-4 min-h-[220px] border-fuchsia-700 w-full max-w-[220px] flex justify-center items-center">
+              <h2 className="text-4xl">{totalEarningByPercentage}%</h2>
             </div>
+          </div>
           <div className="w-full space-y-10">
             <div className="w-full space-y-2  px-6">
               <div className="flex space-x-2 px-2 text-sm">
@@ -299,12 +358,12 @@ const Overview = () => {
               </div>
               <div className="flex space-x-4 text-sm">
                 <li className="text-fuchsia-500">
-                  <span className="text-gray-500 font-medium">Binary Bonus</span>
+                  <span className="text-gray-500 font-medium">
+                    Binary Bonus
+                  </span>
                 </li>
                 <li className="text-fuchsia-500">
-                  <span className="text-gray-500 font-medium">
-                    Others
-                  </span>
+                  <span className="text-gray-500 font-medium">Others</span>
                 </li>
               </div>
             </div>
