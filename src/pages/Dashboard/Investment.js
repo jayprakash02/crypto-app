@@ -15,12 +15,53 @@ const Investment = ({ investmentState }) => {
 export default Investment;
 
 const Package = () => {
-  const [popupVisible, setPopupVisible] = useState(false);
+  const dummyDATA = [
+    {
+      siNo: 1,
+      package: "Package A",
+      days: 2,
+      invested: 2000,
+      email: "bourax@gmail.com",
+      expiry: "22/11/2023",
+      paymentThrough: "CoinBase",
+      paymentType: "null",
+    },
+    {
+      siNo: 2,
+      package: "Package C",
+      days: 4,
+      invested: 20400,
+      email: "bourax@gmail.com",
+      expiry: "23/11/2023",
+      paymentThrough: "CoinBase",
+      paymentType: "null",
+    },
+    {
+      siNo: 3,
+      package: "Package B",
+      days: 8,
+      invested: 2300,
+      email: "bourax@gmail.com",
+      expiry: "2/9/2023",
+      paymentThrough: "CoinBase",
+      paymentType: "null",
+    },
+    {
+      siNo: 4,
+      package: "Package D",
+      days: 1,
+      invested: 8000,
+      email: "bourax@gmail.com",
+      expiry: "2/11/2023",
+      paymentThrough: "CoinBase",
+      paymentType: "null",
+    },
+  ];
 
-  const handlePurchase = () => {
-    setPopupVisible(true);
-  };
-
+  // Modal state
+  const [open, setopen] = useState(false);
+  // package Name
+  const [packageName, setPackageName] = useState("");
   return (
     <div className="min-h-[80vh] bg-neutral-900 pt-16   w-full">
       <h1 className="font-semibold text-4xl  text-center text-white">
@@ -56,8 +97,11 @@ const Package = () => {
               <p className="font-semibold">Principle Returns: 30%</p>
             </div>
             <button
+              onClick={() => {
+                setopen((prev) => !prev);
+                setPackageName("EXPLORER");
+              }}
               className="w-full max-w-[250px] bg-gradient-to-r text-white from-indigo-700 to-fuchsia-700 rounded-xl p-3"
-              onClick={handlePurchase}
             >
               Purchase
             </button>
@@ -93,7 +137,14 @@ const Package = () => {
               <img src="./images/icons/checkbox.png" className="w-6 h-6" />
               <p className="font-semibold">Principle Returns: 40%</p>
             </div>
-            <button className="w-full max-w-[250px] bg-gradient-to-r text-white from-indigo-700 to-fuchsia-700 rounded-xl p-3">
+            <button
+              name="MAVERICK"
+              onClick={() => {
+                setopen((prev) => !prev);
+                setPackageName("MAVERICK");
+              }}
+              className="w-full max-w-[250px] bg-gradient-to-r text-white from-indigo-700 to-fuchsia-700 rounded-xl p-3"
+            >
               Purchase
             </button>
           </div>
@@ -127,7 +178,13 @@ const Package = () => {
               <img src="./images/icons/checkbox.png" className="w-6 h-6" />
               <p className="font-semibold">Principle Returns: 50%</p>
             </div>
-            <button className="w-full max-w-[250px] bg-gradient-to-r text-white from-indigo-700 to-fuchsia-700 rounded-xl p-3">
+            <button
+              onClick={() => {
+                setopen((prev) => !prev);
+                setPackageName("VANQUARD");
+              }}
+              className="w-full max-w-[250px] bg-gradient-to-r text-white from-indigo-700 to-fuchsia-700 rounded-xl p-3"
+            >
               Purchase
             </button>
           </div>
@@ -161,38 +218,138 @@ const Package = () => {
               <img src="./images/icons/checkbox.png" className="w-6" />
               <p className="font-semibold">Principle Returns: 75%</p>
             </div>
-            <button className="w-full max-w-[250px] bg-black text-white rounded-xl p-3">
+            <button
+              onClick={() => {
+                setopen((prev) => !prev);
+                setPackageName("LEGACY");
+              }}
+              className="w-full max-w-[250px] bg-black text-white rounded-xl p-3"
+            >
               Purchase
             </button>
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl w-full mx-auto pb-24">
-        <h1 className="text-4xl my-8 font-semibold">Referral Details</h1>
+      {open && (
+        <div className="w-full flex justify-center absolute top-0 left-0 max-h-full h-full  items-center bg-black bg-opacity-70  ">
+          <div className="max-w-[450px] rounded-2xl bg-neutral-900 p-6 min-h-[280px] relative">
+            <button
+              onClick={() => setopen((prev) => !prev)}
+              className="rounded-full absolute -top-4 -right-4 w-10 p-3  bg-gradient-to-r text-white from-indigo-600 to-fuchsia-600  "
+            >
+              <img src="./images/icons/close.png" className="w-8" />
+            </button>
+            <p className="font-medium text-sm tracking-wider">{packageName}</p>
 
-        <div className="bg-black w-full items-center px-12 py-4 justify-between flex ">
-          <input
-            type="checkbox"
-            className="rounded-sm bg-black border-2 p-2"
-            name="referral"
-            id="referralDetail"
-          />
-          <div className="">SI No</div>
-          <div className="">Package</div>
-          <div className="">Days</div>
-          <div className="">Invested</div>
-          <div className="">Email</div>
-          <div className="">Expiry</div>
-          <div className="">Payment through</div>
-          <div className="">Payment type</div>
+            <h1 className="text-4xl font-medium mb-10">Payment</h1>
+
+            <label htmlFor="paymentamount" className="">
+              Enter amount
+            </label>
+            <input
+              id="paymentamount"
+              name=""
+              className="bg-black px-6 py-3 mt-4 mb-6  rounded-2xl w-full"
+            />
+            <button className="w-full  bg-gradient-to-r text-white from-indigo-700 to-fuchsia-700 rounded-xl p-3">
+              Continue
+            </button>
+          </div>
         </div>
+      )}
+
+      <div className=" w-full max-w-full px-12 pb-24 ">
+        <table className="w-full">
+          <h1 className="text-4xl my-8 font-semibold">Referral Details</h1>
+
+          <thead className="bg-black w-full text-left items-center px-12 py-4 justify-between flex ">
+            <th>
+              <input
+                type="checkbox"
+                className="rounded-sm bg-black border-2 p-2"
+                name="referral"
+                id="referralDetail"
+              />
+            </th>
+            <th className="w-full   max-w-[80px] ">SI No</th>
+            <th className="w-full max-w-[100px] ">Package</th>
+            <th className="w-full max-w-[100px] ">Days</th>
+            <th className="w-full max-w-[100px] ">Invested</th>
+            <th className="w-full max-w-[200px] ">Email</th>
+            <th className="w-full max-w-[100px] ">Expiry</th>
+            <th className="w-full max-w-[100px]">Payment through</th>
+            <th className="w-full max-w-[100px]">Payment type</th>
+          </thead>
+          <tbody className="w-full">
+            {dummyDATA.map((e, key) => {
+              return (
+                <tr
+                  key={key}
+                  className="bg-black text-left w-full items-center px-12 py-4  flex "
+                >
+                  <td>
+                    {" "}
+                    <input
+                      type="checkbox"
+                      className="rounded-sm bg-black border-2 p-2 mr-12"
+                      name="referral"
+                      id="referralDetail"
+                    />
+                  </td>
+                  <td className="w-full max-w-[80px] ml-4 ">{e.siNo}</td>
+                  <td className="w-full max-w-[100px]  ml-10 ">{e.package}</td>
+                  <td className="w-full max-w-[100px]  ml-14  ">
+                    {e.days} days
+                  </td>
+                  <td className="w-full max-w-[100px]  ml-14  ">
+                    {e.invested}
+                  </td>
+                  <td className="w-full max-w-[250px]  ml-12 overflow-hidden  ">
+                    {e.email}
+                  </td>
+                  <td className="w-full max-w-[100px]  ml-6 ">{e.expiry}</td>
+                  <td className="w-full max-w-[100px] ml-14 ">
+                    {" "}
+                    {e.paymentThrough}
+                  </td>
+                  <td className="w-full max-w-[100px] ml-16 ">
+                    {e.paymentType}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
     </div>
   );
 };
 
 const Offline = () => {
+  // form state
+  const [offlineInvestmentForm, setofflineInvestmentForm] = useState({
+    downlineID: "",
+    downlineName: "",
+    amount: "",
+    packageName: "",
+    perfectMoneyID: "",
+  });
+
+  const handleChange = (e) => {
+    setofflineInvestmentForm({
+      ...offlineInvestmentForm,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(offlineInvestmentForm, "offline Data");
+  };
+
+  //perfectMoneyID
+  const [perfectMoneyID, setperfectMoneyID] = useState("123456789");
   return (
     <div className="min-h-[80vh] bg-neutral-900 w-full ">
       <div className="max-w-6xl flex justify-center items-center flex-col mx-auto w-full">
@@ -202,7 +359,7 @@ const Offline = () => {
             <h1 className="text-lg font-bold ">
               Perfect Money ID
               <br />
-              123456789
+              {perfectMoneyID}
             </h1>
           </div>
         </div>
@@ -213,27 +370,52 @@ const Offline = () => {
           <div className="grid grid-cols-2 gap-4">
             <div>
               <p className="mb-2">Downline ID</p>
-              <input className="px-2 py-2 rounded-lg bg-black w-full" />
+              <input
+                onChange={handleChange}
+                name="downlineID"
+                value={offlineInvestmentForm.downlineID}
+                className="px-2 py-2 rounded-lg bg-black w-full"
+              />
             </div>
 
             <div>
               <p className="mb-2">Downline Name</p>
-              <input className="px-2 py-2 rounded-lg bg-black w-full" />
+              <input
+                onChange={handleChange}
+                name="downlineName"
+                value={offlineInvestmentForm.downlineName}
+                className="px-2 py-2 rounded-lg bg-black w-full"
+              />
             </div>
 
             <div>
               <p className="mb-2">Enter Amount</p>
-              <input className="px-2 py-2 rounded-lg bg-black w-full" />
+              <input
+                onChange={handleChange}
+                name="amount"
+                value={offlineInvestmentForm.amount}
+                className="px-2 py-2 rounded-lg bg-black w-full"
+              />
             </div>
 
             <div>
               <p className="mb-2">Package Name</p>
-              <input className="px-2 py-2 rounded-lg bg-black w-full" />
+              <input
+                onChange={handleChange}
+                name="packageName"
+                value={offlineInvestmentForm.packageName}
+                className="px-2 py-2 rounded-lg bg-black w-full"
+              />
             </div>
           </div>
           <div className="mt-4 mb-4">
             <p className="mb-2">Perfect Money Transaction ID</p>
-            <input className="px-2 py-4 rounded-lg bg-black w-full" />
+            <input
+              onChange={handleChange}
+              name="perfectMoneyID"
+              value={offlineInvestmentForm.perfectMoneyID}
+              className="px-2 py-4 rounded-lg bg-black w-full"
+            />
           </div>
 
           <div className="w-full flex flex-col max-w-[400px] mb-24 mx-auto  mt-10 justify-center items-center">
@@ -261,7 +443,10 @@ const Offline = () => {
               </label>
             </div>
 
-            <button className="w-full max-w-[250px] bg-gradient-to-r text-black from-blue-500 to-fuchsia-700 rounded-xl p-3">
+            <button
+              onClick={handleSubmit}
+              className="w-full max-w-[250px] bg-gradient-to-r text-black from-blue-500 to-fuchsia-700 rounded-xl p-3"
+            >
               Continue
             </button>
           </div>
@@ -272,11 +457,87 @@ const Offline = () => {
 };
 
 const Downline = () => {
+  // Modal state
+  const [open, setopen] = useState(false);
+
+  // package Name
+  const [packageName, setPackageName] = useState("");
+  const dummyDATA = [
+    {
+      siNo: 1,
+      package: "Package A",
+      days: 2,
+      invested: 2000,
+      email: "bourax@gmail.com",
+      expiry: "22/11/2023",
+      paymentThrough: "CoinBase",
+      paymentType: "null",
+    },
+    {
+      siNo: 2,
+      package: "Package C",
+      days: 4,
+      invested: 20400,
+      email: "bourax@gmail.com",
+      expiry: "23/11/2023",
+      paymentThrough: "CoinBase",
+      paymentType: "null",
+    },
+    {
+      siNo: 3,
+      package: "Package B",
+      days: 8,
+      invested: 2300,
+      email: "bourax@gmail.com",
+      expiry: "2/9/2023",
+      paymentThrough: "CoinBase",
+      paymentType: "null",
+    },
+    {
+      siNo: 4,
+      package: "Package D",
+      days: 1,
+      invested: 8000,
+      email: "bourax@gmail.com",
+      expiry: "2/11/2023",
+      paymentThrough: "CoinBase",
+      paymentType: "null",
+    },
+  ];
+
   return (
     <div className="min-h-[80vh] bg-neutral-900 pt-16   w-full">
       <h1 className="font-semibold text-4xl  text-center text-white">
         Affordable Pricing List
       </h1>
+
+      {open && (
+        <div className="w-full flex justify-center absolute top-0 left-0 max-h-full h-full  items-center bg-black bg-opacity-70  ">
+          <div className="max-w-[450px] rounded-2xl bg-neutral-900 p-6 min-h-[280px] relative">
+            <button
+              onClick={() => setopen((prev) => !prev)}
+              className="rounded-full absolute -top-4 -right-4 w-10 p-3  bg-gradient-to-r text-white from-indigo-600 to-fuchsia-600  "
+            >
+              <img src="./images/icons/close.png" className="w-8" />
+            </button>
+            <p className="font-medium text-sm tracking-wider">{packageName}</p>
+
+            <h1 className="text-4xl font-medium mb-10">Payment</h1>
+
+            <label htmlFor="paymentamount" className="">
+              Enter amount
+            </label>
+            <input
+              id="paymentamount"
+              name=""
+              className="bg-black px-6 py-3 mt-4 mb-6  rounded-2xl w-full"
+            />
+            <button className="w-full  bg-gradient-to-r text-white from-indigo-700 to-fuchsia-700 rounded-xl p-3">
+              Continue
+            </button>
+          </div>
+        </div>
+      )}
       <div className="w-full flex space-x-6 max-w-7xl mx-auto px-6 py-12">
         <div className="border-2 border-zinc-400 bg-black  max-w-[340px] max-h-[500px]  rounded-2xl p-4">
           <p className="font-semibold text-white ">EXPLORER PACKAGE</p>
@@ -306,7 +567,13 @@ const Downline = () => {
               <img src="./images/icons/checkbox.png" className="w-6 h-6" />
               <p className="font-semibold">Principle Returns: 30%</p>
             </div>
-            <button className="w-full max-w-[250px] bg-gradient-to-r text-white from-indigo-700 to-fuchsia-700 rounded-xl p-3">
+            <button
+              onClick={() => {
+                setopen((prev) => !prev);
+                setPackageName("EXPLORER");
+              }}
+              className="w-full max-w-[250px] bg-gradient-to-r text-white from-indigo-700 to-fuchsia-700 rounded-xl p-3"
+            >
               Purchase
             </button>
           </div>
@@ -340,7 +607,13 @@ const Downline = () => {
               <img src="./images/icons/checkbox.png" className="w-6 h-6" />
               <p className="font-semibold">Principle Returns: 40%</p>
             </div>
-            <button className="w-full max-w-[250px] bg-gradient-to-r text-white from-indigo-700 to-fuchsia-700 rounded-xl p-3">
+            <button
+              onClick={() => {
+                setopen((prev) => !prev);
+                setPackageName("MAVERICK");
+              }}
+              className="w-full max-w-[250px] bg-gradient-to-r text-white from-indigo-700 to-fuchsia-700 rounded-xl p-3"
+            >
               Purchase
             </button>
           </div>
@@ -374,7 +647,13 @@ const Downline = () => {
               <img src="./images/icons/checkbox.png" className="w-6 h-6" />
               <p className="font-semibold">Principle Returns: 50%</p>
             </div>
-            <button className="w-full max-w-[250px] bg-gradient-to-r text-white from-indigo-700 to-fuchsia-700 rounded-xl p-3">
+            <button
+              onClick={() => {
+                setopen((prev) => !prev);
+                setPackageName("VANQUARD");
+              }}
+              className="w-full max-w-[250px] bg-gradient-to-r text-white from-indigo-700 to-fuchsia-700 rounded-xl p-3"
+            >
               Purchase
             </button>
           </div>
@@ -408,32 +687,81 @@ const Downline = () => {
               <img src="./images/icons/checkbox.png" className="w-6" />
               <p className="font-semibold">Principle Returns: 75%</p>
             </div>
-            <button className="w-full max-w-[250px] bg-black text-white rounded-xl p-3">
+            <button
+              onClick={() => {
+                setopen((prev) => !prev);
+                setPackageName("LEGACY");
+              }}
+              className="w-full max-w-[250px] bg-black text-white rounded-xl p-3"
+            >
               Purchase
             </button>
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl w-full mx-auto pb-24">
-        <h1 className="text-4xl my-8 font-semibold">Referral Details</h1>
+      <div className=" w-full max-w-full px-12 pb-24 ">
+        <table className="w-full">
+          <h1 className="text-4xl my-8 font-semibold">Referral Details</h1>
 
-        <div className="bg-black w-full items-center px-12 py-4 justify-between flex ">
-          <input
-            type="checkbox"
-            className="rounded-sm bg-black border-2 p-2"
-            name="referral"
-            id="referralDetail"
-          />
-          <div className="">SI No</div>
-          <div className="">Package</div>
-          <div className="">Days</div>
-          <div className="">Invested</div>
-          <div className="">Email</div>
-          <div className="">Expiry</div>
-          <div className="">Payment through</div>
-          <div className="">Payment type</div>
-        </div>
+          <thead className="bg-black w-full text-left items-center px-12 py-4 justify-between flex ">
+            <th>
+              <input
+                type="checkbox"
+                className="rounded-sm bg-black border-2 p-2"
+                name="referral"
+                id="referralDetail"
+              />
+            </th>
+            <th className="w-full   max-w-[80px] ">SI No</th>
+            <th className="w-full max-w-[100px] ">Package</th>
+            <th className="w-full max-w-[100px] ">Days</th>
+            <th className="w-full max-w-[100px] ">Invested</th>
+            <th className="w-full max-w-[200px] ">Email</th>
+            <th className="w-full max-w-[100px] ">Expiry</th>
+            <th className="w-full max-w-[100px]">Payment through</th>
+            <th className="w-full max-w-[100px]">Payment type</th>
+          </thead>
+          <tbody className="w-full">
+            {dummyDATA.map((e, key) => {
+              return (
+                <tr
+                  key={key}
+                  className="bg-black text-left w-full items-center px-12 py-4  flex "
+                >
+                  <td>
+                    {" "}
+                    <input
+                      type="checkbox"
+                      className="rounded-sm bg-black border-2 p-2 mr-12"
+                      name="referral"
+                      id="referralDetail"
+                    />
+                  </td>
+                  <td className="w-full max-w-[80px] ml-4 ">{e.siNo}</td>
+                  <td className="w-full max-w-[100px]  ml-10 ">{e.package}</td>
+                  <td className="w-full max-w-[100px]  ml-14  ">
+                    {e.days} days
+                  </td>
+                  <td className="w-full max-w-[100px]  ml-14  ">
+                    {e.invested}
+                  </td>
+                  <td className="w-full max-w-[250px]  ml-12 overflow-hidden  ">
+                    {e.email}
+                  </td>
+                  <td className="w-full max-w-[100px]  ml-6 ">{e.expiry}</td>
+                  <td className="w-full max-w-[100px] ml-14 ">
+                    {" "}
+                    {e.paymentThrough}
+                  </td>
+                  <td className="w-full max-w-[100px] ml-16 ">
+                    {e.paymentType}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
     </div>
   );

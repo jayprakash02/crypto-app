@@ -1,11 +1,12 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FiLoader } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import { baseURL } from "../constants/Constant";
 import { toast } from "react-hot-toast";
+import { toast } from "react-hot-toast";
 
-const Login = () => {
+const Login = ({ setIsLoggedIn }) => {
   const navigate = useNavigate();
   const [loginForm, setLoginState] = useState({
     email: "",
@@ -18,6 +19,7 @@ const Login = () => {
       [e.target.name]: e.target.value,
     });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(loginForm, "login data ");
@@ -28,19 +30,22 @@ const Login = () => {
           console.log("res", res);
           if (res.data.success && res.data.token) {
             toast.success("Login successful");
-            navigate("/dashboard");
-            console.log("response", res.data.data.userId);
+            console.log("response", res);
             const userData = {
               token: res.data.token,
               email: loginForm.email,
-              userId: res.data.data.userId,
+              userId: res.data.userId,
             };
             localStorage.setItem("user_data", JSON.stringify(userData));
+            navigate("/dashboard"); // Redirect to the dashboard upon successful login
+            setIsLoggedIn(true);
+          } else {
+            toast.error("Invalid email or password");
           }
         })
         .catch((err) => {
           console.log(err);
-          toast.error("Something went wrong! Check your email and password");
+          toast.error("Something went wrong, Please try again.");
         });
     } catch (error) {
       toast.error(error);

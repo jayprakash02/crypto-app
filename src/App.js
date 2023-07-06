@@ -1,5 +1,5 @@
 
-import { Route, Routes ,Outlet} from "react-router-dom";
+import { Route, Routes ,Outlet, Navigate} from "react-router-dom";
 import BlogCard from "./components/Card";
 import Login from "./pages/Login";
 
@@ -19,13 +19,18 @@ import Resources from "./pages/Resources";
 import Referral from "./pages/Referral"; 
 import Signup from "./pages/Signup";
 import ExrtaBonus from "./pages/ExrtaBonus";
+import { useState } from "react";
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  };
   return (
     <div className="App bg-black text-white  min-h-screen    ">
      
       <Routes>
-        <Route path="/" element={<OutletLayout />}>
+        <Route path="/" element={<OutletLayout isLoggedIn={isLoggedIn} />}>
           <Route index element={<Home />} />
           <Route path="aboutus" element={<AboutUs />} />
           <Route path="contact" element={<ContactUs />} />
@@ -38,9 +43,9 @@ function App() {
           <Route path="legal" element={<Legal />} />
           <Route path="resources" element={<Resources />} />
         </Route>
-        <Route path="dashboard" element={<Dashboard />} />
-        <Route path="signup" element={<Signup />} />
-        <Route path="login" element={<Login />} />
+        <Route path="dashboard" element={isLoggedIn ?  <Dashboard onLogout={handleLogout}  /> : <Navigate to="/login" /> } />
+        <Route path="signup" element={<Signup setIsLoggedIn={setIsLoggedIn}/>} />
+        <Route path="login" element={isLoggedIn ? <Navigate to="/dashboard"/> : <Login setIsLoggedIn={setIsLoggedIn} />} />
 
 
         
@@ -58,10 +63,10 @@ function App() {
 export default App;
 
 
-function OutletLayout() {
+function OutletLayout({isLoggedIn}) {
   return (
     <>
-      <Navbar />
+      <Navbar isLoggedIn={isLoggedIn} />
       <Outlet />
       <Footer />
     </>

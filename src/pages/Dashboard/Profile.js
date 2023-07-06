@@ -2,6 +2,44 @@ import React, { useState } from "react";
 import "./Profile.css";
 const Profile = ({ profileStateNav }) => {
   const [profileState, setprofileState] = useState("pi");
+
+  // profileformstate
+  const [profileForm, setprofileForm] = useState({
+    fName: "Bourax",
+    lName: "Pavelion",
+    email: "bourax@fknf.com",
+    phoneNo: "546513181",
+    country: "israel",
+    pinCode: "4520",
+  });
+
+  // Profile Card
+  const [userID, setuserID] = useState("546153");
+  const [securityPIN, setsecurityPIN] = useState("4520");
+  const [sponsorName, setsponsorName] = useState("Pavelion");
+  const [sponsorID, setsponsorID] = useState("OP-AAAA");
+
+  // cardinvestment
+  const [totalInvestment, settotalInvestment] = useState("3859000");
+  const [totalprofit, settotalprofit] = useState("38000");
+  const [netincome, setnetincome] = useState("38000");
+
+  // referral
+  const [left, setLeft] = useState("4");
+  const [right, setRight] = useState("2");
+  const [total, setTotal] = useState("6");
+
+  //model state
+  const [open, setopen] = useState(false);
+
+  const handleChange = (e)=>{
+    setprofileForm({...profileForm,[e.target.name]:e.target.value})
+  }
+  const handleSubmit = (e)=>{
+    e.preventDefault()
+    console.log("Profile Form",profileForm)
+  }
+
   return (
     <>
       {profileStateNav == "Profile" && (
@@ -9,43 +47,55 @@ const Profile = ({ profileStateNav }) => {
           <div className="flex">
             <div className="max-w-[420px] space-y-4 w-full">
               <div className="max-w-[300px] w-full rounded-xl space-y-2 bg-neutral-900  p-4">
-                <h1 className="text-xl font-semibold">Luis andrew</h1>
-                <p>User ID</p>
-                <p>Security PIN</p>
-                <p>Sponsor name</p>
-                <p>Sponsor ID</p>
+                <h1 className="text-xl font-semibold">
+                  {profileForm.fName} {profileForm.lName}
+                </h1>
+                <div className="flex justify-between">
+                  <div>
+                    <p>User ID</p>
+                    <p> PIN</p>
+                    <p>Sponsor name</p>
+                    <p>Sponsor ID</p>
+                  </div>
+                  <div className="text-right">
+                    <p>{userID}</p>
+                    <p>{securityPIN}</p>
+                    <p>{sponsorName}</p>
+                    <p>{sponsorID}</p>
+                  </div>
+                </div>
               </div>
               <div className="max-w-[300px] w-full rounded-xl space-y-4 bg-neutral-900  p-4">
                 <div>
                   <h1 className=" font-semibold">Total Invest</h1>
-                  <p>$3859000</p>
+                  <p>${totalInvestment}</p>
                 </div>
                 <div className="flex font-semibold justify-between">
                   {" "}
                   <p>
                     Total Profit
-                    <br /> <span>$38000</span>
+                    <br /> <span>${totalprofit}</span>
                   </p>
                   <p>
                     Net Income
-                    <br /> <span>$38000</span>
+                    <br /> <span>${netincome}</span>
                   </p>
                 </div>
               </div>
               <div className="max-w-[300px] space-y-5 flex-col flex items-center text-center w-full rounded-xl bg-neutral-900  p-4">
                 <h1 className="text-3xl font-semibold">
                   {" "}
-                  0 <br />
+                  {left} <br />
                   <span className="text-xl">Left User</span>
                 </h1>
                 <h1 className="text-3xl font-semibold">
                   {" "}
-                  0 <br />
+                  {right} <br />
                   <span className="text-xl">Right User</span>
                 </h1>
 
                 <h1 className="text-3xl font-semibold">
-                  0 <br />
+                  {total} <br />
                   <span className="text-xl">Total User</span>
                 </h1>
               </div>
@@ -57,7 +107,7 @@ const Profile = ({ profileStateNav }) => {
                   className="w-20 rounded-full h-20 bg-gray-700 p-6"
                 />
                 <div className="">
-                  <h1 className="text-xl font-semibold">Luis Andrew</h1>
+                  <h1 className="text-xl font-semibold"> {profileForm.fName} {profileForm.lName}</h1>
                   <p className="text-gray-600">New York, USA</p>
                 </div>
               </div>
@@ -81,7 +131,9 @@ const Profile = ({ profileStateNav }) => {
                   Notification
                 </button>
               </div>
-              {profileState === "pi" && <PI />}
+              {profileState === "pi" && (
+                <PI profileForm={profileForm} open={open} setopen={setopen} handleChange={handleChange} handleSubmit={handleSubmit}/>
+              )}
               {profileState === "security" && <Security />}
               {profileState === "notification" && <Notification />}
             </div>
@@ -164,7 +216,9 @@ const Profile = ({ profileStateNav }) => {
               <p>All The Personal Information I have Entered Is Correct.</p>
             </div>
 
-            <button className="px-12 rounded-full py-2 bg-gradient-to-r from-indigo-400 to-fuchsia-700">Verify</button>
+            <button className="px-12 rounded-full py-2 bg-gradient-to-r from-indigo-400 to-fuchsia-700">
+              Verify
+            </button>
           </div>
         </div>
       )}
@@ -263,7 +317,7 @@ const Security = () => {
   );
 };
 
-const PI = () => {
+const PI = ({ profileForm,open ,setopen,handleChange,handleSubmit}) => {
   return (
     <div>
       <div className="w-full grid grid-cols-2 gap-4">
@@ -271,47 +325,177 @@ const PI = () => {
           <label className="text-gray-600" htmlFor="fn">
             First name
           </label>
-          <input className=" px-4 py-1 rounded-lg w-full" id="fn" name="fn" />
+          <input
+            name="fName"
+            value={profileForm.fName}
+            readOnly
+            className=" px-4 py-1 rounded-lg text-black font-medium w-full"
+            id="fName"
+          />
         </div>
         <div>
           <label className="text-gray-600" htmlFor="ln">
             Last name
           </label>
-          <input className=" px-4 py-1 rounded-lg w-full" id="ln" name="ln" />
+          <input
+            name="lName"
+            readOnly
+            value={profileForm.lName}
+            className=" px-4 py-1 rounded-lg text-black font-medium w-full"
+            id="lName"
+          />
         </div>
         <div>
           <label className="text-gray-600" htmlFor="fn">
             Email
           </label>
-          <input className=" px-4 py-1 rounded-lg w-full" id="fn" name="fn" />
+          <input
+            name="email"
+            readOnly
+            value={profileForm.email}
+            className=" px-4 py-1 rounded-lg text-black font-medium w-full"
+            id="email"
+          />
         </div>
         <div>
           <label className="text-gray-600" htmlFor="fn">
             Phone number
           </label>
-          <input className=" px-4 py-1 rounded-lg w-full" id="fn" name="fn" />
+          <input
+            name="phoneNo"
+            readOnly
+            value={profileForm.phoneNo}
+            className=" px-4 py-1 rounded-lg text-black font-medium w-full"
+            id="phoneNo"
+          />
         </div>
         <div>
           <label className="text-gray-600" htmlFor="fn">
             Country
           </label>
-          <input className=" px-4 py-1 rounded-lg w-full" id="fn" name="fn" />
+          <input
+            name="country"
+            readOnly
+            value={profileForm.country}
+            className=" px-4 py-1 rounded-lg text-black font-medium w-full"
+            id="country"
+          />
         </div>
         <div>
           <label className="text-gray-600" htmlFor="fn">
             Pin Code
           </label>
-          <input className=" px-4 py-1 rounded-lg w-full" id="fn" name="fn" />
+          <input
+            name="pinCode"
+            readOnly
+            value={profileForm.pinCode}
+            className=" px-4 py-1 rounded-lg text-black font-medium w-full"
+            id="pinCode"
+          />
         </div>
       </div>
       <div className="w-full flex justify-end space-x-6 mt-4 ">
-        <button className="px-6 py-2 bg-rose-600 rounded-lg text-white">
-          Cancel
+        <button     onClick={() => setopen((prev) => !prev)} className="px-6 py-2 bg-blue-600 rounded-lg text-white">
+          Edit
         </button>
-        <button className="px-6 py-2 bg-blue-600 text-white rounded-lg">
-          Save
-        </button>
+       
       </div>
+
+      {open && (
+        <div className="w-full flex justify-center absolute top-0 left-0 max-h-full h-full  items-center bg-black bg-opacity-70  ">
+          <div className="max-w-[550px] rounded-2xl bg-neutral-900 p-6  relative">
+        
+
+            <h1 className="text-4xl font-medium mb-10">Edit Your Profile</h1>
+
+            <div className="w-full grid grid-cols-2 gap-4">
+              <div>
+                <label className="text-gray-600" htmlFor="fn">
+                  First name
+                </label>
+                <input
+                  name="fName"
+                  value={profileForm.fName}
+                  onChange={handleChange}
+                  className=" px-4 py-1 rounded-lg text-black font-medium w-full"
+                  id="fName"
+                />
+              </div>
+              <div>
+                <label className="text-gray-600" htmlFor="ln">
+                  Last name
+                </label>
+                <input
+                  name="lName"
+                  onChange={handleChange}
+                  value={profileForm.lName}
+                  className=" px-4 py-1 rounded-lg text-black font-medium w-full"
+                  id="lName"
+                />
+              </div>
+              <div>
+                <label className="text-gray-600" htmlFor="fn">
+                  Email
+                </label>
+                <input
+                  name="email"
+                  onChange={handleChange}
+                  value={profileForm.email}
+                  className=" px-4 py-1 rounded-lg text-black font-medium w-full"
+                  id="email"
+                />
+              </div>
+              <div>
+                <label className="text-gray-600" htmlFor="fn">
+                  Phone number
+                </label>
+                <input
+                  name="phoneNo"
+                  onChange={handleChange}
+                  value={profileForm.phoneNo}
+                  className=" px-4 py-1 rounded-lg text-black font-medium w-full"
+                  id="phoneNo"
+                />
+              </div>
+              <div>
+                <label className="text-gray-600" htmlFor="fn">
+                  Country
+                </label>
+                <input
+                  name="country"
+                  onChange={handleChange}
+                  value={profileForm.country}
+                  className=" px-4 py-1 rounded-lg text-black font-medium w-full"
+                  id="country"
+                />
+              </div>
+              <div>
+                <label className="text-gray-600" htmlFor="fn">
+                  Pin Code
+                </label>
+                <input
+                  name="pinCode"
+                  onChange={handleChange}
+                  value={profileForm.pinCode}
+                  className=" px-4 py-1 rounded-lg text-black font-medium w-full"
+                  id="pinCode"
+                />
+              </div>
+            </div>
+            <div className="w-full flex justify-end space-x-6 mt-4 ">
+              <button  
+              onClick={() => setopen((prev) => !prev)}
+              
+              className="px-6 py-2 bg-rose-600 rounded-lg text-white">
+                Cancel
+              </button>
+              <button  onClick={handleSubmit} className="px-6 py-2 bg-blue-600 text-white rounded-lg">
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
