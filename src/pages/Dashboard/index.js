@@ -175,7 +175,7 @@ const Dashboard = () => {
         )}
 
 {nav == "Profile" && (
-          <div className="w-full flex justify-center items-center min-h-[10vh]">
+          <div className="w-full absolute top-32 flex justify-center items-center min-h-[10vh]">
             <div className="max-w-[14rem] mt-6  flex justify-between w-full rounded-full border-2  ">
               <button
                 onClick={() => setprofileStateNav("Profile")}

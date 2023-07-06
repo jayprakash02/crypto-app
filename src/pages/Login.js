@@ -14,7 +14,7 @@ const Login = ({setIsLoggedIn}) => {
     password: "",
   });
 
-  console.log("loginForm", loginForm);
+
 
 
   const handleChange = (e) => {
