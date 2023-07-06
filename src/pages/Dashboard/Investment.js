@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-
+import axios from "axios";
+import { baseURL } from "../../constants/Constant";
+import { toast } from "react-hot-toast";
 const Investment = ({ investmentState }) => {
   return (
     <div>
       {investmentState === "Package" && <Package />}
       {investmentState === "Offline" && <Offline />}
-      {investmentState === "Downline" && <Downline/>}
+      {investmentState === "Downline" && <Downline />}
     </div>
   );
 };
@@ -13,6 +15,12 @@ const Investment = ({ investmentState }) => {
 export default Investment;
 
 const Package = () => {
+  const [popupVisible, setPopupVisible] = useState(false);
+
+  const handlePurchase = () => {
+    setPopupVisible(true);
+  };
+
   return (
     <div className="min-h-[80vh] bg-neutral-900 pt-16   w-full">
       <h1 className="font-semibold text-4xl  text-center text-white">
@@ -47,10 +55,14 @@ const Package = () => {
               <img src="./images/icons/checkbox.png" className="w-6 h-6" />
               <p className="font-semibold">Principle Returns: 30%</p>
             </div>
-            <button className="w-full max-w-[250px] bg-gradient-to-r text-white from-indigo-700 to-fuchsia-700 rounded-xl p-3">
+            <button
+              className="w-full max-w-[250px] bg-gradient-to-r text-white from-indigo-700 to-fuchsia-700 rounded-xl p-3"
+              onClick={handlePurchase}
+            >
               Purchase
             </button>
           </div>
+          {popupVisible && <Popup />}
         </div>
 
         <div className="border-2 border-zinc-400 bg-black  max-w-[340px]  rounded-2xl p-4">
@@ -157,29 +169,24 @@ const Package = () => {
       </div>
 
       <div className="max-w-7xl w-full mx-auto pb-24">
-      <h1 className='text-4xl my-8 font-semibold'>
-            Referral Details
-        </h1>
+        <h1 className="text-4xl my-8 font-semibold">Referral Details</h1>
 
-            <div className='bg-black w-full items-center px-12 py-4 justify-between flex '>
-            <input
-                type="checkbox"
-                className="rounded-sm bg-black border-2 p-2"
-                name="referral"
-                id="referralDetail"
-              />
-                <div className=''>SI No</div>
-                <div className=''>Package</div>
-                <div className=''>Days</div>
-                <div className=''>Invested</div>
-                <div className=''>Email</div>
-                <div className=''>Expiry</div>
-                <div className=''>Payment through</div>
-                <div className=''>Payment type</div>
-
-
-
-            </div>
+        <div className="bg-black w-full items-center px-12 py-4 justify-between flex ">
+          <input
+            type="checkbox"
+            className="rounded-sm bg-black border-2 p-2"
+            name="referral"
+            id="referralDetail"
+          />
+          <div className="">SI No</div>
+          <div className="">Package</div>
+          <div className="">Days</div>
+          <div className="">Invested</div>
+          <div className="">Email</div>
+          <div className="">Expiry</div>
+          <div className="">Payment through</div>
+          <div className="">Payment type</div>
+        </div>
       </div>
     </div>
   );
@@ -217,7 +224,7 @@ const Offline = () => {
             <div>
               <p className="mb-2">Enter Amount</p>
               <input className="px-2 py-2 rounded-lg bg-black w-full" />
-          </div>
+            </div>
 
             <div>
               <p className="mb-2">Package Name</p>
@@ -409,30 +416,98 @@ const Downline = () => {
       </div>
 
       <div className="max-w-7xl w-full mx-auto pb-24">
-      <h1 className='text-4xl my-8 font-semibold'>
-            Referral Details
-        </h1>
+        <h1 className="text-4xl my-8 font-semibold">Referral Details</h1>
 
-            <div className='bg-black w-full items-center px-12 py-4 justify-between flex '>
-            <input
-                type="checkbox"
-                className="rounded-sm bg-black border-2 p-2"
-                name="referral"
-                id="referralDetail"
-              />
-                <div className=''>SI No</div>
-                <div className=''>Package</div>
-                <div className=''>Days</div>
-                <div className=''>Invested</div>
-                <div className=''>Email</div>
-                <div className=''>Expiry</div>
-                <div className=''>Payment through</div>
-                <div className=''>Payment type</div>
-
-
-
-            </div>
+        <div className="bg-black w-full items-center px-12 py-4 justify-between flex ">
+          <input
+            type="checkbox"
+            className="rounded-sm bg-black border-2 p-2"
+            name="referral"
+            id="referralDetail"
+          />
+          <div className="">SI No</div>
+          <div className="">Package</div>
+          <div className="">Days</div>
+          <div className="">Invested</div>
+          <div className="">Email</div>
+          <div className="">Expiry</div>
+          <div className="">Payment through</div>
+          <div className="">Payment type</div>
+        </div>
       </div>
+    </div>
+  );
+};
+const Popup = () => {
+  const [popupVisible, setPopupVisible] = useState(false);
+
+  const [purchaseDetails, setPurchaseDetails] = useState({
+    amount: "",
+    buyerName: "",
+    buyerEmail: "",
+  });
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setPurchaseDetails((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const userData = JSON.parse(localStorage.getItem("user_data"));
+    if (userData && userData?.token && userData?.email && userData?.userId) {
+      const headers = {
+        Authorization: `${userData?.token}`,
+      };
+      console.log(headers);
+      try {
+        // Make the API call with the purchase details
+        const response = await axios.post(
+          baseURL + `/api/payment/create_transaction`,
+          {
+            from_currency: "LTCT",
+            to_currency: "LTCT",
+            amount: purchaseDetails.amount,
+            email: userData?.email,
+            custom: `[${userData?.userId},null,1,175,'online','LTCT']`,
+            buyer_name: "Rishi", //required
+            buyer_email: "pelaf55668@anwarb.com", //required
+            ipn_endpoint: "/payment/ipn", //required
+          },
+          {
+            headers: headers, // Include the headers here
+          }
+        );
+        if (response?.data?.data?.checkout_url) {
+          window.open(response.data.data.checkout_url, "_blank");
+        } else {
+          toast.error("Something went wrong");
+        }
+        // Process the response or perform any necessary actions
+
+        // Close the popup
+        setPopupVisible(false);
+      } catch (error) {
+        console.error(error);
+        // Handle any error that occurred during the API call
+      }
+    }
+  };
+  return (
+    <div className="popup">
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="amount">Amount:</label>
+        <input
+          type="text"
+          id="amount"
+          name="amount"
+          value={purchaseDetails.amount}
+          onChange={handleInputChange}
+        />
+
+        <button type="submit">Purchase</button>
+      </form>
     </div>
   );
 };

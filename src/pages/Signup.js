@@ -32,6 +32,7 @@ const Signup = () => {
       });
 
       if (e.target.value.length === 7) {
+        console.log(e.target.value)
         fetchSponsorName(e.target.value);
 
       }
