@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
-import { baseURL } from "../../constants/Constant";
-import { toast } from "react-hot-toast";
+
 const Investment = ({ investmentState }) => {
   return (
     <div>
@@ -106,7 +104,6 @@ const Package = () => {
               Purchase
             </button>
           </div>
-          {popupVisible && <Popup />}
         </div>
 
         <div className="border-2 border-zinc-400 bg-black  max-w-[340px]  rounded-2xl p-4">
@@ -763,79 +760,6 @@ const Downline = () => {
           </tbody>
         </table>
       </div>
-    </div>
-  );
-};
-const Popup = () => {
-  const [popupVisible, setPopupVisible] = useState(false);
-
-  const [purchaseDetails, setPurchaseDetails] = useState({
-    amount: "",
-    buyerName: "",
-    buyerEmail: "",
-  });
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setPurchaseDetails((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const userData = JSON.parse(localStorage.getItem("user_data"));
-    if (userData && userData?.token && userData?.email && userData?.userId) {
-      const headers = {
-        Authorization: `${userData?.token}`,
-      };
-      console.log(headers);
-      try {
-        // Make the API call with the purchase details
-        const response = await axios.post(
-          baseURL + `/api/payment/create_transaction`,
-          {
-            from_currency: "LTCT",
-            to_currency: "LTCT",
-            amount: purchaseDetails.amount,
-            email: userData?.email,
-            custom: `[${userData?.userId},null,1,175,'online','LTCT']`,
-            buyer_name: "Rishi", //required
-            buyer_email: "pelaf55668@anwarb.com", //required
-            ipn_endpoint: "/payment/ipn", //required
-          },
-          {
-            headers: headers, // Include the headers here
-          }
-        );
-        if (response?.data?.data?.checkout_url) {
-          window.open(response.data.data.checkout_url, "_blank");
-        } else {
-          toast.error("Something went wrong");
-        }
-        // Process the response or perform any necessary actions
-
-        // Close the popup
-        setPopupVisible(false);
-      } catch (error) {
-        console.error(error);
-        // Handle any error that occurred during the API call
-      }
-    }
-  };
-  return (
-    <div className="popup">
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="amount">Amount:</label>
-        <input
-          type="text"
-          id="amount"
-          name="amount"
-          value={purchaseDetails.amount}
-          onChange={handleInputChange}
-        />
-
-        <button type="submit">Purchase</button>
-      </form>
     </div>
   );
 };

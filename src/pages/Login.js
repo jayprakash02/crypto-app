@@ -4,7 +4,6 @@ import { FiLoader } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import { baseURL } from "../constants/Constant";
 import { toast } from "react-hot-toast";
-import { toast } from "react-hot-toast";
 
 const Login = ({ setIsLoggedIn }) => {
   const navigate = useNavigate();
