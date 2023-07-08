@@ -5,17 +5,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { baseURL } from "../constants/Constant";
 import { toast } from "react-hot-toast";
 
-const Login = ({setIsLoggedIn}) => {
-
-
+const Login = ({ setIsLoggedIn }) => {
   const navigate = useNavigate();
   const [loginForm, setLoginState] = useState({
     email: "",
     password: "",
   });
-
-
-
 
   const handleChange = (e) => {
     setLoginState({
@@ -23,7 +18,6 @@ const Login = ({setIsLoggedIn}) => {
       [e.target.name]: e.target.value,
     });
   };
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,7 +36,7 @@ const Login = ({setIsLoggedIn}) => {
               userId: res.data.userId,
             };
             localStorage.setItem("user_data", JSON.stringify(userData));
-            navigate("/dashboard");// Redirect to the dashboard upon successful login
+            navigate("/dashboard"); // Redirect to the dashboard upon successful login
             setIsLoggedIn(true);
           } else {
             toast.error("Invalid email or password");
@@ -53,7 +47,7 @@ const Login = ({setIsLoggedIn}) => {
           toast.error("Something went wrong, Please try again.");
         });
     } catch (error) {
-      console.log(error);
+      toast.error(error);
     }
   };
 
