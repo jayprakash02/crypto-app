@@ -15,6 +15,8 @@ const Dashboard = () => {
   const [profileStateNav, setprofileStateNav] = useState("Profile");
 
 
+
+
   return (
     <div className="w-full bg-[#0d0d0d] min-h-[110vh] font-poppins">
       <div className="w-full flex flex-col  items-center mb-16  max-h-[180px] relative ">
@@ -193,7 +195,7 @@ const Dashboard = () => {
           </div>
         )}
       </div>
-      {nav == "Overview" && <Overview />}
+      {nav == "Overview" && <Overview setNav={setNav}/>}
       {nav == "Investment" && <Investment investmentState={investmentState} />}
       {nav == "Genealogy" && <Genealogy genealogyState={genealogyState} />}
       {nav == "Tickets" && <Tickets tickets={tickets}/>}

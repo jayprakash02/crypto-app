@@ -60,6 +60,28 @@ const Package = () => {
   const [open, setopen] = useState(false);
   // package Name
   const [packageName, setPackageName] = useState("");
+
+  const [paymentAmount, setpaymentAmount] = useState("");
+  const [packageDetailModal, setpackageDetailModal] = useState(false);
+
+  const handleModal = () => {
+    if (paymentAmount !== "") {
+      setopen((prev) => !prev);
+      setpackageDetailModal((prev) => !prev);
+    }
+  };
+
+ const  [packageDetailsForm,setpackageDetailsForm] = useState({
+  packageNameField: " ",
+  dailyReturnsFeild:"",
+  durationField:"",
+  amountToPay:"",
+  earning:""
+ })
+
+ const handlePackageDetail = ()=>{
+  setpackageDetailModal((prev) => !prev);
+ }
   return (
     <div className="min-h-[80vh] bg-neutral-900 pt-16   w-full">
       <h1 className="font-semibold text-4xl  text-center text-white">
@@ -229,7 +251,7 @@ const Package = () => {
       </div>
 
       {open && (
-        <div className="w-full flex justify-center absolute top-0 left-0 max-h-full h-full  items-center bg-black bg-opacity-70  ">
+        <div className="w-full flex justify-center absolute top-0 left-0 max-h-full h-full  z-40  items-center bg-black bg-opacity-70  ">
           <div className="max-w-[450px] rounded-2xl bg-neutral-900 p-6 min-h-[280px] relative">
             <button
               onClick={() => setopen((prev) => !prev)}
@@ -247,9 +269,85 @@ const Package = () => {
             <input
               id="paymentamount"
               name=""
+              value={paymentAmount}
+              onChange={(e) => setpaymentAmount(e.target.value)}
               className="bg-black px-6 py-3 mt-4 mb-6  rounded-2xl w-full"
             />
-            <button className="w-full  bg-gradient-to-r text-white from-indigo-700 to-fuchsia-700 rounded-xl p-3">
+            <button
+              onClick={handleModal}
+              className="w-full  bg-gradient-to-r text-white from-indigo-700 to-fuchsia-700 rounded-xl p-3"
+            >
+              Continue
+            </button>
+          </div>
+        </div>
+      )}
+
+      {packageDetailModal && (
+        <div className="w-full flex justify-center absolute top-0 left-0 max-h-full z-40 h-full  items-center bg-black bg-opacity-70  ">
+          <div className="max-w-[450px] rounded-2xl bg-neutral-900 p-6 min-h-[280px] relative">
+            <button
+              onClick={() =>  setpackageDetailModal((prev) => !prev)}
+              className="rounded-full absolute -top-4 -right-4 w-10 p-3  bg-gradient-to-r text-white from-indigo-600 to-fuchsia-600  "
+            >
+              <img src="./images/icons/close.png" className="w-8" />
+            </button>
+
+     <h1 className="text-4xl font-medium mb-6">Package Detail</h1>
+
+            <label htmlFor="packageName" className="text-sm ">
+     Package name
+            </label>
+            <input
+              id="packageName"
+              name="packageNameField"
+              value={packageDetailsForm.packageNameField}
+              className="bg-black px-6 py-2 mt-2 mb-4  rounded-2xl w-full"
+            />
+
+            <label htmlFor="dailyReturnsFeild" className="text-sm ">
+            Daily returns
+            </label>
+            <input
+              id="dailyReturnsFeild"
+              name="dailyReturnsFeild"
+              value={packageDetailsForm.dailyReturnsFeild}
+              className="bg-black px-6 py-2 mt-2 mb-4  rounded-2xl w-full"
+            />
+
+            <label htmlFor="durationField" className="text-sm ">
+              Package duration
+            </label>
+            <input
+              id="durationField"
+              name="durationField"
+              value={packageDetailsForm.durationField}
+              className="bg-black px-6 py-2 mt-2 mb-4  rounded-2xl w-full"
+            />
+
+            <label htmlFor="amountToPay" className="text-sm ">
+              Amount to pay
+            </label>
+            <input
+              id="amountToPay"
+              name="amountToPay"
+              value={packageDetailsForm.amountToPay}
+              className="bg-black px-6 py-2 mt-2 mb-4  rounded-2xl w-full"
+            />
+
+            <label htmlFor="earning" className="text-sm ">
+              Earning
+            </label>
+            <input
+              id="earning"
+              name="earning"
+              value={packageDetailsForm.earning}
+              className="bg-black px-6 py-2 mt-2 mb-4  rounded-2xl w-full"
+            />
+            <button
+              onClick={handlePackageDetail}
+              className="w-full  bg-gradient-to-r text-white from-indigo-700 to-fuchsia-700 rounded-xl p-3"
+            >
               Continue
             </button>
           </div>
@@ -459,6 +557,28 @@ const Downline = () => {
 
   // package Name
   const [packageName, setPackageName] = useState("");
+ const [paymentAmount, setpaymentAmount] = useState("");
+  const [packageDetailModal, setpackageDetailModal] = useState(false);
+
+  const handleModal = () => {
+    if (paymentAmount !== "") {
+      setopen((prev) => !prev);
+      setpackageDetailModal((prev) => !prev);
+    }
+  };
+
+ const  [packageDetailsForm,setpackageDetailsForm] = useState({
+  packageNameField: " ",
+  dailyReturnsFeild:"",
+  durationField:"",
+  amountToPay:"",
+  earning:""
+ })
+
+ const handlePackageDetail = ()=>{
+  setpackageDetailModal((prev) => !prev);
+ }
+
   const dummyDATA = [
     {
       siNo: 1,
@@ -502,6 +622,7 @@ const Downline = () => {
     },
   ];
 
+
   return (
     <div className="min-h-[80vh] bg-neutral-900 pt-16   w-full">
       <h1 className="font-semibold text-4xl  text-center text-white">
@@ -527,14 +648,90 @@ const Downline = () => {
             <input
               id="paymentamount"
               name=""
+                value={paymentAmount}
+                  onChange={(e) => setpaymentAmount(e.target.value)}
               className="bg-black px-6 py-3 mt-4 mb-6  rounded-2xl w-full"
             />
-            <button className="w-full  bg-gradient-to-r text-white from-indigo-700 to-fuchsia-700 rounded-xl p-3">
+            <button      onClick={handleModal} className="w-full  bg-gradient-to-r text-white from-indigo-700 to-fuchsia-700 rounded-xl p-3">
               Continue
             </button>
           </div>
         </div>
       )}
+
+
+       {packageDetailModal && (
+        <div className="w-full flex justify-center absolute top-0 left-0 min-h-[120vh] h-full  items-center bg-black bg-opacity-70  ">
+          <div className="max-w-[450px] rounded-2xl bg-neutral-900 p-6 min-h-[280px] relative">
+            <button
+              onClick={() =>  setpackageDetailModal((prev) => !prev)}
+              className="rounded-full absolute -top-4 -right-4 w-10 p-3  bg-gradient-to-r text-white from-indigo-600 to-fuchsia-600  "
+            >
+              <img src="./images/icons/close.png" className="w-8" />
+            </button>
+
+     <h1 className="text-4xl font-medium mb-6">Package Detail</h1>
+
+            <label htmlFor="packageName" className="text-sm ">
+     Package name
+            </label>
+            <input
+              id="packageName"
+              name="packageNameField"
+              value={packageDetailsForm.packageNameField}
+              className="bg-black px-6 py-2 mt-2 mb-4  rounded-2xl w-full"
+            />
+
+            <label htmlFor="dailyReturnsFeild" className="text-sm ">
+            Daily returns
+            </label>
+            <input
+              id="dailyReturnsFeild"
+              name="dailyReturnsFeild"
+              value={packageDetailsForm.dailyReturnsFeild}
+              className="bg-black px-6 py-2 mt-2 mb-4  rounded-2xl w-full"
+            />
+
+            <label htmlFor="durationField" className="text-sm ">
+              Package duration
+            </label>
+            <input
+              id="durationField"
+              name="durationField"
+              value={packageDetailsForm.durationField}
+              className="bg-black px-6 py-2 mt-2 mb-4  rounded-2xl w-full"
+            />
+
+            <label htmlFor="amountToPay" className="text-sm ">
+              Amount to pay
+            </label>
+            <input
+              id="amountToPay"
+              name="amountToPay"
+              value={packageDetailsForm.amountToPay}
+              className="bg-black px-6 py-2 mt-2 mb-4  rounded-2xl w-full"
+            />
+
+            <label htmlFor="earning" className="text-sm ">
+              Earning
+            </label>
+            <input
+              id="earning"
+              name="earning"
+              value={packageDetailsForm.earning}
+              className="bg-black px-6 py-2 mt-2 mb-4  rounded-2xl w-full"
+            />
+            <button
+              onClick={handlePackageDetail}
+              className="w-full  bg-gradient-to-r text-white from-indigo-700 to-fuchsia-700 rounded-xl p-3"
+            >
+              Continue
+            </button>
+          </div>
+        </div>
+      )}
+
+      
       <div className="w-full flex space-x-6 max-w-7xl mx-auto px-6 py-12">
         <div className="border-2 border-zinc-400 bg-black  max-w-[340px] max-h-[500px]  rounded-2xl p-4">
           <p className="font-semibold text-white ">EXPLORER PACKAGE</p>

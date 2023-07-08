@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { toast } from "react-hot-toast";
-
-const Overview = () => {
+import { AiOutlineCaretDown, AiOutlineCaretUp } from "react-icons/ai";
+const Overview = ({setNav}) => {
   useEffect(() => {}, []);
 
   // Overview state
@@ -79,8 +79,608 @@ const Overview = () => {
     },
   ];
 
+
+// Deposit buttons  
+ const [depositWalletModel,setDepositWalletModel] = useState(false);
+
+
+const [amount, setamount] = useState("")
+ const [token, setToken] = useState("");
+ const [openTOKEN, setOpenTOKEN] = useState(false);
+
+
+ const [withdrawWalletModel,setWithdrawWalletModel] = useState(false);
+
+ const [withdrawModalForm, setwithdrawModalForm] = useState({
+  withdrawAmount:"",
+  walletAddress:"",
+  cryptoCurrency:token,
+  securityPin:""
+ })
+
+ const withdrawHandleChange = (e)=>{
+  setwithdrawModalForm({...withdrawModalForm,[e.target.name]:e.target.value})
+ }
+
+
+ const handleSubmitWithDraw = (e)=>{
+e.preventDefault();
+console.log(withdrawModalForm,"withdraw")
+ }
+
+
+
+
   return (
-    <div className="bg-black max-w-full">
+    <div className="bg-black relative max-w-full">
+
+      {/* Modals  */}
+      
+      {/* Deposit Modal  */}
+      {depositWalletModel && (
+        <div className="w-full flex justify-center absolute top-0 left-0 max-h-full z-40 h-full   bg-black bg-opacity-70  ">
+          <div className="max-w-[450px] rounded-2xl bg-neutral-900 p-6 max-h-[400px] relative">
+            <button
+              onClick={() => setDepositWalletModel((prev) => !prev)}
+              className="rounded-full absolute -top-4 -right-4 w-10 p-3  bg-gradient-to-r text-white from-indigo-600 to-fuchsia-600  "
+            >
+              <img src="./images/icons/close.png" className="w-8" />
+            </button>
+
+            <h1 className="text-4xl font-medium mb-10">Payment</h1>
+
+            <label htmlFor="depositAmount" className="">
+              Enter amount
+            </label>
+            <input
+              id="depositAmount"
+              name="depositAmount"
+              value={amount}
+              onChange={(e)=>setamount(e.target.value)}
+              className="bg-black px-6 py-3 mt-4 mb-6  rounded-2xl w-full"
+            />
+             <label htmlFor="crypto" className="">
+             Choose CryptoCurrency
+            </label>
+            <div className="flex flex-col relative px-2">
+            
+            <button
+              onClick={() => setOpenTOKEN((prev) => !prev)}
+              className="flex items-center space-x-2 bg-black px-6 py-3 mt-4 mb-6  rounded-2xl w-full "
+            >
+              <span> {token}</span>
+              {!token ? (
+                <AiOutlineCaretDown className="h-8 text-white" />
+              ) : (
+                <AiOutlineCaretUp className="h-8 text-white" />
+              )}
+            </button>
+            {openTOKEN && (
+              <div className="absolute z-10 text-sm font-light no-scrollbar font-medium  min-w-[200px]  space-y-2  w-full rounded-lg  bg-neutral-900 top-24 max-h-[400px] overflow-y-scroll  text-white">
+                <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Bitcoin");
+                    }}
+                    to="earning"
+                  >
+                    Bitcoin
+                  </button>
+                </div>
+
+                <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Cronos");
+                    }}
+                    to="earning"
+                  >
+                    Cronos
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Ethereum");
+                    }}
+                    to="earning"
+                  >
+                    Ethereum
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Tether");
+                    }}
+                    to="earning"
+                  >
+                    Tether
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("USD Coin");
+                    }}
+                    to="earning"
+                  >
+                    USD Coin
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Dai");
+                    }}
+                    to="earning"
+                  >
+                    Dai
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Pax Dollar");
+                    }}
+                    to="earning"
+                  >
+                    Pax Dollar
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Algorand");
+                    }}
+                    to="earning"
+                  >
+                    Algorand
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Avalanche");
+                    }}
+                    to="earning"
+                  >
+                    Avalanche
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Binanace Coin");
+                    }}
+                    to="earning"
+                  >
+                    Binanace Coin
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Cardano");
+                    }}
+                    to="earning"
+                  >
+                    Cardano
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Celer Network");
+                    }}
+                    to="earning"
+                  >
+                    Celer Network
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("COSMOS");
+                    }}
+                    to="earning"
+                  >
+                    COSMOS
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Elrond");
+                    }}
+                    to="earning"
+                  >
+                    Elrond
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Fantom");
+                    }}
+                    to="earning"
+                  >
+                    Fantom
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("NEAR Protocol");
+                    }}
+                    to="earning"
+                  >
+                    NEAR Protocol
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Polkadot");
+                    }}
+                    to="earning"
+                  >
+                    Polkadot
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Polygon");
+                    }}
+                    to="earning"
+                  >
+                    Polygon
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Solana");
+                    }}
+                    to="earning"
+                  >
+                    Solana
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("VeChain");
+                    }}
+                    to="earning"
+                  >
+                    VeChain
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Zilliqa");
+                    }}
+                    to="earning"
+                  >
+                    Zilliqa
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+            <button
+              // onClick={handleModal}
+              className="w-full  bg-gradient-to-r text-white from-indigo-700 to-fuchsia-700 rounded-xl p-3"
+            >
+              Continue
+            </button>
+          </div>
+        </div>
+      )}
+
+
+      {/* Withdraw modal  */}
+
+      {withdrawWalletModel && (
+        <div className="w-full flex justify-center absolute top-0 left-0 max-h-full z-40 h-full  bg-black bg-opacity-70  ">
+          <div className="max-w-[450px] rounded-2xl bg-neutral-900 p-6 max-h-[550px] relative">
+            <button
+              onClick={() =>  setWithdrawWalletModel((prev) => !prev)}
+              className="rounded-full absolute -top-4 -right-4 w-10 p-3  bg-gradient-to-r text-white from-indigo-600 to-fuchsia-600  "
+            >
+              <img src="./images/icons/close.png" className="w-8" />
+            </button>
+
+     <h1 className="text-4xl font-medium mb-6">Withdraw fund</h1>
+
+            <label htmlFor="withdrawAmount" className="text-sm ">
+    Enter amount
+            </label>
+            <input
+              id="withdrawAmount"
+              name="withdrawAmount"
+              onChange={withdrawHandleChange}
+              value={withdrawModalForm.withdrawAmount}
+              className="bg-black px-6 py-2 mt-2 mb-4  rounded-2xl w-full"
+            />
+
+            <label htmlFor="walletAddress" className="text-sm ">
+          Enter wallet address
+            </label>
+            <input
+              id="walletAddress"
+              onChange={withdrawHandleChange}
+              name="walletAddress"
+              value={withdrawModalForm.walletAddress}
+              className="bg-black px-6 py-2 mt-2 mb-4  rounded-2xl w-full"
+            />
+
+            <label htmlFor="cryptoCurrenyWithdraw" className="text-sm ">
+             Choose CryptoCurrency
+            </label>
+
+            <div className="flex flex-col relative ">
+            
+            <button
+              onClick={() => setOpenTOKEN((prev) => !prev)}
+              className="flex items-center space-x-2 bg-black px-6 py-3 mt-4 mb-6  rounded-2xl w-full "
+            >
+              <span> {token}</span>
+              {!token ? (
+                <AiOutlineCaretDown className="h-8 text-white" />
+              ) : (
+                <AiOutlineCaretUp className="h-8 text-white" />
+              )}
+            </button>
+            {openTOKEN && (
+              <div className="absolute z-10 text-sm font-light no-scrollbar font-medium  min-w-[200px]  space-y-2  w-full rounded-lg  bg-neutral-900 top-24 max-h-[400px] overflow-y-scroll  text-white">
+                <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Bitcoin");
+                    }}
+                    to="earning"
+                  >
+                    Bitcoin
+                  </button>
+                </div>
+
+                <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Cronos");
+                    }}
+                    to="earning"
+                  >
+                    Cronos
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Ethereum");
+                    }}
+                    to="earning"
+                  >
+                    Ethereum
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Tether");
+                    }}
+                    to="earning"
+                  >
+                    Tether
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("USD Coin");
+                    }}
+                    to="earning"
+                  >
+                    USD Coin
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Dai");
+                    }}
+                    to="earning"
+                  >
+                    Dai
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Pax Dollar");
+                    }}
+                    to="earning"
+                  >
+                    Pax Dollar
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Algorand");
+                    }}
+                    to="earning"
+                  >
+                    Algorand
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Avalanche");
+                    }}
+                    to="earning"
+                  >
+                    Avalanche
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Binanace Coin");
+                    }}
+                    to="earning"
+                  >
+                    Binanace Coin
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Cardano");
+                    }}
+                    to="earning"
+                  >
+                    Cardano
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Celer Network");
+                    }}
+                    to="earning"
+                  >
+                    Celer Network
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("COSMOS");
+                    }}
+                    to="earning"
+                  >
+                    COSMOS
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Elrond");
+                    }}
+                    to="earning"
+                  >
+                    Elrond
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Fantom");
+                    }}
+                    to="earning"
+                  >
+                    Fantom
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("NEAR Protocol");
+                    }}
+                    to="earning"
+                  >
+                    NEAR Protocol
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Polkadot");
+                    }}
+                    to="earning"
+                  >
+                    Polkadot
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Polygon");
+                    }}
+                    to="earning"
+                  >
+                    Polygon
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Solana");
+                    }}
+                    to="earning"
+                  >
+                    Solana
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("VeChain");
+                    }}
+                    to="earning"
+                  >
+                    VeChain
+                  </button>
+                </div> <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Zilliqa");
+                    }}
+                    to="earning"
+                  >
+                    Zilliqa
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+
+            <label htmlFor="securityPin" className="text-sm ">
+            Security Pin
+            </label>
+            <input
+              id="securityPin"
+              onChange={withdrawHandleChange}
+              name="securityPin"
+              value={withdrawModalForm.securityPin}
+              className="bg-black px-6 py-2 mt-2 mb-4  rounded-2xl w-full"
+            />
+
+           
+            <button
+              onClick={handleSubmitWithDraw}
+              className="w-full  bg-gradient-to-r text-white from-indigo-700 to-fuchsia-700 rounded-xl p-3"
+            >
+              Continue
+            </button>
+          </div>
+        </div>
+      )}
+
+
+
+
       <div className="flex w-full  py-4 px-8">
         {/* left  */}
         <div className="w-full px-4">
@@ -162,7 +762,7 @@ const Overview = () => {
               </div>
               <div className="">
                 <h2 className="font-medium mb-5">${depositWallet}</h2>
-                <button className=" bg-gradient-to-b from-fuchsia-300 to-purple-800 rounded-full px-3 py-1 text-xs ">
+                <button onClick={()=>setDepositWalletModel(prev => !prev)} className=" bg-gradient-to-b from-fuchsia-300 to-purple-800 rounded-full px-3 py-1 text-xs ">
                   Recharge
                 </button>
               </div>
@@ -199,7 +799,7 @@ const Overview = () => {
               </div>
               <div className="">
                 <h2 className="font-medium mb-5">${rbWallet}</h2>
-                <button className=" bg-gradient-to-b from-fuchsia-300 to-purple-800 rounded-full px-3 py-1 text-xs ">
+                <button    onClick={() =>  setWithdrawWalletModel((prev) => !prev)} className=" bg-gradient-to-b from-fuchsia-300 to-purple-800 rounded-full px-3 py-1 text-xs ">
                   Withdraw
                 </button>
               </div>
@@ -240,7 +840,7 @@ const Overview = () => {
               </div>
               <div className="">
                 <h2 className="font-semibold mb-5">${ozoToken}</h2>
-                <button className="bg-black rounded-full px-3 py-1 text-xs text-white ">
+                <button onClick={() => setNav("Investment")} className="bg-black rounded-full px-3 py-1 text-xs text-white ">
                   Reinvest
                 </button>
               </div>
@@ -299,7 +899,7 @@ const Overview = () => {
             <div className="bg-zinc-900 p-4 rounded-3xl">
               <h1 className="text-xl pl-2 mb-2">Quick Actions</h1>
               <div className="flex space-x-3 mb-2">
-                <button className="border-2 px-4 py-2 rounded-xl flex justify-between w-full items-center  border-neutral-600">
+                <button onClick={()=>setDepositWalletModel(prev => !prev)} className="border-2 px-4 py-2 rounded-xl flex justify-between w-full items-center  border-neutral-600">
                   <img
                     src="./images/dashboard/investment2.png"
                     className="w-6 "
@@ -317,7 +917,7 @@ const Overview = () => {
                 </button>
               </div>
               <div className="grid grid-cols-4 gap-2 text-[15px] ">
-                <button className="border-2 px-[3px] py-[6px] rounded-xl flex flex-col justify-center items-center  border-neutral-600">
+                <button   onClick={() =>  setWithdrawWalletModel((prev) => !prev)} className="border-2 px-[3px] py-[6px] rounded-xl flex flex-col justify-center items-center  border-neutral-600">
                   <img
                     src="./images/dashboard/investment2.png"
                     className="w-6 "

@@ -485,7 +485,6 @@ const PI = ({ profileForm,open ,setopen,handleChange,handleSubmit}) => {
             <div className="w-full flex justify-end space-x-6 mt-4 ">
               <button  
               onClick={() => setopen((prev) => !prev)}
-              
               className="px-6 py-2 bg-rose-600 rounded-lg text-white">
                 Cancel
               </button>
