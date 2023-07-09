@@ -34,15 +34,14 @@ const Binary = () => {
     <div className="font-poppins">
       <div className="w-full relative    ">
         <img
-          src="./images/storybg.jpg"
-          className="w-full max-h-[80vh] object-cover "
+          src="./images/binary.jpg"
+          className="w-full max-h-[90vh] object-cover "
         />
         <div className="w-full top-32 text-center absolute ">
           <div className="w-full max-w-4xl mx-auto space-y-6">
-            <h1 className="text-5xl font-bold">Grow With Ozo.com</h1>
+            <h1 className="text-5xl font-bold">Unlock Exclusive Rewards</h1>
             <p className="font-medium text-3xl">
-              Affiliates earn a commission and other
-              <br /> exclusive rewards
+              Affiliates Earn Lucrative Commissions and <br /> More with One Ozo
             </p>
             <button className="border px-8 py-3 rounded-lg">
               Become an Affiliate
@@ -55,18 +54,22 @@ const Binary = () => {
           Affiliate Programme Commissions
         </h2>
         <div className="w-full max-w-5xl text-left font-medium mx-auto flex space-x-6 items-center">
-          <div className="w-1/2 border-2 border-gray-800 rounded-xl p-6">
-            <h2 className="text-2xl mb-4 px-2">Ozo.com App</h2>
+          <div className="w-1/2  border-2 border-gray-800 rounded-xl p-6">
+            <h2 className="text-2xl mb-4 px-2">Ozo Ventures</h2>
             <div className="mb-6 space-y-5 ">
               <div className="flex space-x-2">
-                <img src="./images/download.png" className="w-6" />
-                <p>The world's fastest-growing crypto app</p>
+                <img src="./images/download.png" className="w-6 h-6" />
+                <p>
+                  Unlock Growth with the World's Fastest-Growing Investment
+                  Firm: One Ozo
+                </p>
               </div>
               <div className="flex space-x-2">
                 <img src="./images/download.png" className="w-6 h-6" />
                 <p>
-                  Buy and sell 250+ tokens, and gain access to the Crypto.com
-                  Visa Card
+                  Diversify Your Portfolio with One Ozo: Invest in
+                  Cryptocurrency, Forex, Commodities, and Casino Gaming.10%
+                  Binary: Multiply Your Profits with One Ozo's Opportunity.
                 </p>
               </div>
             </div>
@@ -76,22 +79,24 @@ const Binary = () => {
             </div>
           </div>
 
-          <div className="w-1/2 border-2 border-gray-800 rounded-xl p-6">
-            <h2 className="text-2xl mb-4 px-2">Ozo.com Exchange</h2>
+          <div className="w-1/2 min-h-[350px] border-2 border-gray-800 rounded-xl p-6">
+            <h2 className="text-2xl mb-4 px-2">Securely Fast</h2>
             <div className="mb-6 space-y-5 ">
               <div className="flex space-x-2">
-                <img src="./images/download.png" className="w-6" />
-                <p>The fastest and most secure crypto exchange</p>
+                <img src="./images/download.png" className="w-6 h-6" />
+                <p>
+                  Fastest and Most Secure: One Ozo, Your Trusted Investment
+                  Firm.
+                </p>
               </div>
               <div className="flex space-x-2">
                 <img src="./images/download.png" className="w-6 h-6" />
                 <p>
-                  Trade with confidence across the Spot, Margin and Derivatives
-                  markets
+                  Invest with Confidence: Let Our Advanced AI Handle the Rest
                 </p>
               </div>
             </div>
-            <div className="py-4 bg-gradient-to-b from-neutral-900 to-teal-800 rounded-lg px-2 ">
+            <div className="py-4 bg-gradient-to-b mt-20 from-neutral-900 to-teal-800 rounded-lg px-2 ">
               Earn up to 100 USDC for every user who signs up with your
               affiliate code
             </div>
@@ -102,34 +107,45 @@ const Binary = () => {
       <div className="w-full my-28 font-medium flex items-center max-w-6xl mx-auto ">
         <div>
           <h2 className="text-4xl mb-12">Benefits For Your Community</h2>
-          <h3 className="text-3xl mb-6">Crypto.com App</h3>
+          <h3 className="text-3xl mb-6">Accelerated Earnings</h3>
           <h3 className="text-3xl mb-6">
-            Users who sign up with your exclusive affiliate code will receive a
-            total of US$20 in CRO by:
+            With the binary plan, you have the opportunity to earn accelerated
+            returns on your investments, boosting your overall profitability.
           </h3>
           <div className="space-y-4 mb-10">
             <div className="flex space-x-2">
               <img src="./images/download.png" className="w-6 h-6" />
               <span>
-                Buying or selling a total of US$500 worth of crypto in the
-                Crypto.com App within 30 days after successfully registering for
-                an account
+                Dual Team Synergy: The binary plan promotes teamwork and
+                collaboration as you build two separate teams. This synergy can
+                lead to enhanced support and motivation from your team members.
               </span>
             </div>
             <div className="flex space-x-2">
               <img src="./images/download.png" className="w-6 h-6" />
               <span>
-                Spending at least US$100 in their first Crypto.com Visa Card
-                transaction
+                Unlimited Depth: Unlike some other compensation plans, the
+                binary plan allows for unlimited depth in your organization.
+                This means there is no limit to how many levels deep you can
+                build your binary network.
+              </span>
+            </div>
+
+            <div className="flex space-x-2">
+              <img src="./images/download.png" className="w-6 h-6" />
+              <span>
+              	Spillover Benefits: With the binary plan, you can benefit from spillover, where your upline may place new members under you. This can help you grow your network faster and increase your earning potential.
+              </span>
+            </div>
+
+            <div className="flex space-x-2">
+              <img src="./images/download.png" className="w-6 h-6" />
+              <span>
+              	Balanced Structure: The binary plan promotes balance in your organization as you strive to build and maintain equal strength in both legs of your binary structure. This balance ensures stability and steady growth.
               </span>
             </div>
           </div>
-          <h3 className="text-3xl mb-6">Crypto.com Exchange</h3>
-          <h3 className="text-xl mb-6">
-            Users who sign up with your exclusive affiliate code will enjoy a
-            10% trading rebate for the first 12 months after they successfully
-            register for an account
-          </h3>
+          
         </div>
         <div className="w-full">
           <img className="./images/section.webp" />
@@ -162,13 +178,13 @@ const Binary = () => {
           <div className="max-w-[300px] w-full min-h-[250px] text-left">
             <img src="./images/icons/register.png" className=" w-32 mb-6" />
             <h2 className="text-xl font-medium mb-2">Register</h2>
-            <p>Sign up for the Crypto.com Affiliate Programme</p>
+            <p>Sign up to the one ozo</p>
           </div>
 
           <div className="max-w-[300px] w-full min-h-[250px] text-left">
             <img src="./images/icons/promote.png" className=" w-32 mb-6" />
-            <h2 className="text-xl font-medium mb-2">Promote Ozo.com</h2>
-            <p>Introduce the Crypto.com App and Exchange to your community</p>
+            <h2 className="text-xl font-medium mb-2">Promote one Ozo.com</h2>
+            <p>Introduce the one ozo platform to your community</p>
           </div>
 
           <div className="max-w-[300px] w-full min-h-[250px] text-left">
@@ -176,12 +192,14 @@ const Binary = () => {
             <h2 className="text-xl font-medium mb-2">Get Rewarded</h2>
             <p>Earn commission and enjoy your exclusive rewards</p>
           </div>
-        
         </div>
         <button className="border mb-6 px-8 py-3 rounded-lg">
-            Become an Affiliate
-          </button>
-          <p className="max-w-2xl mb-24 mx-auto text-xs text-center w-full ">We respect your privacy, and we are committed to protecting your personal data. Please read this Affiliate Program Privacy Notice carefully before providing any information about you or any other person.</p>
+          Become an Affiliate
+        </button>
+        <p className="max-w-xl mb-24 mx-auto text-xs text-center w-full ">
+          Rest assured, One Ozo prioritizes the security of your information,
+          ensuring the utmost confidentiality and protection in our binary plan.
+        </p>
       </div>
     </div>
   );
@@ -190,16 +208,21 @@ const Plain = () => {
   return (
     <div className="font-poppins">
       <div className="w-full relative    ">
-        <img src="./images/designbg1.jpg" className="w-full max-h-[110vh]" />
+        <img
+          src="./images/earningreferral.jpg"
+          className="w-full max-h-[110vh] bg-opacity-60"
+        />
         <div className="absolute  left-44 top-52 w-full">
-          <h1 className="text-6xl mb-6  ">Refer Your Friends</h1>
-          <h1 className="text-6xl mb-6 ">
-            Earn up to{" "}
-            <span className="bg-purple-900 px-2 py-1 text-[68px] rounded-xl  mt-1 ">
-              US$2,000
-            </span>
+          <h1 className="text-4xl mb-6 text-black max-w-[650px]">
+            Multiply Your Earnings with One Ozo's Lucrative Referral Program:
+            Earn up to 8% Referral Bonuses and Unlock Exciting Rewards
           </h1>
-          <h2 className="text-xl mb-4 ">
+
+          {/* <span className="bg-purple-900 px-2 py-1 text-[68px] rounded-xl  mt-1 ">
+              US$2,000
+            </span> */}
+
+          <h2 className="text-xl text-black mb-4 ">
             Enjoy 12 months of trading fee commissions and <br />a referral
             bonus of up to US$2,000 in CRO
           </h2>
@@ -235,7 +258,7 @@ const Plain = () => {
             </div>
             <h1 className="text-2xl mb-4 font-bold">Sign Up</h1>
             <p className="text-gray-500 text-[16px]">
-              Sign up or sign in to the Crypto.com Exchange
+              Sign up or sign in to the oneozo.com platform
             </p>
           </m.div>
           <m.div
@@ -257,7 +280,7 @@ const Plain = () => {
             <h1 className="text-2xl mb-4 font-bold">Referral Page</h1>
             <p className="text-gray-500 text-[16px]">
               Navigate to the Referral page under Events & Rewards to get your
-              unique referral code or link
+              referral link.
             </p>
           </m.div>
           <m.div
@@ -291,35 +314,36 @@ const Plain = () => {
             to Gain
           </h1>
           <div className="space-y-4 ml-16">
-            <div className="bg-blue-gray-900 rounded-xl border-2 px-6 py-4">
+            <div className="bg-blue-gray-900 flex items-center rounded-xl border-2 px-6 py-4">
               <img
-                src="./images/icons/check.png"
-                className="w-10 bg-green-500  rounded-full p-2 flex justify-center items-center"
+                src="./images/download.png"
+                className="w-10  h-10 rounded-full p-2 flex justify-center items-center"
               />
               <p>
-                12 months of trading fee commissions and a bonus of up to
-                US$2,000 in CRO for each friend successfully referred
+                Earn up to 18% referral bonuses on each successful referral,
+                boosting your earnings.
               </p>
             </div>
-            <div className="bg-blue-gray-900 rounded-xl border-2 px-6 py-4">
+            <div className="bg-blue-gray-900 items-center flex rounded-xl border-2 px-6 py-4">
               <img
-                src="./images/icons/check.png"
-                className="w-10 bg-green-500  rounded-full p-2 flex justify-center items-center"
+                src="./images/download.png"
+                className="w-10 h-10  rounded-full p-2 flex justify-center items-center"
               />
               <p>
-                chevron Your friend receives up to US$50 of CRO and there are no
-                referral limits at all
+                Enjoy exciting rewards and incentives through One Ozo's referral
+                program.
               </p>
             </div>
 
-            <div className="bg-blue-gray-900 rounded-xl border-2 px-6 py-4">
+            <div className="bg-blue-gray-900 rounded-xl  items-center flex border-2 px-6 py-4">
               <img
-                src="./images/icons/check.png"
-                className="w-10 bg-green-500  rounded-full p-2 flex justify-center items-center"
+                src="./images/download.png"
+                className="w-10  h-10 rounded-full p-2 flex justify-center items-center"
               />
               <p>
-                Bonuses are credited instantly once all qualifying conditions
-                are met
+                Withdrawal gate for referral rewards is open 24/7, giving you
+                the flexibility to access your earned bonuses whenever you need
+                them.
               </p>
             </div>
           </div>
@@ -328,28 +352,36 @@ const Plain = () => {
         <div className="space-y-6 mt-44">
           <h1 className="text-3xl">Referral Bonus</h1>
           <p>
-            Everyone who signs up using your referral code can earn up to US$50
-            of CRO when they make their first CRO lockup
+            Unlock Rewards at Every Level: One Ozo's Three-Tier Referral Program
           </p>
           <p>
-            The more CRO your referee locks up, the larger your referral bonus.
-            Here's a quick overview of how the referral bonus tiers work:
+            One Ozo's three-tier referral program allows you to earn generous
+            bonuses at each level. With 5% on Level 1, 3% on Level 2, and 1.5%
+            on Level 3, your earnings multiply as you expand your network and
+            introduce others to One Ozo's rewarding investment opportunities.
           </p>
           <p>
             <div className="flex justify-between items-center">
               <div className="max-w-[250px] min-h-[300px] flex flex-col justify-center items-center space-y-4 text-center  p-6">
                 <img src="./images/icons/referralbonus.svg" />
-                <p>You earn US$50 when your referral locks up 5,000 CRO</p>
+                <p>
+                  Level 1: Earn 5% referral bonus on direct referrals and expand
+                  your network.
+                </p>
               </div>
               <div className="max-w-[250px] min-h-[300px] flex flex-col justify-center items-center space-y-2 text-center p-6">
                 <img src="./images/icons/referralbonus.svg" />
-                <p>You earn US$200 when your referral locks up 50,000 CRO</p>
+                <p>
+                  Level 2: Enjoy 3% referral bonus on indirect referrals,
+                  increasing your earnings further.
+                </p>
               </div>
 
               <div className="max-w-[250px] min-h-[300px] flex flex-col justify-center items-center space-y-2 text-center p-6">
                 <img src="./images/icons/referralbonus.svg" />
                 <p>
-                  You earn US$2,000 when your referral locks up 5 million CRO
+                  Level 3: Earn 1.5% referral bonus on referrals made by your
+                  Level 2 referrals, maximizing your rewards.
                 </p>
               </div>
             </div>
@@ -358,16 +390,18 @@ const Plain = () => {
           </p>
         </div>
       </div>
-      <div className="w-full mt-24 mb-44 relative">
+      <div className="w-full max-h-[60vh] mt-24 mb-44 relative">
         <img
-          src="./images/designbg3.jpg"
-          className="w-full max-h-[60vh] opacity-90"
+          src="./images/community.jpg"
+          className="w-full object-cover opacity-90 max-h-[60vh]"
         />
 
         <div className="flex flex-col absolute max-w-5xl w-full top-44 left-64 justify-between items-center">
           <div className="">
-            <h2 className="text-3xl mb-6 font-bold">
-              A community of over 50 million crypto traders await
+            <h2 className="text-3xl text-center mb-6 font-bold">
+              Join a thriving community of over 50 million passionate crypto
+              investors, where knowledge, insights, and exciting opportunities
+              converge.
             </h2>
           </div>
 

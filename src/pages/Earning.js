@@ -13,11 +13,9 @@ const Earning = () => {
   return (
     <div className="w-full font-poppins">
       <div className="w-full text-center space-y-10 my-20 max-w-7xl mx-auto ">
-        <h1 className="text-6xl font-bold">Services</h1>
+        <h1 className="text-6xl font-bold">Ozo Investment </h1>
         <p className="max-w-[700px] text-center w-full mx-auto">
-          Quis incididunt sunt occaecat irure officia magna Lorem ad ut ipsum.
-          commodo occaecat nostrud nisi proident sunt consectetur. Reprehenderit
-          laborum labore ullamco sint excepteur incididunt pariatur sint.
+        Earn up to 252% returns on your investment. Explore our cryptocurrency, forex, commodities, and casino gaming options. Experience lucrative opportunities and financial growth with one Ozo. Invest wisely for a prosperous future.
         </p>
         <div className="rounded-2xl  bg-neutral-800 p-8 flex items-center justify-between">
           <div className="text-left flex justify-center  items-start space-y-3 flex-col">
@@ -42,16 +40,19 @@ const Earning = () => {
         </div>
       </div>
 
+      <div className="w-full flex-col  relative flex pt-16 justify-center  items-center mb-16">
+        <img src="./images/package.png" />
+      </div>
       <div className="w-full mt-44  text-center ">
         <h1 className="text-5xl font-medium mb-6">Calculate Your Rewards</h1>
         <h3 className="text-3xl font-medium">
-          Select a token, amount, CRO lockup and term
+          Select a Package, amount, CRO lockup and term
           <br /> to calculate your rewards *
         </h3>
 
         <div className="max-w-5xl text-xl mt-16 mb-6 text-left bg-neutral-900 px-16 mx-auto rounded-3xl divide-x-2 py-2 flex  justify-between items-center font-medium uppercase">
           <div className="flex flex-col relative px-2">
-            <span>Token</span>
+            <span>Packages</span>
             <button
               onClick={() => setOpenTOKEN((prev) => !prev)}
               className="flex items-center space-x-2"
@@ -289,7 +290,7 @@ const Earning = () => {
             />
           </div>
           <div className="px-6 relative">
-            <span>CRO LOCKUP</span>
+            <span>Package Details</span>
             <div>
               <button
                 onClick={() => setOpenCro((prev) => !prev)}
@@ -340,7 +341,7 @@ const Earning = () => {
             )}
           </div>
           <div className="px-6 relative">
-            <span>TERM</span>
+            <span>dURATION</span>
             <div>
               <button
                 onClick={() => setOpen((prev) => !prev)}
@@ -400,20 +401,20 @@ const Earning = () => {
             <p className="text-9xl font-semibold">
               $451<span className="text-xs">usd</span>
             </p>
-            <p className="text-2xl font-medium">per year paid in CRO</p>
+            <p className="text-2xl font-medium">total returns </p>
           </div>
 
           <div className="space-y-16">
             <div>
               <h2 className="text-5xl font-medium">0.97%</h2>
 
-              <p className="text-2xl">Optimised rewards p.a.</p>
+              <p className="text-2xl">Daily returns </p>
             </div>
             <div>
               <h2 className="text-5xl font-medium">
                 $186.92<span className="text-xs">USD</span>
               </h2>
-              <p className="text-2xl">Rewards paid weekly</p>
+              <p className="text-2xl">Monthly returns </p>
             </div>
           </div>
         </div>
@@ -423,13 +424,10 @@ const Earning = () => {
         </button>
       </div>
 
-      <div className="w-full flex-col  relative flex pt-16 justify-center  items-center mb-16">
-        <img src="./images/package.png" />
-      </div>
-      <div className="w-full mt-24 mb-44 relative">
+      <div className="w-full mt-24 max-h-[60vh] mb-44 relative">
         <img
-          src="./images/designbg2.jpg"
-          className="w-full max-h-[60vh] opacity-90"
+          src="./images/contact.jpg"
+          className="w-full max-h-[60vh] object-cover opacity-90"
         />
 
         <div className="flex absolute max-w-5xl w-full top-44 left-64 justify-between items-center">

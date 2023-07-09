@@ -14,13 +14,32 @@ const Dashboard = () => {
   const [reportState, setReportState] = useState("roi");
   const [profileStateNav, setprofileStateNav] = useState("Profile");
 
+  const [OpenNotification, setOpenNotification] = useState(false);
 
-
-
+  const dummyDATA = ["notification ","notify","November december ","wallet"," abe 123456789","dec","Pavelion2","ASUS APPKE IZI"]
   return (
-    <div className="w-full bg-[#0d0d0d] min-h-[110vh] font-poppins">
-      <div className="w-full flex flex-col  items-center mb-16  max-h-[180px] relative ">
-        <img src="./images/dashboard/header.png" className="max-h-[240px] object-cover w-full" />
+    <div className="w-full bg-[#0d0d0d] min-h-[110vh] font-poppins relative">
+      {/* notification modal  */}
+         {OpenNotification && (
+                <div className="w-full max-w-[250px] absolute top-28 right-40 min-h-[280px]  max-h-[280px] z-50  no-scrollbar h-full  overflow-y-scroll bg-neutral-800 rounded-xl px-6 py-2 ">
+                    <div className="space-y-2 text-xs relative ">
+                    <button onClick={()=> setOpenNotification(prev=> !prev)} className="absolute -top-1 right-0 rounded-full bg-neutral-900 p-2"><img src="./images/icons/close.png" className="w-4 "/></button>
+                    <h1 className="text-lg ">Notification</h1>
+                    {
+                      dummyDATA.map(e=> <p className="border-b pb-2 border-gray-600">{e}</p>)
+                    }
+                 
+                   
+                    
+                    </div>
+
+                </div>
+              )}
+      <div className="w-full flex flex-col   items-center mb-16  max-h-[180px] relative ">
+        <img
+          src="./images/dashboard/header.png"
+          className="max-h-[240px] object-cover w-full"
+        />
         <div className="rounded-full  absolute top-12 z-0 flex justify-between items-center bg-neutral-900 py-2 w-full max-w-7xl px-6 mx-auto">
           <div className="flex ">
             <img src="./images/logo.png" className="w-12" />
@@ -41,7 +60,6 @@ const Dashboard = () => {
               <li className=" focus-within:bg-white focus-within:text-gray-900 rounded-full  px-2 py-1 ">
                 <button onClick={() => setNav("Genealogy")}> Genealogy </button>
               </li>
-             
 
               {/* <li className=" focus-within:bg-white focus-within:text-gray-900 rounded-full  px-2 py-1 ">
                 <button onClick={() => setNav("Transfers")}> Transfers </button>
@@ -60,25 +78,27 @@ const Dashboard = () => {
               </li>
             </ul>
           </div>
-          <div className="flex space-x-2">
+          <div className="flex space-x-2 ">
             <div className="rounded-full flex justify-center items-center w-10 bg-black">
               <img src="./images/dashboard/search.png" className=" p-[10px]" />
             </div>
-            <div className="rounded-full flex justify-center items-center w-10 bg-black">
+            <button
+              onClick={() => setOpenNotification((prev) => !prev)}
+              className="rounded-full  flex justify-center items-center w-10 bg-black"
+            >
               <img
                 src="./images/dashboard/notification.png"
                 className=" p-[10px]"
               />
-            </div>
+            
+            </button>
 
             <div className="rounded-full flex justify-center items-center w-10  bg-black">
-             
-             
-            <button onClick={() => setNav("Profile")}>
-              <img src="./images/dashboard/user.png" className=" p-[10px]" />
+              <button onClick={() => setNav("Profile")}>
+                <img src="./images/dashboard/user.png" className=" p-[10px]" />
               </button>
             </div>
-
+         
           </div>
         </div>
         {nav == "Investment" && (
@@ -137,15 +157,13 @@ const Dashboard = () => {
                 onClick={() => setTickets("list")}
                 className=" rounded-full py-2 px-6  focus-within:bg-gradient-to-r focus-within:from-indigo-800 focus-within:to-purple-700"
               >
-               Ticket list
+                Ticket list
               </button>
             </div>
           </div>
         )}
 
-
-
-{nav == "Reports" && (
+        {nav == "Reports" && (
           <div className="w-full  absolute top-32 flex justify-center items-center min-h-[10vh]">
             <div className="max-w-[40rem] mt-6  flex justify-between w-full rounded-full border-2  ">
               <button
@@ -158,25 +176,25 @@ const Dashboard = () => {
                 onClick={() => setReportState("bi")}
                 className=" rounded-full py-2 px-8 text-sm focus-within:bg-gradient-to-r focus-within:from-indigo-800 focus-within:to-purple-700"
               >
-               BI Report
+                BI Report
               </button>
               <button
                 onClick={() => setReportState("ri")}
                 className=" rounded-full py-2 px-8 text-sm focus-within:bg-gradient-to-r focus-within:from-indigo-800 focus-within:to-purple-700"
               >
-               RI Report
+                RI Report
               </button>
               <button
                 onClick={() => setReportState("ei")}
                 className=" rounded-full py-2 px-8 text-sm focus-within:bg-gradient-to-r focus-within:from-indigo-800 focus-within:to-purple-700"
               >
-               Extra Income Report
+                Extra Income Report
               </button>
             </div>
           </div>
         )}
 
-{nav == "Profile" && (
+        {nav == "Profile" && (
           <div className="w-full absolute top-32 flex justify-center items-center min-h-[10vh]">
             <div className="max-w-[14rem] mt-6  flex justify-between w-full rounded-full border-2  ">
               <button
@@ -186,21 +204,21 @@ const Dashboard = () => {
                 Profile
               </button>
               <button
-                onClick={() =>  setprofileStateNav("kyc")}
+                onClick={() => setprofileStateNav("kyc")}
                 className=" rounded-full py-2 px-8  focus-within:bg-gradient-to-r focus-within:from-indigo-800 focus-within:to-purple-700"
               >
-               KYC
+                KYC
               </button>
             </div>
           </div>
         )}
       </div>
-      {nav == "Overview" && <Overview setNav={setNav}/>}
+      {nav == "Overview" && <Overview setNav={setNav} />}
       {nav == "Investment" && <Investment investmentState={investmentState} />}
       {nav == "Genealogy" && <Genealogy genealogyState={genealogyState} />}
-      {nav == "Tickets" && <Tickets tickets={tickets}/>}
-      {nav == "Reports" && <Reports reportState={reportState}/>}
-      {nav == "Profile" && <Profile profileStateNav={profileStateNav}/>}
+      {nav == "Tickets" && <Tickets tickets={tickets} />}
+      {nav == "Reports" && <Reports reportState={reportState} />}
+      {nav == "Profile" && <Profile profileStateNav={profileStateNav} />}
     </div>
   );
 };

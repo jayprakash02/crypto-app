@@ -1081,7 +1081,7 @@ const [transferToOpen,settransferToOpen] = useState
               <div className="">
                 <h2 className="font-medium mb-5">${roiWallet}</h2>
                 <div className="flex space-x-2">
-                  <button className=" bg-gradient-to-b from-fuchsia-300 to-purple-800 rounded-full px-3 py-1 text-xs ">
+                  <button onClick={() => setNav("Investment")} className=" bg-gradient-to-b from-fuchsia-300 to-purple-800 rounded-full px-3 py-1 text-xs ">
                     Invest
                   </button>
                   <button
@@ -1124,7 +1124,7 @@ const [transferToOpen,settransferToOpen] = useState
               <div className="">
                 <h2 className="font-medium mb-5">${interestWallet}</h2>
                 <div className="flex space-x-2">
-                  <button className=" bg-gradient-to-b from-fuchsia-300 to-purple-800 rounded-full px-3 py-1 text-xs ">
+                  <button onClick={() => setNav("Investment")} className=" bg-gradient-to-b from-fuchsia-300 to-purple-800 rounded-full px-3 py-1 text-xs ">
                     Invest
                   </button>
                   <button
@@ -1224,7 +1224,7 @@ const [transferToOpen,settransferToOpen] = useState
                   <p className="">Deposit</p>{" "}
                   <img src="./images/dashboard/next.png" className="w-5 h-5 " />
                 </button>
-                <button className="border-2 px-4 py-2 rounded-xl flex justify-between w-full items-center border-neutral-600">
+                <button onClick={() => setNav("Investment")} className="border-2 px-4 py-2 rounded-xl flex justify-between w-full items-center border-neutral-600">
                   <img
                     src="./images/dashboard/investment2.png"
                     className="w-6 "
@@ -1254,7 +1254,7 @@ const [transferToOpen,settransferToOpen] = useState
                   />
                   Transfer
                 </button>
-                <button className="border-2 px-[3px] py-[6px] rounded-xl flex flex-col justify-center items-center  border-neutral-600">
+                <button  className="border-2 px-[3px] py-[6px] rounded-xl flex flex-col justify-center items-center  border-neutral-600">
                   <img
                     src="./images/dashboard/investment2.png"
                     className="w-6 "
@@ -1269,21 +1269,21 @@ const [transferToOpen,settransferToOpen] = useState
                   Wallet
                 </button>
 
-                <button className="border-2 px-[3px] py-[6px] rounded-xl flex flex-col justify-center items-center  border-neutral-600">
+                <button onClick={() => setNav("Tickets")} className="border-2 px-[3px] py-[6px] rounded-xl flex flex-col justify-center items-center  border-neutral-600">
                   <img
                     src="./images/dashboard/investment2.png"
                     className="w-6 "
                   />
                   Ticket
                 </button>
-                <button className="border-2 px-[3px] py-[6px] rounded-xl flex flex-col justify-center items-center  border-neutral-600">
+                <button onClick={() => setNav("Genealogy")} className="border-2 px-[3px] py-[6px] rounded-xl flex flex-col justify-center items-center  border-neutral-600">
                   <img
                     src="./images/dashboard/investment2.png"
                     className="w-6 "
                   />
                   Binary tree
                 </button>
-                <button className="border-2 px-[3px] py-[6px] rounded-xl flex flex-col justify-center items-center  border-neutral-600">
+                <button  onClick={() => setNav("Genealogy")} className="border-2 px-[3px] py-[6px] rounded-xl flex flex-col justify-center items-center  border-neutral-600">
                   <img
                     src="./images/dashboard/investment2.png"
                     className="w-6 "
