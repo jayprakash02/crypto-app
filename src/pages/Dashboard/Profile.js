@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import "./Profile.css";
+
+import * as yup from "yup";
+import { Field, Form, Formik } from "formik";
 const Profile = ({ profileStateNav }) => {
   const [profileState, setprofileState] = useState("pi");
 
@@ -32,13 +35,13 @@ const Profile = ({ profileStateNav }) => {
   //model state
   const [open, setopen] = useState(false);
 
-  const handleChange = (e)=>{
-    setprofileForm({...profileForm,[e.target.name]:e.target.value})
-  }
-  const handleSubmit = (e)=>{
-    e.preventDefault()
-    console.log("Profile Form",profileForm)
-  }
+  const handleChange = (e) => {
+    setprofileForm({ ...profileForm, [e.target.name]: e.target.value });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Profile Form", profileForm);
+  };
 
   return (
     <>
@@ -107,7 +110,10 @@ const Profile = ({ profileStateNav }) => {
                   className="w-20 rounded-full h-20 bg-gray-700 p-6"
                 />
                 <div className="">
-                  <h1 className="text-xl font-semibold"> {profileForm.fName} {profileForm.lName}</h1>
+                  <h1 className="text-xl font-semibold">
+                    {" "}
+                    {profileForm.fName} {profileForm.lName}
+                  </h1>
                   <p className="text-gray-600">New York, USA</p>
                 </div>
               </div>
@@ -132,7 +138,13 @@ const Profile = ({ profileStateNav }) => {
                 </button>
               </div>
               {profileState === "pi" && (
-                <PI profileForm={profileForm} open={open} setopen={setopen} handleChange={handleChange} handleSubmit={handleSubmit}/>
+                <PI
+                  profileForm={profileForm}
+                  open={open}
+                  setopen={setopen}
+                  handleChange={handleChange}
+                  handleSubmit={handleSubmit}
+                />
               )}
               {profileState === "security" && <Security />}
               {profileState === "notification" && <Notification />}
@@ -228,96 +240,181 @@ const Profile = ({ profileStateNav }) => {
 
 export default Profile;
 
+const FormPasswordComponent = ()=>{
+  const [currentpassword, setcurrentpassword] = useState("");
+  const [newpassword, setnewpassword] = useState("");
+  const [confirmpassword, setconfirmpassword] = useState("");
+
+  const handleChangePassword = () => {
+
+  };
+  const FormSchema = yup.object().shape({
+    pass: yup
+      .string()
+      .min(8, "Password must be 8 characters long")
+      .matches(/[0-9]/, "Password requires a number")
+      .matches(/[a-z]/, "Password requires a lowercase letter")
+      .matches(/[A-Z]/, "Password requires an uppercase letter")
+      .matches(/[^\w]/, "Password requires a symbol"),
+    confirm: yup
+      .string()
+      .oneOf([yup.ref("pass"), null], 'Must match "password" field value'),
+  });
+  return(
+    <Formik
+    initialValues={{
+      name: "",
+    }}
+    validationSchema={FormSchema}
+    onSubmit={(values) => {
+      console.log(values);
+    }}
+  >
+    {({ errors }) => {
+      return <Form className="space-y-4">
+        
+      <div>
+        <label className="" htmlFor="currentpassword">
+          Current Password
+        </label>
+        <input
+          type="password"
+          className="mt-2 px-4 py-2 rounded-xl bg-black w-full"
+          id="currentpassword"
+          value={currentpassword}
+          onChange={(e) => setcurrentpassword(e.target.value)}
+          name="currentpassword"
+        />
+      </div>
+      <div>
+        <label className="" htmlFor="newpassword">
+          New Password
+          <Field
+            type="password"
+            name="pass"
+            className="mt-2 px-4 py-2 rounded-xl bg-black w-full"
+            // value={newpassword}
+            // onChange={(e) => setnewpassword(e.target.value)}
+          />
+        </label>
+        {errors.pass && <p>{errors.pass}</p>}
+       
+      </div>
+      <div>
+        <label className="" htmlFor="confirmpassword">
+          Confirm Password
+          <Field
+            type="password"
+            name="confirm"
+            className="mt-2 px-4 py-2 rounded-xl bg-black w-full"
+            // value={confirmpassword}
+            // onChange={handleChangePassword}
+          />
+        </label>
+        {errors.confirm && <p>{errors.confirm}</p>}
+     
+      </div>
+      <button
+        type="submit"
+        className="bg-gradient-to-r from-indigo-400 to-fuchsia-500 rounded-xl px-12 py-3   text-white "
+      >
+        Save
+      </button>
+    </Form>
+    }}
+  </Formik>
+  );
+}
+
+const SecurityPasswordComponent = ()=>{
+  const FormSchema = yup.object().shape({
+    pin: yup
+      .number().min(4),
+ 
+
+  
+  confirmPin: yup
+      .number()
+      .oneOf([yup.ref("pin"), null], 'Must match " New Pin" field value'),
+  });
+  return(
+    <Formik
+    initialValues={{
+     
+    }}
+    validationSchema={FormSchema}
+    onSubmit={(values) => {
+      console.log(values);
+    }}>
+   {
+    ({errors}) =>(
+      <Form className="space-y-4">
+      <h1 className="text-xl font-medium mb-4">Security Pin</h1>
+  
+        <div>
+          <label className="" htmlFor="currentsecurity">
+            Current Security Pin
+          </label>
+          <input
+            type="password"
+            className="mt-2 px-4 py-2 rounded-xl bg-black w-full"
+            id="currentsecurity"
+            name="currentsecurity"
+          />
+        </div>
+        <div>
+          <label className="" htmlFor="pin">
+            New Security Pin
+            <Field
+            type="password"
+            className="mt-2 px-4 py-2 rounded-xl bg-black w-full"
+            id="pin"
+            name="pin"
+          />
+          </label>
+          {errors.pin && <p>{errors.pin}</p>}
+       
+        </div>
+        <div>
+          <label className="" htmlFor="confirmPin">
+            Confirm Security Pin
+            <Field
+            type="password"
+            className="mt-2 px-4 py-2 rounded-xl bg-black w-full"
+            id="confirmPin"
+            name="confirmPin"
+          />
+          </label>
+          {errors.confirmPin && <p>{errors.confirmPin}</p>}
+
+        
+        </div>
+        <button  type="submit" className="bg-gradient-to-r from-indigo-400 to-fuchsia-500 rounded-xl px-12 py-3   text-white ">
+          Save
+        </button>
+      </Form>
+    )
+   }
+  </Formik>
+  )
+}
 const Security = () => {
+
+
+
   return (
     <div className="space-y-4">
       <div>
-        <h1 className="text-xl font-medium mb-4">Password</h1>
-        <div className="space-y-4">
-          <div>
-            <label className="" htmlFor="currentpassword">
-              Current Password
-            </label>
-            <input
-              type="password"
-              className="mt-2 px-4 py-2 rounded-xl bg-black w-full"
-              id="currentpassword"
-              name="currentpassword"
-            />
-          </div>
-          <div>
-            <label className="" htmlFor="newpassword">
-              New Password
-            </label>
-            <input
-              type="password"
-              className="mt-2 px-4 py-2 rounded-xl bg-black w-full"
-              id="newpassword"
-              name="newpassword"
-            />
-          </div>
-          <div>
-            <label className="" htmlFor="confirmpassword">
-              Confirm Password
-            </label>
-            <input
-              type="password"
-              className="mt-2 px-4 py-2 rounded-xl bg-black w-full"
-              id="confirmpassword"
-              name="confirmpassword"
-            />
-          </div>
-          <button className="bg-gradient-to-r from-indigo-400 to-fuchsia-500 rounded-xl px-12 py-3   text-white ">
-            Save
-          </button>
-        </div>
+        {console.log
+        ("1")}
+    <FormPasswordComponent />
       </div>
-      <div>
-        <h1 className="text-xl font-medium mb-4">Security Pin</h1>
-        <div className="space-y-4">
-          <div>
-            <label className="" htmlFor="currentsecurity">
-              Current Security Pin
-            </label>
-            <input
-              type="password"
-              className="mt-2 px-4 py-2 rounded-xl bg-black w-full"
-              id="currentsecurity"
-              name="currentsecurity"
-            />
-          </div>
-          <div>
-            <label className="" htmlFor="newsecurity">
-              New Security Pin
-            </label>
-            <input
-              type="password"
-              className="mt-2 px-4 py-2 rounded-xl bg-black w-full"
-              id="newsecurity"
-              name="newsecurity"
-            />
-          </div>
-          <div>
-            <label className="" htmlFor="confirmsecurity">
-              Confirm Security Pin
-            </label>
-            <input
-              type="password"
-              className="mt-2 px-4 py-2 rounded-xl bg-black w-full"
-              id="confirmsecurity"
-              name="confirmsecurity"
-            />
-          </div>
-          <button className="bg-gradient-to-r from-indigo-400 to-fuchsia-500 rounded-xl px-12 py-3   text-white ">
-            Save
-          </button>
-        </div>
-      </div>
+     <SecurityPasswordComponent/>
     </div>
   );
 };
 
-const PI = ({ profileForm,open ,setopen,handleChange,handleSubmit}) => {
+const PI = ({ profileForm, open, setopen, handleChange, handleSubmit }) => {
   return (
     <div>
       <div className="w-full grid grid-cols-2 gap-4">
@@ -395,17 +492,17 @@ const PI = ({ profileForm,open ,setopen,handleChange,handleSubmit}) => {
         </div>
       </div>
       <div className="w-full flex justify-end space-x-6 mt-4 ">
-        <button     onClick={() => setopen((prev) => !prev)} className="px-6 py-2 bg-blue-600 rounded-lg text-white">
+        <button
+          onClick={() => setopen((prev) => !prev)}
+          className="px-6 py-2 bg-blue-600 rounded-lg text-white"
+        >
           Edit
         </button>
-       
       </div>
 
       {open && (
         <div className="w-full flex justify-center absolute top-0 left-0 max-h-full h-full  items-center bg-black bg-opacity-70  ">
           <div className="max-w-[550px] rounded-2xl bg-neutral-900 p-6  relative">
-        
-
             <h1 className="text-4xl font-medium mb-10">Edit Your Profile</h1>
 
             <div className="w-full grid grid-cols-2 gap-4">
@@ -483,12 +580,16 @@ const PI = ({ profileForm,open ,setopen,handleChange,handleSubmit}) => {
               </div>
             </div>
             <div className="w-full flex justify-end space-x-6 mt-4 ">
-              <button  
-              onClick={() => setopen((prev) => !prev)}
-              className="px-6 py-2 bg-rose-600 rounded-lg text-white">
+              <button
+                onClick={() => setopen((prev) => !prev)}
+                className="px-6 py-2 bg-rose-600 rounded-lg text-white"
+              >
                 Cancel
               </button>
-              <button  onClick={handleSubmit} className="px-6 py-2 bg-blue-600 text-white rounded-lg">
+              <button
+                onClick={handleSubmit}
+                className="px-6 py-2 bg-blue-600 text-white rounded-lg"
+              >
                 Save
               </button>
             </div>

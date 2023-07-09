@@ -43,7 +43,7 @@ function App() {
           <Route path="legal" element={<Legal />} />
           <Route path="resources" element={<Resources />} />
         </Route>
-        <Route path="dashboard" element={isLoggedIn ?  <Dashboard onLogout={handleLogout}  /> : <Navigate to="/login" /> } />
+        <Route path="dashboard" element={!isLoggedIn ?  <Dashboard onLogout={handleLogout}  /> : <Navigate to="/login" /> } />
         <Route path="signup" element={<Signup setIsLoggedIn={setIsLoggedIn}/>} />
         <Route path="login" element={isLoggedIn ? <Navigate to="/dashboard"/> : <Login setIsLoggedIn={setIsLoggedIn} />} />
 

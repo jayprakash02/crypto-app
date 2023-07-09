@@ -18,9 +18,12 @@ const Submit = () => {
     service: "",
     subject: "",
     message: "",
+  attachment:null 
   });
 
+
   const handleChange = (e) => {
+
     setticketform({ ...ticketform, [e.target.name]: e.target.value });
   };
 
@@ -72,7 +75,10 @@ const Submit = () => {
 
       <div className="mt-4 mb-4">
         <p className="mb-2">Attachment (optional)</p>
-        <input className="px-2 py-2 rounded-lg bg-black w-full" />
+        <input type="file" name="attachment" onChange={
+            (e)=>setticketform({...ticketform,attachment:e.target.files[0]})
+        }
+        className="px-2 py-2 rounded-lg bg-black w-full" />
       </div>
       <button
         onClick={handleSubmit}
