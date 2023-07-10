@@ -5,7 +5,7 @@ import { baseURL } from "../constants/Constant";
 import { FiLoader } from "react-icons/fi";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
-const Signup = ({setIsLoggedIn}) => {
+const Signup = ({ setIsLoggedIn }) => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     sponsor: "",
@@ -32,9 +32,8 @@ const Signup = ({setIsLoggedIn}) => {
       });
 
       if (e.target.value.length === 7) {
-        console.log(e.target.value)
+        console.log(e.target.value);
         fetchSponsorName(e.target.value);
-
       }
     } else {
       setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -43,13 +42,15 @@ const Signup = ({setIsLoggedIn}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData); // Print the form data
 
     if (formData.confirmEmail === formData.email) {
       if (formData.password === formData.confirmPassword) {
         setLoading(true);
         const requestData = {
-          referrer_id: formData.sponsorId,
+          referrer_id:
+            formData.sponsor === "no" || !formData.sponsorId
+              ? "admin"
+              : formData.sponsorId,
           position: formData.position,
           username: `${formData.firstName} ${formData.lastName}`,
           country: formData.country,
@@ -58,24 +59,24 @@ const Signup = ({setIsLoggedIn}) => {
           password: formData.confirmPassword,
         };
 
-        // Send the data to the backend API 
+        // Send the data to the backend API
         axios
           .post(baseURL + "/api/users/signup", requestData)
           .then((response) => {
             setLoading(false); // Stop loading
 
             if (response.data.success) {
-              const { token, userId } = response.data;
+              const { token } = response.data;
               const userData = {
                 token: token,
                 email: formData.email,
-                userId: userId,
+                userId: response.data.data.userId,
               };
 
               localStorage.setItem("user_data", JSON.stringify(userData));
 
               toast.success("Registration successful");
-              setIsLoggedIn(true)
+              setIsLoggedIn(true);
               navigate("/dashboard");
             } else {
               toast.error("Something went wromg");
@@ -91,8 +92,10 @@ const Signup = ({setIsLoggedIn}) => {
             setLoading(false);
           });
       } else {
-        toast.error("Emails do not match");
+        toast.error("Passwords do not match");
       }
+    } else {
+      toast.error("Emails do not match");
     }
   };
 
@@ -101,7 +104,7 @@ const Signup = ({setIsLoggedIn}) => {
       .get(baseURL + `/api/users/name/${sponsorId}`)
       .then((response) => {
         const { data } = response;
-        console.log('response',response);
+        console.log("response", response);
 
         if (data.success) {
           setFormData({
@@ -139,8 +142,10 @@ const Signup = ({setIsLoggedIn}) => {
       <div className="w-1/2 px-24 text-center absolute top-20 ">
         <h1 className="mb-6 text-5xl font-semibold">Welcome to one ozo</h1>
         <p className="mb-6">
-         
-          <Link to="/login" className="font-semibold">Login</Link> if you already have an account
+          <Link to="/login" className="font-semibold">
+            Login
+          </Link>{" "}
+          if you already have an account
         </p>
 
         <div className="flex space-x-6 mb-4 max-w-[350px] text-center font-semibold items-center">
@@ -305,7 +310,10 @@ const Signup = ({setIsLoggedIn}) => {
             )}
           </button>
           <p className="text-center my-2 text-sm">
-          <Link to="/login" className="font-semibold">  Already have an account? sign in</Link>
+            <Link to="/login" className="font-semibold">
+              {" "}
+              Already have an account? sign in
+            </Link>
           </p>
         </div>
       </div>

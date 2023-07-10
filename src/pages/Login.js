@@ -33,7 +33,7 @@ const Login = ({ setIsLoggedIn }) => {
             const userData = {
               token: res.data.token,
               email: loginForm.email,
-              userId: res.data.userId,
+              userId: res.data.data.userId,
             };
             localStorage.setItem("user_data", JSON.stringify(userData));
             navigate("/dashboard"); // Redirect to the dashboard upon successful login
@@ -44,7 +44,15 @@ const Login = ({ setIsLoggedIn }) => {
         })
         .catch((err) => {
           console.log(err);
-          toast.error("Something went wrong, Please try again.");
+          if (
+            err.response.data.message === "Invalid email or you are a new user"
+          ) {
+            toast.error("Invalid email. Please register if you are a new user");
+          } else if (err.response.data.message === "Password is incorrect.") {
+            toast.error("Incorrect Password");
+          } else {
+            toast.error("Something went wrong, Please try again.");
+          }
         });
     } catch (error) {
       toast.error(error);

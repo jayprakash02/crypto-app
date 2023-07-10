@@ -1,55 +1,28 @@
 import axios from "axios";
 import { baseURL } from "../../../constants/Constant";
 import { toast } from "react-hot-toast";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
 export const EI = () => {
-  React.useEffect(() => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
     const userData = JSON.parse(localStorage.getItem("user_data"));
-    if (userData && userData?.token && userData?.email && userData?.userId) {
+    if (userData && userData.token && userData.email && userData.userId) {
       const headers = {
-        Authorization: `${userData?.token}`,
+        Authorization: userData.token,
       };
 
       axios
         .get(
-          baseURL +
-            `/api/career-rewards/${userData.userId}?email=${userData.email}`,
-          {
-            headers,
-          }
+          `${baseURL}/api/career-rewards/${userData.userId}?email=${userData.email}`,
+          { headers }
         )
-
         .then((response) => {
-          if (response.data.success) {
-            // amount
-            if (response.data.data?.amount) {
-              console.log(response.data.data.amount);
-            } else {
-              toast.error("Something went wrong");
-            }
-
-            // date
-            if (response.data.data?.date) {
-              console.log(response.data.data.date);
-            } else {
-              toast.error("Something went wrong");
-            }
-
-            // package name
-            if (response.data.data?.investment?.package?.package_name) {
-              console.log(response.data.data.investment.package.package_name);
-            } else {
-              toast.error("Something went wrong");
-            }
-
-            // percent
-            if (response.data.data?.investment?.package?.min_roi_low) {
-              console.log(response.data.data.investment.package.min_roi_low);
-            } else {
-              toast.error("Something went wrong");
-            }
+          if (response.data) {
+            setData(response.data.data);
           } else {
-            toast.error("Something went wromg");
+            toast.error("Something went wrong");
           }
         })
         .catch((error) => {
@@ -59,13 +32,14 @@ export const EI = () => {
           ) {
             toast.error("Invalid Request");
           } else {
-            toast.error("Something went wromg");
+            toast.error("Something went wrong");
           }
         });
     } else {
       toast.error("Please sign in again");
     }
   }, []);
+
   return (
     <>
       <h1 className="text-4xl px-12 mb-8">Extra Income Report</h1>
@@ -76,6 +50,22 @@ export const EI = () => {
         <div className="">Reward</div>
         <div className="">Date</div>
       </div>
+
+      {data.length > 0 ? (
+        data.map((entry, index) => (
+          <div
+            key={index}
+            className="bg-black w-full px-12 py-4 justify-between flex"
+          >
+            <div className="">{index + 1}</div>
+            <div className="">{entry.achievement}</div>
+            <div className="">{entry.reward_amount}</div>
+            <div className="">{entry.date}</div>
+          </div>
+        ))
+      ) : (
+        <p>No career rewards found.</p>
+      )}
     </>
   );
 };
