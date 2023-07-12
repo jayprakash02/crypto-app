@@ -955,11 +955,10 @@ Ozo and experience the power of trust in your investment endeavors
                 ease: [0, 0.71, 0.2, 1.01],
               },
             }}
-            className="max-w-[550px] w-full min-h-[450px] bg-neutral-900 rounded-2xl  ml-48 py-12 px-10 "
+            className=" w-full max-w-[950px] rounded-2xl  ml-28 py-12  "
           >
-        
-          </m.div>
-          <div className="max-w-[650px]  ml-16 min-h-[40vh]">
+        <img src="./images/calc.jpg" className=""/>
+        <div className="max-w-[450px]  absolute top-28 right-44 min-h-[40vh]">
           <m.h1
               initial={{
                 x: 75,
@@ -1021,6 +1020,8 @@ Ozo and experience the power of trust in your investment endeavors
 
             <Link to="earning" className="px-6 py-2 font-medium text-lg border rounded-full">Calculate Rewards</Link>
           </div>
+          </m.div>
+       
         </div>
       </div>
 

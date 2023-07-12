@@ -30,7 +30,10 @@ const Verification = ({ setIsLoggedIn }) => {
               Click to Verify
             </button>
           </div>
-          <div className="w-1/2"></div>
+          <div className="w-1/2">
+
+            <img src="./images/email.png" className=""/>
+          </div>
         </div>
 
         <div className="w-full">
