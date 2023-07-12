@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { toast } from "react-hot-toast";
 import FinalTree from "./FinalTree";
+import axios from "axios";
+import { baseURL } from "../../constants/Constant";
 
 const Genealogy = ({ genealogyState }) => {
   return (
@@ -20,66 +22,41 @@ const Referral = () => {
   const [RightReferral, setRightReferral] = useState(" Right Link dummy");
   const [copyState, setcopyState] = useState(false);
 
-  const dummyData = [
-    {
-      siNO: "1",
-      registred: "no",
-      network: "online",
-      user: "2",
-      email: "bourasx@fjflka.com",
-      country: "israel",
-      position: "right",
-      status: "active",
-      investment: "4200",
-    },
-    {
-      siNO: "1",
-      registred: "no",
-      network: "online",
-      user: "2",
-      email: "bourasx@fjflka.com",
-      country: "israel",
-      position: "right",
-      status: "active",
-      investment: "4200",
-    },
+  const [referralData, setReferralData] = useState([]);
 
-    {
-      siNO: "1",
-      registred: "no",
-      network: "online",
-      user: "2",
-      email: "bourasx@fjflka.com",
-      country: "israel",
-      position: "right",
-      status: "active",
-      investment: "4200",
-    },
+  useEffect(() => {
+    const fetchReferralData = async () => {
+      const userData = JSON.parse(localStorage.getItem("user_data"));
 
-    {
-      siNO: "1",
-      registred: "no",
-      network: "online",
-      user: "2",
-      email: "bourasx@fjflka.com",
-      country: "israel",
-      position: "right",
-      status: "active",
-      investment: "4200",
-    },
+      if (userData && userData.token && userData.email && userData?.userId) {
+        const headers = {
+          Authorization: userData.token,
+        };
 
-    {
-      siNO: "1",
-      registred: "no",
-      network: "online",
-      user: "2",
-      email: "bourasx@fjflka.com",
-      country: "israel",
-      position: "right",
-      status: "active",
-      investment: "4200",
-    },
-  ];
+        try {
+          const response = await axios.get(
+            `${baseURL}/api/referral/referrer/OP-AAAA?email=${userData?.email}`,
+            // `${baseURL}/api/referral/${userData?.userId}?email=${userData?.email}`,
+            { headers }
+          );
+
+          if (response.data.success) {
+            console.log(response);
+            setReferralData(response.data.data);
+          } else {
+            toast.error("Failed to fetch referral data");
+          }
+        } catch (error) {
+          toast.error("An error occurred while fetching referral data");
+        }
+      } else {
+        toast.error("Please sign in again");
+      }
+    };
+
+    fetchReferralData();
+  }, []);
+
   return (
     <div className="min-h-[90vh] bg-neutral-900 pt-4 pb-16   w-full">
       <div className="w-full max-w-6xl mx-auto">
@@ -134,9 +111,9 @@ const Referral = () => {
             </th>
             <th className=" w-full max-w-[80px] ml-4">SI No</th>
             <th className=" w-full max-w-[140px] ml-4">Registered</th>
-            <th className=" w-full max-w-[140px] ml-4">Network</th>
+            {/* <th className=" w-full max-w-[140px] ml-4">Network</th> */}
             <th className=" w-full max-w-[140px] ml-4 overflow-hidden">User</th>
-            <th className=" w-full max-w-[180px] ml-4 overflow-hidden">
+            <th className=" w-full max-w-[250px] ml-4 overflow-hidden">
               Email
             </th>
             <th className=" w-full max-w-[160px] ml-4">Country/phone</th>
@@ -145,14 +122,14 @@ const Referral = () => {
             <th className=" w-full max-w-[140px] ml-4">Investment</th>
           </thead>
           <tbody className="w-full">
-            {dummyData.map((e, key) => {
+            {referralData.map((data, index) => {
+              const { referral, userData, walletData } = data;
               return (
                 <tr
-                  key={key}
-                  className="bg-black w-full items-center text-left px-4 py-4 flex "
+                  key={index}
+                  className="bg-black w-full items-center text-left px-4 py-4 flex"
                 >
-                  <td className="">
-                    {" "}
+                  <td>
                     <input
                       type="checkbox"
                       className="rounded-sm bg-black border-2 p-2"
@@ -160,19 +137,31 @@ const Referral = () => {
                       id="referralDetail"
                     />
                   </td>
-                  <td className=" w-full max-w-[80px] ml-4">{e.siNO}</td>
-                  <td className=" w-full max-w-[140px] ml-4">{e.registred}</td>
-                  <td className=" w-full max-w-[140px] ml-4">{e.network}</td>
-                  <td className=" w-full max-w-[140px] ml-4 overflow-hidden">
-                    {e.user}
+                  <td className="w-full max-w-[80px] ml-4">{referral.id}</td>
+                  <td className="w-full max-w-[140px] ml-4">
+                    {referral.registered_on ? "Yes" : "No"}
                   </td>
-                  <td className=" w-full max-w-[180px] ml-4 overflow-hidden">
-                    {e.email}
+                  {/* <td className="w-full max-w-[140px] ml-4">
+                    {referral.position}
+                  </td> */}
+                  <td className="w-full max-w-[140px] ml-4 overflow-hidden">
+                    {userData.name}
                   </td>
-                  <td className=" w-full max-w-[160px] ml-4">{e.country}</td>
-                  <td className=" w-full max-w-[140px] ml-4">{e.position}</td>
-                  <td className=" w-full max-w-[140px] ml-4">{e.status}</td>
-                  <td className=" w-full max-w-[140px] ml-4">{e.investment}</td>
+                  <td className="w-full max-w-[250px] ml-4 overflow-hidden">
+                    {userData.email}
+                  </td>
+                  <td className="w-full max-w-[160px] ml-4">
+                    {userData.country}/{userData.phone}
+                  </td>
+                  <td className="w-full max-w-[140px] ml-4">
+                    {referral.position}
+                  </td>
+                  <td className="w-full max-w-[140px] ml-4">
+                    {referral.status}
+                  </td>
+                  <td className="w-full max-w-[140px] ml-4">
+                    {walletData[0]?.total_investment || 0}
+                  </td>
                 </tr>
               );
             })}

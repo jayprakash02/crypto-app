@@ -5,28 +5,28 @@ const FinalTree = () => {
     <div className="flex flex-col items-center">
       <Binary first={true} />
 
-      <div className="w-480">
-        <HSeparator />
+      <div>
+        <div style={{ width: 640, height: "2px" }} className="bg-white "></div>
       </div>
-      <div className="flex gap-20">
-        <Binary />
-        <Binary />
-      </div>
-
-      <div className="flex gap-20">
-        <HSeparator width="280" />
-        <HSeparator width="280" />
-      </div>
-      <div className="flex gap-20">
-        <Binary />
-        <Binary />
+      <div className="flex " style={{ gap: 550 }}>
         <Binary />
         <Binary />
       </div>
 
-      <div className="flex gap-20">
+      <div className="flex " style={{ gap: 330, marginTop: 0 }}>
+        <div style={{ width: 340 }} className="h-1 bg-white "></div>
+        <div style={{ width: 340 }} className="h-1 bg-white"></div>
+      </div>
+      <div className="flex" style={{ gap: 246 }}>
+        <Binary />
+        <Binary />
+        <Binary />
+        <Binary />
+      </div>
+
+      <div className="flex" style={{ gap: 165 }}>
         {Array.from({ length: 4 }, (_, i) => (
-          <HSeparator width="152" key={i} />
+          <div key={i} style={{ width: 175 }} className="h-1 bg-white"></div>
         ))}
       </div>
 
@@ -83,14 +83,17 @@ const Binary = ({ last, first }) => {
 
   return (
     <div
-      className={`flex items-center justify-center flex-col relative ${
-        !first ? "border-t mt-8 pt-8" : ""
-      }`}
+      className={`flex items-center justify-center flex-col relative `}
       onMouseEnter={handleImageHover}
       onMouseLeave={handleImageLeave}
       onClick={handleImageClick}
     >
-      {!first && <VSeparator height="30" />}
+      {!first && (
+        <div
+          style={{ height: 30, paddingTop: 0 }}
+          className="w-1 bg-white"
+        ></div>
+      )}
       <div className="w-12 h-12 bg-gray-300"></div>
       {showTree && (
         <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -mt-40">
@@ -98,17 +101,23 @@ const Binary = ({ last, first }) => {
         </div>
       )}
       <span className="mt-2">John Smith</span>
-      {!last && <VSeparator height="30" />}
+      {!last && (
+        <div
+          style={{ height: 30, paddingBottom: 0, marginBottom: 0 }}
+          className="w-1 bg-white"
+        ></div>
+      )}
     </div>
   );
 };
-
 const HSeparator = ({ width }) => {
-  return <div className={`h-1 w-${width || "full"} bg-gray-300 my-4`}></div>;
+  return <div style={{ width: width }} className="h-1 bg-white my-4"></div>;
 };
 
 const VSeparator = ({ height }) => {
-  return <div className={`w-1 h-${height || "full"} bg-gray-300`}></div>;
+  return (
+    <div style={{ height: height || "100%" }} className="w-1 bg-white"></div>
+  );
 };
 
 function Card({ children }) {

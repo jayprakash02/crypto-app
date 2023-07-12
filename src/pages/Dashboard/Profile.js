@@ -1,31 +1,157 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Profile.css";
+import { toast } from "react-hot-toast";
+import { baseURL } from "../../constants/Constant";
+import axios from "axios";
+import bcrypt from "bcryptjs";
 
 import * as yup from "yup";
 import { Field, Form, Formik } from "formik";
 const Profile = ({ profileStateNav }) => {
-  const [profileState, setprofileState] = useState("pi");
+  const [profileState, setProfileState] = useState("pi");
 
   // profileformstate
-  const [profileForm, setprofileForm] = useState({
-    fName: "Bourax",
-    lName: "Pavelion",
-    email: "bourax@fknf.com",
-    phoneNo: "546513181",
-    country: "israel",
-    pinCode: "4520",
+  const [profileForm, setProfileForm] = useState({
+    fName: "",
+    lName: "",
+    email: "",
+    phoneNo: "",
+    country: "",
+    pinCode: "",
   });
-
+  const [totalInvestment, setTotalInvestment] = useState("");
+  const [totalProfit, setTotalProfit] = useState("");
+  const [netIncome, setNetIncome] = useState("");
+  const [data, setData] = useState([]);
   // Profile Card
-  const [userID, setuserID] = useState("546153");
-  const [securityPIN, setsecurityPIN] = useState("4520");
-  const [sponsorName, setsponsorName] = useState("Pavelion");
-  const [sponsorID, setsponsorID] = useState("OP-AAAA");
+  const [userID, setUserID] = useState("");
+  const [securityPIN, setSecurityPIN] = useState("");
+  const [sponsorName, setSponsorName] = useState("");
+  const [sponsorID, setSponsorID] = useState("");
+  const [currentpasswordcorrect, setCurrentpasswordcorrect] = useState("");
+  useEffect(() => {
+    const userData = JSON.parse(localStorage.getItem("user_data"));
+    if (userData && userData.token && userData.email && userData.userId) {
+      const headers = {
+        Authorization: userData.token,
+      };
+
+      axios
+        .get(
+          `${baseURL}/api/users/${userData.userId}?email=${userData.email}`,
+          { headers }
+        )
+        .then((response) => {
+          if (response.data.success) {
+            const responseData = response.data.data;
+            setProfileForm({
+              fName:
+                responseData.name && responseData.name.split(" ")[0]
+                  ? responseData.name.split(" ")[0]
+                  : "",
+              lName:
+                responseData.name && responseData.name.split(" ")[1]
+                  ? responseData.name.split(" ")[1]
+                  : "",
+              email: responseData.email,
+              phoneNo: responseData.phone || "",
+              country: responseData.country || "",
+              pinCode: responseData.security_pin || "",
+            });
+            setUserID(responseData.userId);
+            setSecurityPIN(responseData.security_pin);
+            setSponsorName(responseData.sponsorName);
+            setSponsorID(responseData.sponsorId);
+            setCurrentpasswordcorrect(responseData.password);
+            setData(responseData);
+          } else {
+            toast.error("Something went wrong");
+          }
+        })
+        .catch((error) => {
+          if (
+            error?.response?.data?.message ===
+            "Token email does not match request email"
+          ) {
+            toast.error("Invalid Request");
+          } else {
+            toast.error("Something went wrong");
+          }
+        });
+      axios
+        .get(
+          `${baseURL}/api/wallets/${userData.userId}?email=${userData.email}`,
+          { headers }
+        )
+        .then((response) => {
+          if (response.data.success) {
+            console.log(response.data.data);
+            const walletData = response.data.data[0];
+            const referralWallet = parseFloat(walletData.referral_wallet_trade);
+            const binaryWallet = parseFloat(walletData.binary_wallet);
+            const totalInvestment = parseFloat(walletData.total_investment);
+            const roiWallet = parseFloat(walletData.roi_wallet_mac);
+            const totalDeposit = parseFloat(walletData.deposit_wallet_tec);
+
+            const totalProfit = roiWallet - totalDeposit;
+            const netIncome = referralWallet + binaryWallet + totalProfit;
+
+            setTotalInvestment(totalInvestment.toFixed(2));
+            setTotalProfit(totalProfit.toFixed(2));
+            setNetIncome(netIncome.toFixed(2));
+          } else {
+            toast.error("Something went wrong");
+          }
+        })
+        .catch((error) => {
+          if (
+            error?.response?.data?.message ===
+            "Token email does not match request email"
+          ) {
+            toast.error("Invalid Request");
+          } else {
+            toast.error("Something went wrong");
+          }
+        });
+      axios
+        .get(
+          `${baseURL}/api/referral/binary-tree/${userData.userId}?email=${userData.email}`,
+          { headers }
+        )
+        .then((response) => {
+          if (response.data.success) {
+            const binaryTreeData = response.data.data;
+            const leftCount = binaryTreeData.filter(
+              (node) => node.position === "left"
+            ).length;
+            const rightCount = binaryTreeData.filter(
+              (node) => node.position === "right"
+            ).length;
+            const totalCount = binaryTreeData.length;
+
+            setLeft(leftCount.toString());
+            setRight(rightCount.toString());
+            setTotal(totalCount.toString());
+          } else {
+            toast.error("Something went wrong");
+          }
+        })
+        .catch((error) => {
+          if (
+            error?.response?.data?.message ===
+            "Token email does not match request email"
+          ) {
+            toast.error("Invalid Request");
+          } else {
+            toast.error("Something went wrong");
+          }
+        });
+    } else {
+      toast.error("Please sign in again");
+    }
+  }, []);
 
   // cardinvestment
-  const [totalInvestment, settotalInvestment] = useState("3859000");
-  const [totalprofit, settotalprofit] = useState("38000");
-  const [netincome, setnetincome] = useState("38000");
 
   // referral
   const [left, setLeft] = useState("4");
@@ -36,11 +162,49 @@ const Profile = ({ profileStateNav }) => {
   const [open, setopen] = useState(false);
 
   const handleChange = (e) => {
-    setprofileForm({ ...profileForm, [e.target.name]: e.target.value });
+    setProfileForm({ ...profileForm, [e.target.name]: e.target.value });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Profile Form", profileForm);
+  };
+  const [selectedDocumentType, setSelectedDocumentType] = useState("");
+  const [selectedFile, setSelectedFile] = useState(null);
+  const handleVerification = async () => {
+    if (!selectedDocumentType || !selectedFile) {
+      toast.error("Please select a document type and upload a document");
+      return;
+    }
+
+    const userData = JSON.parse(localStorage.getItem("user_data"));
+
+    if (userData && userData.token && userData.userId) {
+      const headers = {
+        Authorization: userData.token,
+      };
+
+      const fileFormData = new FormData();
+      fileFormData.append("file", selectedFile);
+      fileFormData.append("docType", selectedDocumentType);
+
+      try {
+        const response = await axios.post(
+          `${baseURL}/api/upload/${userData.userId}`,
+          fileFormData,
+          { headers }
+        );
+
+        if (response.data.success) {
+          toast.success("Document uploaded successfully");
+        } else {
+          toast.error("Failed to upload document");
+        }
+      } catch (error) {
+        toast.error("An error occurred while uploading the document");
+      }
+    } else {
+      toast.error("Please sign in again");
+    }
   };
 
   return (
@@ -77,11 +241,11 @@ const Profile = ({ profileStateNav }) => {
                   {" "}
                   <p>
                     Total Profit
-                    <br /> <span>${totalprofit}</span>
+                    <br /> <span>${totalProfit}</span>
                   </p>
                   <p>
                     Net Income
-                    <br /> <span>${netincome}</span>
+                    <br /> <span>${netIncome}</span>
                   </p>
                 </div>
               </div>
@@ -119,19 +283,19 @@ const Profile = ({ profileStateNav }) => {
               </div>
               <div className="py-8 flex space-x-10 ">
                 <button
-                  onClick={() => setprofileState("pi")}
+                  onClick={() => setProfileState("pi")}
                   className="font-semibold"
                 >
                   Personal information
                 </button>
                 <button
-                  onClick={() => setprofileState("security")}
+                  onClick={() => setProfileState("security")}
                   className="font-semibold"
                 >
                   Security
                 </button>
                 <button
-                  onClick={() => setprofileState("notification")}
+                  onClick={() => setProfileState("notification")}
                   className="font-semibold"
                 >
                   Notification
@@ -146,7 +310,12 @@ const Profile = ({ profileStateNav }) => {
                   handleSubmit={handleSubmit}
                 />
               )}
-              {profileState === "security" && <Security />}
+              {profileState === "security" && (
+                <Security
+                  currentpasswordcorrect={currentpasswordcorrect}
+                  currentPin={securityPIN}
+                />
+              )}
               {profileState === "notification" && <Notification />}
             </div>
           </div>
@@ -185,13 +354,22 @@ const Profile = ({ profileStateNav }) => {
 
           <div className="w-full flex justify-center mb-12 items-center min-h-[10vh]">
             <div className="max-w-2xl mt-6 text-xl flex justify-between w-full rounded-full border-2  ">
-              <button className=" rounded-full py-2 px-12  focus-within:bg-gradient-to-r focus-within:from-indigo-800 focus-within:to-purple-700">
+              <button
+                className="rounded-full py-2 px-12 focus-within:bg-gradient-to-r focus-within:from-indigo-800 focus-within:to-purple-700"
+                onClick={() => setSelectedDocumentType("PASSPORT")}
+              >
                 Passport
               </button>
-              <button className=" rounded-full py-2 px-12  focus-within:bg-gradient-to-r focus-within:from-indigo-800 focus-within:to-purple-700">
+              <button
+                className="rounded-full py-2 px-12 focus-within:bg-gradient-to-r focus-within:from-indigo-800 focus-within:to-purple-700"
+                onClick={() => setSelectedDocumentType("NATIONAL_ID")}
+              >
                 National ID
               </button>
-              <button className=" rounded-full py-2 px-12  focus-within:bg-gradient-to-r focus-within:from-indigo-800 focus-within:to-purple-700">
+              <button
+                className="rounded-full py-2 px-12 focus-within:bg-gradient-to-r focus-within:from-indigo-800 focus-within:to-purple-700"
+                onClick={() => setSelectedDocumentType("DRIVING_LICENSE")}
+              >
                 Driving License
               </button>
             </div>
@@ -207,6 +385,7 @@ const Profile = ({ profileStateNav }) => {
                     className="mt-2 px-4 py-2 border rounded-xl bg-black w-full"
                     id="document"
                     name="document"
+                    onChange={(e) => setSelectedFile(e.target.files[0])}
                   />
                 </div>
               </div>
@@ -228,7 +407,10 @@ const Profile = ({ profileStateNav }) => {
               <p>All The Personal Information I have Entered Is Correct.</p>
             </div>
 
-            <button className="px-12 rounded-full py-2 bg-gradient-to-r from-indigo-400 to-fuchsia-700">
+            <button
+              className="px-12 rounded-full py-2 bg-gradient-to-r from-indigo-400 to-fuchsia-700"
+              onClick={handleVerification}
+            >
               Verify
             </button>
           </div>
@@ -240,14 +422,65 @@ const Profile = ({ profileStateNav }) => {
 
 export default Profile;
 
-const FormPasswordComponent = ()=>{
+const FormPasswordComponent = ({ currentpasswordcorrect }) => {
   const [currentpassword, setcurrentpassword] = useState("");
   const [newpassword, setnewpassword] = useState("");
   const [confirmpassword, setconfirmpassword] = useState("");
 
-  const handleChangePassword = () => {
+  const handleChangePassword = async (
+    currentpassword,
+    newpassword,
+    confirmpassword
+  ) => {
+    // Check if new password and confirm password match
+    if (newpassword !== confirmpassword) {
+      toast.error("New password and confirm password do not match");
+      return;
+    }
 
+    // Check if current password is correct
+    const passwordMatch = await bcrypt.compare(
+      currentpassword,
+      currentpasswordcorrect
+    );
+
+    if (!passwordMatch) {
+      toast.error("Current password is incorrect");
+      return;
+    }
+
+    const userData = JSON.parse(localStorage.getItem("user_data"));
+
+    if (userData && userData.token && userData.email) {
+      const headers = {
+        Authorization: userData.token,
+      };
+
+      const body = {
+        email: userData.email,
+        password: newpassword,
+      };
+
+      try {
+        const response = await axios.put(
+          `${baseURL}/api/users/updatePassword`,
+          body,
+          { headers }
+        );
+
+        if (response.data.success) {
+          toast.success("Password updated successfully");
+        } else {
+          toast.error("Failed to update password");
+        }
+      } catch (error) {
+        toast.error("An error occurred while updating the password");
+      }
+    } else {
+      toast.error("Please sign in again");
+    }
   };
+
   const FormSchema = yup.object().shape({
     pass: yup
       .string()
@@ -260,161 +493,233 @@ const FormPasswordComponent = ()=>{
       .string()
       .oneOf([yup.ref("pass"), null], 'Must match "password" field value'),
   });
-  return(
+  return (
     <Formik
-    initialValues={{
-      name: "",
-    }}
-    validationSchema={FormSchema}
-    onSubmit={(values) => {
-      console.log(values);
-    }}
-  >
-    {({ errors }) => {
-      return <Form className="space-y-4">
-        
-      <div>
-        <label className="" htmlFor="currentpassword">
-          Current Password
-        </label>
-        <input
-          type="password"
-          className="mt-2 px-4 py-2 rounded-xl bg-black w-full"
-          id="currentpassword"
-          value={currentpassword}
-          onChange={(e) => setcurrentpassword(e.target.value)}
-          name="currentpassword"
-        />
-      </div>
-      <div>
-        <label className="" htmlFor="newpassword">
-          New Password
-          <Field
-            type="password"
-            name="pass"
-            className="mt-2 px-4 py-2 rounded-xl bg-black w-full"
-            // value={newpassword}
-            // onChange={(e) => setnewpassword(e.target.value)}
-          />
-        </label>
-        {errors.pass && <p>{errors.pass}</p>}
-       
-      </div>
-      <div>
-        <label className="" htmlFor="confirmpassword">
-          Confirm Password
-          <Field
-            type="password"
-            name="confirm"
-            className="mt-2 px-4 py-2 rounded-xl bg-black w-full"
-            // value={confirmpassword}
-            // onChange={handleChangePassword}
-          />
-        </label>
-        {errors.confirm && <p>{errors.confirm}</p>}
-     
-      </div>
-      <button
-        type="submit"
-        className="bg-gradient-to-r from-indigo-400 to-fuchsia-500 rounded-xl px-12 py-3   text-white "
-      >
-        Save
-      </button>
-    </Form>
-    }}
-  </Formik>
+      initialValues={{
+        name: "",
+      }}
+      validationSchema={FormSchema}
+      onSubmit={(values) => {}}
+    >
+      {({ errors }) => {
+        return (
+          <Form className="space-y-4">
+            <div>
+              <label className="" htmlFor="currentpassword">
+                Current Password
+              </label>
+              <input
+                type="password"
+                className="mt-2 px-4 py-2 rounded-xl bg-black w-full"
+                id="currentpassword"
+                value={currentpassword}
+                onChange={(e) => setcurrentpassword(e.target.value)}
+                name="currentpassword"
+              />
+            </div>
+            <div>
+              <label className="" htmlFor="newpassword">
+                New Password
+                <Field
+                  type="password"
+                  name="pass"
+                  className="mt-2 px-4 py-2 rounded-xl bg-black w-full"
+                  // value={newpassword}
+                  onChange={(e) => setnewpassword(e.target.value)}
+                />
+              </label>
+              {errors.pass && <p>{errors.pass}</p>}
+            </div>
+            <div>
+              <label className="" htmlFor="confirmpassword">
+                Confirm Password
+                <Field
+                  type="password"
+                  name="confirm"
+                  className="mt-2 px-4 py-2 rounded-xl bg-black w-full"
+                  // value={confirmpassword}
+                  onChange={(e) => setconfirmpassword(e.target.value)}
+                />
+              </label>
+              {errors.confirm && <p>{errors.confirm}</p>}
+            </div>
+            <button
+              type="submit"
+              className="bg-gradient-to-r from-indigo-400 to-fuchsia-500 rounded-xl px-12 py-3   text-white "
+              onClick={() =>
+                handleChangePassword(
+                  currentpassword,
+                  newpassword,
+                  confirmpassword
+                )
+              }
+            >
+              Save
+            </button>
+          </Form>
+        );
+      }}
+    </Formik>
   );
-}
+};
 
-const SecurityPasswordComponent = ()=>{
+const SecurityPasswordComponent = ({ currentPin }) => {
+  const handleSecurityChange = async (values) => {
+    const { currentSecurity, pin, confirmPin } = values;
+    console.log(currentSecurity, pin, confirmPin);
+    // Check if new pin and confirm pin match
+    if (pin !== confirmPin) {
+      toast.error("New pin and confirm pin do not match");
+      return;
+    }
+    console.log(currentSecurity, currentPin);
+    const currentSecurityNumber = parseInt(currentSecurity, 10);
+    // Check if current security pin is correct
+    if (currentSecurityNumber !== currentPin) {
+      toast.error("Current security pin is incorrect");
+      return;
+    }
+
+    const userData = JSON.parse(localStorage.getItem("user_data"));
+
+    if (userData && userData.token && userData.email) {
+      const headers = {
+        Authorization: userData.token,
+      };
+
+      const body = {
+        email: userData.email,
+        pin: pin,
+      };
+
+      try {
+        const response = await axios.put(
+          `${baseURL}/api/users/changePinByEmail`,
+          body,
+          { headers }
+        );
+
+        if (response.data.success) {
+          toast.success("Security pin updated successfully");
+        } else {
+          toast.error("Failed to update security pin");
+        }
+      } catch (error) {
+        toast.error("An error occurred while updating the security pin");
+      }
+    } else {
+      toast.error("Please sign in again");
+    }
+  };
+
   const FormSchema = yup.object().shape({
-    pin: yup
-      .number().min(4),
- 
+    pin: yup.number().min(4),
 
-  
-  confirmPin: yup
+    confirmPin: yup
       .number()
       .oneOf([yup.ref("pin"), null], 'Must match " New Pin" field value'),
   });
-  return(
+  return (
     <Formik
-    initialValues={{
-     
-    }}
-    validationSchema={FormSchema}
-    onSubmit={(values) => {
-      console.log(values);
-    }}>
-   {
-    ({errors}) =>(
-      <Form className="space-y-4">
-      <h1 className="text-xl font-medium mb-4">Security Pin</h1>
-  
-        <div>
-          <label className="" htmlFor="currentsecurity">
-            Current Security Pin
-          </label>
-          <input
-            type="password"
-            className="mt-2 px-4 py-2 rounded-xl bg-black w-full"
-            id="currentsecurity"
-            name="currentsecurity"
-          />
-        </div>
-        <div>
-          <label className="" htmlFor="pin">
-            New Security Pin
+      initialValues={{}}
+      validationSchema={FormSchema}
+      onSubmit={(values) => {
+        handleSecurityChange(values);
+      }}
+    >
+      {({ errors }) => (
+        <Form className="space-y-4">
+          <h1 className="text-xl font-medium mb-4">Security Pin</h1>
+
+          <div>
+            <label className="" htmlFor="currentSecurity">
+              Current Security Pin
+            </label>
             <Field
-            type="password"
-            className="mt-2 px-4 py-2 rounded-xl bg-black w-full"
-            id="pin"
-            name="pin"
-          />
-          </label>
-          {errors.pin && <p>{errors.pin}</p>}
-       
-        </div>
-        <div>
-          <label className="" htmlFor="confirmPin">
-            Confirm Security Pin
-            <Field
-            type="password"
-            className="mt-2 px-4 py-2 rounded-xl bg-black w-full"
-            id="confirmPin"
-            name="confirmPin"
-          />
-          </label>
-          {errors.confirmPin && <p>{errors.confirmPin}</p>}
-
-        
-        </div>
-        <button  type="submit" className="bg-gradient-to-r from-indigo-400 to-fuchsia-500 rounded-xl px-12 py-3   text-white ">
-          Save
-        </button>
-      </Form>
-    )
-   }
-  </Formik>
-  )
-}
-const Security = () => {
-
-
-
+              type="password"
+              className="mt-2 px-4 py-2 rounded-xl bg-black w-full"
+              id="currentSecurity"
+              name="currentSecurity"
+            />
+            {errors.currentSecurity && <p>{errors.currentSecurity}</p>}
+          </div>
+          <div>
+            <label className="" htmlFor="pin">
+              New Security Pin
+              <Field
+                type="password"
+                className="mt-2 px-4 py-2 rounded-xl bg-black w-full"
+                id="pin"
+                name="pin"
+              />
+            </label>
+            {errors.pin && <p>{errors.pin}</p>}
+          </div>
+          <div>
+            <label className="" htmlFor="confirmPin">
+              Confirm Security Pin
+              <Field
+                type="password"
+                className="mt-2 px-4 py-2 rounded-xl bg-black w-full"
+                id="confirmPin"
+                name="confirmPin"
+              />
+            </label>
+            {errors.confirmPin && <p>{errors.confirmPin}</p>}
+          </div>
+          <button
+            type="submit"
+            className="bg-gradient-to-r from-indigo-400 to-fuchsia-500 rounded-xl px-12 py-3   text-white "
+          >
+            Save
+          </button>
+        </Form>
+      )}
+    </Formik>
+  );
+};
+const Security = ({ currentpasswordcorrect, currentPin }) => {
   return (
     <div className="space-y-4">
       <div>
-        {console.log
-        ("1")}
-    <FormPasswordComponent />
+        {console.log(currentPin)}
+        <FormPasswordComponent
+          currentpasswordcorrect={currentpasswordcorrect}
+        />
       </div>
-     <SecurityPasswordComponent/>
+      <SecurityPasswordComponent currentPin={currentPin} />
     </div>
   );
 };
 
 const PI = ({ profileForm, open, setopen, handleChange, handleSubmit }) => {
+  const handleSaveProfile = () => {
+    const userData = JSON.parse(localStorage.getItem("user_data"));
+
+    if (userData && userData.token && userData.email && userData.userId) {
+      const headers = {
+        Authorization: userData.token,
+      };
+      profileForm.name = profileForm.fName + profileForm.lName;
+      axios
+        .put(`${baseURL}/api/users/edit/user/${userData.userId}`, profileForm, {
+          headers,
+        })
+        .then((response) => {
+          if (response.data.success) {
+            toast.success("Profile saved successfully");
+          } else {
+            toast.error("Failed to save profile");
+          }
+        })
+        .catch((error) => {
+          toast.error("An error occurred while saving the profile");
+        });
+    } else {
+      toast.error("Please sign in again");
+    }
+  };
+
   return (
     <div>
       <div className="w-full grid grid-cols-2 gap-4">
@@ -478,7 +783,7 @@ const PI = ({ profileForm, open, setopen, handleChange, handleSubmit }) => {
             id="country"
           />
         </div>
-        <div>
+        {/* <div>
           <label className="text-gray-600" htmlFor="fn">
             Pin Code
           </label>
@@ -489,7 +794,7 @@ const PI = ({ profileForm, open, setopen, handleChange, handleSubmit }) => {
             className=" px-4 py-1 rounded-lg text-black font-medium w-full"
             id="pinCode"
           />
-        </div>
+        </div> */}
       </div>
       <div className="w-full flex justify-end space-x-6 mt-4 ">
         <button
@@ -566,7 +871,7 @@ const PI = ({ profileForm, open, setopen, handleChange, handleSubmit }) => {
                   id="country"
                 />
               </div>
-              <div>
+              {/* <div>
                 <label className="text-gray-600" htmlFor="fn">
                   Pin Code
                 </label>
@@ -577,7 +882,7 @@ const PI = ({ profileForm, open, setopen, handleChange, handleSubmit }) => {
                   className=" px-4 py-1 rounded-lg text-black font-medium w-full"
                   id="pinCode"
                 />
-              </div>
+              </div> */}
             </div>
             <div className="w-full flex justify-end space-x-6 mt-4 ">
               <button
@@ -587,7 +892,7 @@ const PI = ({ profileForm, open, setopen, handleChange, handleSubmit }) => {
                 Cancel
               </button>
               <button
-                onClick={handleSubmit}
+                onClick={handleSaveProfile}
                 className="px-6 py-2 bg-blue-600 text-white rounded-lg"
               >
                 Save

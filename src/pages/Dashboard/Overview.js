@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { toast } from "react-hot-toast";
 import { AiOutlineCaretDown, AiOutlineCaretUp } from "react-icons/ai";
+import { baseURL } from "../../constants/Constant";
+import axios from "axios";
 const Overview = ({ setNav }) => {
-  useEffect(() => {}, []);
-
+  const [data, setData] = useState([]);
   // Overview state
   const [totalInvestmentRevenue, setTotalInvestmentRevenue] =
     useState("981.567.000");
@@ -21,18 +22,55 @@ const Overview = ({ setNav }) => {
     useState("95");
 
   //wallets
-  const [depositWallet, setdepositWallet] = useState("45.215.000");
+  const [depositWallet, setdepositWallet] = useState("0");
   const [roiWallet, setroiWallet] = useState("50.215.000");
   const [rbWallet, setrbWallet] = useState("0.215.000");
   const [interestWallet, setinterestWallet] = useState("  60.215.000");
   const [ozoToken, setozoToken] = useState("70.215.000");
+  const [LeftReferral, setLeftReferral] = useState(" Left Link dummy");
+  const [RightReferral, setRightReferral] = useState(" Right Link dummy");
+  const [copyState, setcopyState] = useState(false);
+
+  useEffect(() => {
+    const userData = JSON.parse(localStorage.getItem("user_data"));
+    if (userData && userData.token && userData.email && userData.userId) {
+      const headers = {
+        Authorization: userData.token,
+      };
+
+      axios
+        .get(
+          `${baseURL}/api/wallets/${userData.userId}?email=${userData.email}`,
+          { headers }
+        )
+        .then((response) => {
+          console.log(response);
+          if (response.data.success) {
+            setData(response.data.data);
+            setdepositWallet(response.data.data[0].deposit_wallet_tec);
+            console.log(response.data.data.deposit_wallet_tec);
+          } else {
+            toast.error("Something went wrong");
+          }
+        })
+        .catch((error) => {
+          if (
+            error?.response?.data?.message ===
+            "Token email does not match request email"
+          ) {
+            toast.error("Invalid Request");
+          } else {
+            toast.error("Something went wrong");
+          }
+        });
+    } else {
+      toast.error("Please sign in again");
+    }
+  }, []);
 
   // Referral Links
   // left link
   // right link
-  const [LeftReferral, setLeftReferral] = useState(" Left Link dummy");
-  const [RightReferral, setRightReferral] = useState(" Right Link dummy");
-  const [copyState, setcopyState] = useState(false);
 
   //referral details
   // Dummy data
@@ -129,24 +167,61 @@ const Overview = ({ setNav }) => {
 
   const [transferModalOpen, settransferModalOpen] = useState(false);
 
-    const [transferForm, settransferForm] = useState({
-      from:"",
-      to:"",
-      amount:"",
-      amountrecieve:""
-    })
+  const [transferForm, settransferForm] = useState({
+    from: "",
+    to: "",
+    amount: "",
+    amountrecieve: "",
+  });
 
-   const transferHandleChange = (e) => {
+  const transferHandleChange = (e) => {
     settransferForm({
       ...transferForm,
       [e.target.name]: e.target.value,
     });
   };
 
-  const [Transferfrom, setTransferfrom] = useState("")
-const [Transferto, setTransferto] = useState("")
-const [transferToOpen,settransferToOpen] = useState
-(false)
+  const [Transferfrom, setTransferfrom] = useState("");
+  const [Transferto, setTransferto] = useState("");
+  const [transferToOpen, settransferToOpen] = useState(false);
+  const handleDeposit = async () => {
+    const userData = JSON.parse(localStorage.getItem("user_data"));
+    if (userData && userData.token && userData.email && userData.userId) {
+      const headers = {
+        Authorization: userData.token,
+      };
+      try {
+        const formData = {
+          from_currency: "LTCT",
+          to_currency: "LTCT",
+          amount,
+          buyer_name: "Ri",
+          buyer_email: userData?.email,
+          custom: `["${userData?.userId}","LTCT"]`,
+          ipn_endpoint: "/api/payment/deposit/ipn",
+          email: userData?.email,
+        };
+
+        const response = await axios.post(
+          `${baseURL}/api/payment/create_transaction`,
+          formData,
+          {
+            headers,
+          }
+        );
+
+        if (response.data.success) {
+          console.log(response.data.data.checkout_url);
+          // Open the checkout window in a new window/tab
+          window.open(response.data.data.checkout_url);
+        } else {
+          console.error("Error creating transaction:", data);
+        }
+      } catch (error) {
+        console.error("Error creating transaction:", error);
+      }
+    }
+  };
   return (
     <div className="bg-black relative max-w-full">
       {/* Modals  */}
@@ -426,7 +501,7 @@ const [transferToOpen,settransferToOpen] = useState
               )}
             </div>
             <button
-              // onClick={handleModal}
+              onClick={handleDeposit}
               className="w-full  bg-gradient-to-r text-white from-indigo-700 to-fuchsia-700 rounded-xl p-3"
             >
               Continue
@@ -797,140 +872,128 @@ const [transferToOpen,settransferToOpen] = useState
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label htmlFor="from" className="text-sm ">
-               From
+                  From
                 </label>
                 <div className="flex flex-col relative ">
-              <button
-                onClick={() => setOpenTOKEN((prev) => !prev)}
-                className="flex items-center space-x-2 bg-black px-6 py-3 mt-4 mb-6  rounded-2xl w-full "
-              >
-                <span> {Transferfrom}</span>
-                {!token ? (
-                  <AiOutlineCaretDown className="h-8 text-white" />
-                ) : (
-                  <AiOutlineCaretUp className="h-8 text-white" />
-                )}
-              </button>
-              {openTOKEN && (
-                <div className="absolute z-10 text-sm no-scrollbar font-medium  min-w-[200px]  space-y-2  w-full rounded-lg  bg-neutral-900 top-24 max-h-[400px] overflow-y-scroll  text-white">
-                  <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
-                    <button
-                      onClick={() => {
-                        setOpenTOKEN((prev) => !prev)
-                        setTransferfrom("Deposit");
-                      }}
-              
-                    >
-                      Deposit Wallet
-                    </button>
-                  </div>
-                  <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
-                    <button
-                      onClick={() => {
-                        setOpenTOKEN((prev) => !prev)
-                        setTransferfrom("ROI");
-                      }}
-                 
-                    >
-                     ROI Wallet
-                    </button>
-                  </div>{" "}
-                  <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
-                    <button
-                      onClick={() => {
-                        setOpenTOKEN((prev) => !prev)
-                        setTransferfrom("R&B");
-                      }}
-              
-                    >
-                      R&B Wallet
-                    </button>
-                  </div>{" "}
-                  <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
-                    <button
-                      onClick={() => {
-                        setOpenTOKEN((prev) => !prev)
-                        setTransferfrom("Interest");
-                      }}
-              
-                    >
-                      Interest Wallet
-                    </button>
-                  </div>{" "}
-                
-                 
+                  <button
+                    onClick={() => setOpenTOKEN((prev) => !prev)}
+                    className="flex items-center space-x-2 bg-black px-6 py-3 mt-4 mb-6  rounded-2xl w-full "
+                  >
+                    <span> {Transferfrom}</span>
+                    {!token ? (
+                      <AiOutlineCaretDown className="h-8 text-white" />
+                    ) : (
+                      <AiOutlineCaretUp className="h-8 text-white" />
+                    )}
+                  </button>
+                  {openTOKEN && (
+                    <div className="absolute z-10 text-sm no-scrollbar font-medium  min-w-[200px]  space-y-2  w-full rounded-lg  bg-neutral-900 top-24 max-h-[400px] overflow-y-scroll  text-white">
+                      <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                        <button
+                          onClick={() => {
+                            setOpenTOKEN((prev) => !prev);
+                            setTransferfrom("Deposit");
+                          }}
+                        >
+                          Deposit Wallet
+                        </button>
+                      </div>
+                      <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                        <button
+                          onClick={() => {
+                            setOpenTOKEN((prev) => !prev);
+                            setTransferfrom("ROI");
+                          }}
+                        >
+                          ROI Wallet
+                        </button>
+                      </div>{" "}
+                      <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                        <button
+                          onClick={() => {
+                            setOpenTOKEN((prev) => !prev);
+                            setTransferfrom("R&B");
+                          }}
+                        >
+                          R&B Wallet
+                        </button>
+                      </div>{" "}
+                      <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                        <button
+                          onClick={() => {
+                            setOpenTOKEN((prev) => !prev);
+                            setTransferfrom("Interest");
+                          }}
+                        >
+                          Interest Wallet
+                        </button>
+                      </div>{" "}
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
               </div>
 
               <div>
                 <label htmlFor="to" className="text-sm ">
-               to
+                  to
                 </label>
                 <div className="flex flex-col relative ">
-              <button
-                onClick={() => settransferToOpen((prev) => !prev)}
-                className="flex items-center space-x-2 bg-black px-6 py-3 mt-4 mb-6  rounded-2xl w-full "
-              >
-                <span> {Transferto}</span>
-                {!token ? (
-                  <AiOutlineCaretDown className="h-8 text-white" />
-                ) : (
-                  <AiOutlineCaretUp className="h-8 text-white" />
-                )}
-              </button>
-              {transferToOpen && (
-                <div className="absolute z-10 text-sm no-scrollbar font-medium  min-w-[200px]  space-y-2  w-full rounded-lg  bg-neutral-900 top-24 max-h-[400px] overflow-y-scroll  text-white">
-                  <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
-                    <button
-                      onClick={() => {
-                        settransferToOpen((prev) => !prev)
-                        setTransferto("Deposit");
-                      }}
-              
-                    >
-                      Deposit Wallet
-                    </button>
-                  </div>
-                  <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
-                    <button
-                      onClick={() => {
-                        settransferToOpen((prev) => !prev)
-                        setTransferto("ROI");
-                      }}
-                 
-                    >
-                     ROI Wallet
-                    </button>
-                  </div>{" "}
-                  <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
-                    <button
-                      onClick={() => {
-                        settransferToOpen((prev) => !prev)
-                        setTransferto("R&B");
-                      }}
-              
-                    >
-                      R&B Wallet
-                    </button>
-                  </div>{" "}
-                  <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
-                    <button
-                      onClick={() => {
-                        settransferToOpen((prev) => !prev)
-                        setTransferto("Interest");
-                      }}
-              
-                    >
-                      Interest Wallet
-                    </button>
-                  </div>{" "}
-                
-                 
+                  <button
+                    onClick={() => settransferToOpen((prev) => !prev)}
+                    className="flex items-center space-x-2 bg-black px-6 py-3 mt-4 mb-6  rounded-2xl w-full "
+                  >
+                    <span> {Transferto}</span>
+                    {!token ? (
+                      <AiOutlineCaretDown className="h-8 text-white" />
+                    ) : (
+                      <AiOutlineCaretUp className="h-8 text-white" />
+                    )}
+                  </button>
+                  {transferToOpen && (
+                    <div className="absolute z-10 text-sm no-scrollbar font-medium  min-w-[200px]  space-y-2  w-full rounded-lg  bg-neutral-900 top-24 max-h-[400px] overflow-y-scroll  text-white">
+                      <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                        <button
+                          onClick={() => {
+                            settransferToOpen((prev) => !prev);
+                            setTransferto("Deposit");
+                          }}
+                        >
+                          Deposit Wallet
+                        </button>
+                      </div>
+                      <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                        <button
+                          onClick={() => {
+                            settransferToOpen((prev) => !prev);
+                            setTransferto("ROI");
+                          }}
+                        >
+                          ROI Wallet
+                        </button>
+                      </div>{" "}
+                      <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                        <button
+                          onClick={() => {
+                            settransferToOpen((prev) => !prev);
+                            setTransferto("R&B");
+                          }}
+                        >
+                          R&B Wallet
+                        </button>
+                      </div>{" "}
+                      <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                        <button
+                          onClick={() => {
+                            settransferToOpen((prev) => !prev);
+                            setTransferto("Interest");
+                          }}
+                        >
+                          Interest Wallet
+                        </button>
+                      </div>{" "}
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
               </div>
 
               <div>
@@ -960,14 +1023,13 @@ const [transferToOpen,settransferToOpen] = useState
               </div>
             </div>
 
-            <div className="mb-4"> 
+            <div className="mb-4">
               <p className="text-xs">Available amount</p>
               <p className="text-xs font-semibold">ROI wallet: $12345678</p>
-              <p className="text-xs text-purple-500 ">(you can transfer your ROI wallet money only on sunday)</p>
+              <p className="text-xs text-purple-500 ">
+                (you can transfer your ROI wallet money only on sunday)
+              </p>
               <p className="text-xs">Interest wallet: $12345678</p>
-
-
-
             </div>
 
             <button
@@ -1081,7 +1143,10 @@ const [transferToOpen,settransferToOpen] = useState
               <div className="">
                 <h2 className="font-medium mb-5">${roiWallet}</h2>
                 <div className="flex space-x-2">
-                  <button onClick={() => setNav("Investment")} className=" bg-gradient-to-b from-fuchsia-300 to-purple-800 rounded-full px-3 py-1 text-xs ">
+                  <button
+                    onClick={() => setNav("Investment")}
+                    className=" bg-gradient-to-b from-fuchsia-300 to-purple-800 rounded-full px-3 py-1 text-xs "
+                  >
                     Invest
                   </button>
                   <button
@@ -1124,7 +1189,10 @@ const [transferToOpen,settransferToOpen] = useState
               <div className="">
                 <h2 className="font-medium mb-5">${interestWallet}</h2>
                 <div className="flex space-x-2">
-                  <button onClick={() => setNav("Investment")} className=" bg-gradient-to-b from-fuchsia-300 to-purple-800 rounded-full px-3 py-1 text-xs ">
+                  <button
+                    onClick={() => setNav("Investment")}
+                    className=" bg-gradient-to-b from-fuchsia-300 to-purple-800 rounded-full px-3 py-1 text-xs "
+                  >
                     Invest
                   </button>
                   <button
@@ -1224,7 +1292,10 @@ const [transferToOpen,settransferToOpen] = useState
                   <p className="">Deposit</p>{" "}
                   <img src="./images/dashboard/next.png" className="w-5 h-5 " />
                 </button>
-                <button onClick={() => setNav("Investment")} className="border-2 px-4 py-2 rounded-xl flex justify-between w-full items-center border-neutral-600">
+                <button
+                  onClick={() => setNav("Investment")}
+                  className="border-2 px-4 py-2 rounded-xl flex justify-between w-full items-center border-neutral-600"
+                >
                   <img
                     src="./images/dashboard/investment2.png"
                     className="w-6 "
@@ -1254,7 +1325,7 @@ const [transferToOpen,settransferToOpen] = useState
                   />
                   Transfer
                 </button>
-                <button  className="border-2 px-[3px] py-[6px] rounded-xl flex flex-col justify-center items-center  border-neutral-600">
+                <button className="border-2 px-[3px] py-[6px] rounded-xl flex flex-col justify-center items-center  border-neutral-600">
                   <img
                     src="./images/dashboard/investment2.png"
                     className="w-6 "
@@ -1269,21 +1340,30 @@ const [transferToOpen,settransferToOpen] = useState
                   Wallet
                 </button>
 
-                <button onClick={() => setNav("Tickets")} className="border-2 px-[3px] py-[6px] rounded-xl flex flex-col justify-center items-center  border-neutral-600">
+                <button
+                  onClick={() => setNav("Tickets")}
+                  className="border-2 px-[3px] py-[6px] rounded-xl flex flex-col justify-center items-center  border-neutral-600"
+                >
                   <img
                     src="./images/dashboard/investment2.png"
                     className="w-6 "
                   />
                   Ticket
                 </button>
-                <button onClick={() => setNav("Genealogy")} className="border-2 px-[3px] py-[6px] rounded-xl flex flex-col justify-center items-center  border-neutral-600">
+                <button
+                  onClick={() => setNav("Genealogy")}
+                  className="border-2 px-[3px] py-[6px] rounded-xl flex flex-col justify-center items-center  border-neutral-600"
+                >
                   <img
                     src="./images/dashboard/investment2.png"
                     className="w-6 "
                   />
                   Binary tree
                 </button>
-                <button  onClick={() => setNav("Genealogy")} className="border-2 px-[3px] py-[6px] rounded-xl flex flex-col justify-center items-center  border-neutral-600">
+                <button
+                  onClick={() => setNav("Genealogy")}
+                  className="border-2 px-[3px] py-[6px] rounded-xl flex flex-col justify-center items-center  border-neutral-600"
+                >
                   <img
                     src="./images/dashboard/investment2.png"
                     className="w-6 "
