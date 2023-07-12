@@ -27,9 +27,9 @@ export default function Footer() {
           <div className="text-left space-y-4 text-gray-200 px-6  text-sm font-normal ">
           {/* Logo  */}
           <img src="./images/navlogo.png" className="w-20"/>
-          <p className="mb-4 ">Experience lucrative investments with Ozo
-            Pay,  <br/> Invest your money wisely and enjoy impressive returns. Start your journey to financial growth today!
+          <p className="mb-4 ">Experience unparalleled financial growth and investment opportunities with One Ozo: Your gateway to prosperity and success.
           </p>
+
 
           <ul className="space-y-4">
             <li>support@ozopay.com</li>
@@ -172,9 +172,7 @@ export default function Footer() {
               </p>
 
               <ul class="mt-8 space-y-1 text-sm text-gray-400">
-             <p>He lay on his armour-like back,
-             <br/> and if he lifted 
-              his head his little be could</p>
+             <p>Subscribe now and unlock a world of financial possibilities with us.</p>
               </ul>
 
               <ul class="flex gap-6 mt-8">

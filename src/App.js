@@ -20,6 +20,7 @@ import Referral from "./pages/Referral";
 import Signup from "./pages/Signup";
 import ExrtaBonus from "./pages/ExrtaBonus";
 import { useState } from "react";
+import Verification from "./pages/Verification";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -43,9 +44,10 @@ function App() {
           <Route path="legal" element={<Legal />} />
           <Route path="resources" element={<Resources />} />
         </Route>
-        <Route path="dashboard" element={isLoggedIn ?  <Dashboard onLogout={handleLogout}  /> : <Navigate to="/login" /> } />
-        <Route path="signup" element={<Signup setIsLoggedIn={setIsLoggedIn}/>} />
+        <Route path="dashboard" element={!isLoggedIn ?  <Dashboard onLogout={handleLogout}  /> : <Navigate to="/login" /> } />
+        <Route path="signup" element={<Signup />} />
         <Route path="login" element={isLoggedIn ? <Navigate to="/dashboard"/> : <Login setIsLoggedIn={setIsLoggedIn} />} />
+        <Route path="verify" element={<Verification setIsLoggedIn={setIsLoggedIn}  />} />
 
 
         

@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Overview from "./Overview";
 import Investment from "./Investment";
 import Genealogy from "./Genealogy";
 import Tickets from "./Tickets";
 import Reports from "./Reports";
 import Profile from "./Profile";
+import { toast } from "react-hot-toast";
 
 const Dashboard = () => {
+
+
+
   const [nav, setNav] = useState("Overview");
   const [investmentState, setinvestmentState] = useState("Package");
   const [genealogyState, setgenealogyState] = useState("Referral");
@@ -78,7 +82,8 @@ const Dashboard = () => {
               </li>
             </ul>
           </div>
-          <div className="flex space-x-2 ">
+          <div className="flex space-x-2 h-full">
+         
             <div className="rounded-full flex justify-center items-center w-10 bg-black">
               <img src="./images/dashboard/search.png" className=" p-[10px]" />
             </div>

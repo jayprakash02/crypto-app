@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { motion as m, useScroll, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import "swiper/css";
+import { Link } from "react-router-dom";
 
 // const container = {
 //   hidden: { opacity: 1, scale: 0 },
@@ -44,7 +45,7 @@ const Home = () => {
           class="absolute z-0 w-auto 
             min-w-full object-cover max-h-screen "
         >
-          <source src="./images/video/bgmain.mp4" />
+          <source src="./images/video/fronthomepage.mp4" />
         </video>
         {/* <img src="./images/animation/mainintro.gif" className=""/> */}
         <div className="flex w-full max-w-7xl top-40 absolute items-center">
@@ -660,9 +661,9 @@ maximizing their returns.
               >
                 <img src="./images/transfer-money.png" className="w-12" />
                 <div className="font-poppins  text-xl">
-                Enhanced Returns: 
+                	Multilevel Referral Rewards: 
                   <p className="font-poppins text-base">
-                 Earn 2% extra OZO Tokens on your next investment using the promo code.
+                  Earn attractive referral bonuses and Ozo Token rewards through our comprehensive multilevel referral program.
                   </p>
                 </div>
               </m.div>
@@ -681,10 +682,9 @@ maximizing their returns.
               >
                 <img src="./images/debit.png" className="w-12" />
                 <div className="font-poppins  text-xl">
-                Investment Threshold Bonus:
+              Investment Level Rewards:
                   <p className="font-poppins text-base">
-                  Invest over $1000 to receive an exclusive promo code for additional 
-benefits.
+                  Ascend through investment levels to receive Ozo Token rewards, with higher levels offering increased percentages based on your total investment amount.
                   </p>
                 </div>
               </m.div>
@@ -703,9 +703,9 @@ benefits.
               >
                 <img src="./images/safety.png" className="w-12" />
                 <div className="font-poppins  text-xl">
-                Tailored Promotions:
+              	Weekly Withdrawal and Bonus:
                   <p className="font-poppins text-base">
-                  Unlock personalized offers to amplify the value of your investments.
+                  Benefit from weekly withdrawal options while enjoying additional bonuses for not withdrawing, accumulating in your Extra Income wallet.
 
                   </p>
                 </div>
@@ -955,40 +955,29 @@ Ozo and experience the power of trust in your investment endeavors
                 ease: [0, 0.71, 0.2, 1.01],
               },
             }}
-            className="max-w-[550px] bg-neutral-900 rounded-2xl  ml-48 py-12 px-10 "
+            className=" w-full max-w-[950px] rounded-2xl  ml-28 py-12  "
           >
-            <h1 className="mb-6 text-2xl border-b-2 pb-6 text-center ">
-              Calculate Your Income
-            </h1>
-            <div className="grid grid-cols-2 gap-x-4 gap-y-4 mb-5">
-              <p className="border-2 border-gray-200 py-4 w-full bg-gray-700 rounded-2xl px-6">
-                Package Name
-              </p>
-              <p className="border-2 border-gray-200 py-4 w-full bg-gray-700 rounded-2xl px-6">
-                Daily Returns
-              </p>
-              <p className="border-2 border-gray-200 py-4 w-full bg-gray-700 rounded-2xl px-6">
-                Referral Income
-              </p>
-              <p className="border-2 border-gray-200 py-4 w-full bg-gray-700 rounded-2xl px-6">
-                Binary Income
-              </p>
-              <p className="border-2 border-gray-200 py-4 w-full bg-gray-700 rounded-2xl px-6">
-                Capping Limit
-              </p>
-              <p className="border-2 border-gray-200 py-4 w-full bg-gray-700 rounded-2xl px-6">
-                Principle Returns
-              </p>
-            </div>
-            <p className="border-2 border-gray-200 py-4 w-full bg-gray-700 rounded-2xl px-6 mb-6">
-              Earnings
-            </p>
-            <input
-              className="border-2 border-gray-200 py-4 w-full bg-gray-700 rounded-2xl px-6"
-              placeholder="Enter amount"
-            />
-          </m.div>
-          <div className="max-w-[550px]  border-r-4 pr-2 ml-16 flex items-center min-h-[40vh]">
+        <img src="./images/calc.jpg" className=""/>
+        <div className="max-w-[450px]  absolute top-28 right-44 min-h-[40vh]">
+          <m.h1
+              initial={{
+                x: 75,
+                opacity: 0,
+              }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+                transition: {
+                  duration: 0.75,
+                  easings: "easeInOut",
+                },
+              }}
+              className="mb-6  uppercase font-semibold text-purple-700 text-xl"
+            >
+            Crypto earn
+
+             
+            </m.h1>
             <m.h1
               initial={{
                 x: 75,
@@ -1002,11 +991,37 @@ Ozo and experience the power of trust in your investment endeavors
                   easings: "easeInOut",
                 },
               }}
-              className="mb-6 text-7xl text-right "
+              className="mb-6 text-5xl  "
             >
-              get Income information with Ozo calculator.
+             Get the most out of your<br/>
+             assets, safely
+
+
             </m.h1>
+            <m.h1
+              initial={{
+                x: 75,
+                opacity: 0,
+              }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+                transition: {
+                  duration: 0.75,
+                  easings: "easeInOut",
+                },
+              }}
+              className="mb-6 text-xl "
+            >
+            Choose from 21+ cryptocurrencies and stablecoins.
+
+             
+            </m.h1>
+
+            <Link to="earning" className="px-6 py-2 font-medium text-lg border rounded-full">Calculate Rewards</Link>
           </div>
+          </m.div>
+       
         </div>
       </div>
 

@@ -4,8 +4,8 @@ import { motion as m } from "framer-motion";
 const ExrtaBonus = () => {
   return (
     <div className="w-full font-poppins">
-      <div className="w-full relative">
-        <img src="./images/extrabonus.jpg" className="w-full max-h-[100vh] " />
+      <div className="w-full relative max-h-[100vh] h-full">
+        <img src="./images/extrabonus.jpg" className="w-full object-cover  max-h-[90vh] " />
         <div className="max-w-5xl left-72 absolute top-28 mx-auto w-full">
           <h1 className="text-5xl mb-4 font-bold ">
           Accelerate<br/> Your Earnings:<br/> Unlock Ozo's<br/> Investment Advantage!

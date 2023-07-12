@@ -5,7 +5,7 @@ import { baseURL } from "../constants/Constant";
 import { FiLoader } from "react-icons/fi";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
-const Signup = ({ setIsLoggedIn }) => {
+const Signup = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     sponsor: "",
@@ -76,8 +76,8 @@ const Signup = ({ setIsLoggedIn }) => {
               localStorage.setItem("user_data", JSON.stringify(userData));
 
               toast.success("Registration successful");
-              setIsLoggedIn(true);
-              navigate("/dashboard");
+           
+              navigate("/verify");
             } else {
               toast.error("Something went wromg");
             }

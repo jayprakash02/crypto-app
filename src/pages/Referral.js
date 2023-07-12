@@ -54,7 +54,7 @@ const Binary = () => {
           Affiliate Programme Commissions
         </h2>
         <div className="w-full max-w-5xl text-left font-medium mx-auto flex space-x-6 items-center">
-          <div className="w-1/2  border-2 border-gray-800 rounded-xl p-6">
+          <div className="w-1/2  min-h-[250px] h-full border-2 border-gray-800 rounded-xl p-6">
             <h2 className="text-2xl mb-4 px-2">Ozo Ventures</h2>
             <div className="mb-6 space-y-5 ">
               <div className="flex space-x-2">
@@ -73,13 +73,10 @@ const Binary = () => {
                 </p>
               </div>
             </div>
-            <div className="py-4 bg-gradient-to-tr from-teal-900 to-neutral-900 rounded-lg px-2 ">
-              Earn up to 1,050 USDC for every user who signs up with your
-              affiliate code
-            </div>
+           
           </div>
 
-          <div className="w-1/2 min-h-[350px] border-2 border-gray-800 rounded-xl p-6">
+          <div className="w-1/2 min-h-[282px] h-full border-2 border-gray-800 rounded-xl p-6">
             <h2 className="text-2xl mb-4 px-2">Securely Fast</h2>
             <div className="mb-6 space-y-5 ">
               <div className="flex space-x-2">
@@ -96,10 +93,7 @@ const Binary = () => {
                 </p>
               </div>
             </div>
-            <div className="py-4 bg-gradient-to-b mt-20 from-neutral-900 to-teal-800 rounded-lg px-2 ">
-              Earn up to 100 USDC for every user who signs up with your
-              affiliate code
-            </div>
+            
           </div>
         </div>
       </div>
@@ -152,9 +146,9 @@ const Binary = () => {
         </div>
       </div>
 
-      <div className="flex max-w-6xl my-24 mx-auto w-full ">
-        <div className="w-1/4"></div>
-        <div className="w-3/4 ">
+      <div className="flex max-w-2xl text-center my-24 mx-auto w-full ">
+        
+        <div className="w-full  flex flex-col items-center">
           <h3 className="text-4xl font-bold mb-6">
             Join Our Global Affiliate Team
           </h3>
@@ -213,18 +207,17 @@ const Plain = () => {
           className="w-full max-h-[110vh] bg-opacity-60"
         />
         <div className="absolute  left-44 top-52 w-full">
-          <h1 className="text-4xl mb-6 text-black max-w-[650px]">
-            Multiply Your Earnings with One Ozo's Lucrative Referral Program:
-            Earn up to 8% Referral Bonuses and Unlock Exciting Rewards
+          <h1 className="text-6xl mb-6 font-semibold text-black max-w-[650px]">
+            Multiply Your Earnings with One Ozo's Lucrative Referral Program
+          
           </h1>
 
           {/* <span className="bg-purple-900 px-2 py-1 text-[68px] rounded-xl  mt-1 ">
               US$2,000
             </span> */}
 
-          <h2 className="text-xl text-black mb-4 ">
-            Enjoy 12 months of trading fee commissions and <br />a referral
-            bonus of up to US$2,000 in CRO
+          <h2 className="text-2xl font-semibold text-black mb-4 ">
+          Earn up to 8% Referral Bonuses and Unlock Exciting Rewards
           </h2>
           <button className="text-xl px-6 py-3 bg-red-900 rounded-lg mt-1">
             Refer now
@@ -361,26 +354,31 @@ const Plain = () => {
             introduce others to One Ozo's rewarding investment opportunities.
           </p>
           <p>
-            <div className="flex justify-between items-center">
-              <div className="max-w-[250px] min-h-[300px] flex flex-col justify-center items-center space-y-4 text-center  p-6">
-                <img src="./images/icons/referralbonus.svg" />
+            <div className="flex justify-between items-center mb-5">
+              <div className="max-w-[280px] max-h-[320px] h-full flex flex-col justify-center items-center  text-center  p-6">
+                <img src="./images/logo.png" />
+                <span className="font-semibold">
+                Level 1
+                </span>
                 <p>
-                  Level 1: Earn 5% referral bonus on direct referrals and expand
+                   Earn 5% referral bonus on direct referrals and expand
                   your network.
                 </p>
               </div>
-              <div className="max-w-[250px] min-h-[300px] flex flex-col justify-center items-center space-y-2 text-center p-6">
-                <img src="./images/icons/referralbonus.svg" />
+              <div className="max-w-[280px] max-h-[320px] h-full flex flex-col justify-center items-center  text-center p-6">
+                <img src="./images/logo.png" />
+                <span className="font-semibold"> Level 2</span> 
                 <p>
-                  Level 2: Enjoy 3% referral bonus on indirect referrals,
+                  Enjoy 3% referral bonus on indirect referrals,
                   increasing your earnings further.
                 </p>
               </div>
 
-              <div className="max-w-[250px] min-h-[300px] flex flex-col justify-center items-center space-y-2 text-center p-6">
-                <img src="./images/icons/referralbonus.svg" />
-                <p>
-                  Level 3: Earn 1.5% referral bonus on referrals made by your
+              <div className="max-w-[280px] max-h-[340px] h-full  pt-5 flex flex-col justify-center  items-stretch text-center  px-6">
+                <img src="./images/logo.png" className=" mb-2" />
+                <span className="font-semibold"> Level 3</span> 
+                <p className="">
+                   Earn 1.5% referral bonus on referrals made by your
                   Level 2 referrals, maximizing your rewards.
                 </p>
               </div>
