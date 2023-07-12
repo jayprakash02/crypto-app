@@ -69,7 +69,7 @@ opportunities that surpass industry norms and deliver superior results for inves
             }} className="max-w-[350px] min-h-[340px] py-6 rounded-xl flex flex-col items-center justify-center text-center bg-neutral-900 px-6">
           <img
             src="./images/safety.png"
-            className="bg-green-500 p-4 w-24 rounded-full mb-6"
+            className="bg-purple-600 p-4 w-24 rounded-full mb-6"
           />
           <h1 className="text-2xl mb-4 font-bold">Transparency</h1>
           <p className="text-gray-500 text-[16px]">
@@ -89,7 +89,7 @@ investments and ensuring trust and confidence
             }} className="max-w-[350px] min-h-[340px] py-6 rounded-xl flex flex-col items-center justify-center text-center bg-neutral-900 px-6">
           <img
             src="./images/safety.png"
-            className="bg-green-500 p-4 w-24 rounded-full mb-6"
+            className="bg-purple-600 p-4 w-24 rounded-full mb-6"
           />
           <h1 className="text-2xl mb-4 font-bold">Accessibility</h1>
           <p className="text-gray-500 text-[16px]">
@@ -109,9 +109,9 @@ empowering investors to seize profitable moments
             }} className="max-w-[350px] min-h-[340px] py-6 rounded-xl flex flex-col items-center justify-center text-center bg-neutral-900 px-6">
           <img
             src="./images/safety.png"
-            className="bg-green-500 p-4 w-24 rounded-full mb-6"
+            className="bg-purple-600 p-4 w-24 rounded-full mb-6"
           />
-          <h1 className="text-2xl mb-4 font-bold">Reliability</h1>
+          <h1 className="text-2xl  mb-4 font-bold">Reliability</h1>
           <p className="text-gray-500 text-[16px]">
           One Ozo ensures reliable trade execution and dependable performance, backed by robust 
 technology infrastructure and expert market analysis
@@ -269,7 +269,7 @@ satisfied clients. Our experienced team of traders ensures top-notch performance
             }} className="max-w-[320px] py-6 rounded-xl   bg-neutral-900 px-6">
             <img
               src="./images/safety.png"
-              className="bg-green-500 p-3 w-16 rounded-full mb-6"
+              className="bg-purple-600 p-3 w-16 rounded-full mb-6"
             />
             <h1 className="text-2xl mb-4 font-bold">Proven Trading Strategies
 </h1>
@@ -290,7 +290,7 @@ optimize investment performance and generate consistent returns.
             }}  className="max-w-[320px] py-6 rounded-xl   bg-neutral-900 px-6">
             <img
               src="./images/safety.png"
-              className="bg-green-500 p-3 w-16 rounded-full mb-6"
+              className="bg-purple-600 p-3 w-16 rounded-full mb-6"
             />
             <h1 className="text-2xl mb-4 font-bold"> Advanced Market Analysis</h1>
             <p className="text-gray-500">
@@ -310,7 +310,7 @@ enabling informed investment decisions for maximum profitability.
             }}  className="max-w-[320px] py-6 rounded-xl   bg-neutral-900 px-6">
             <img
               src="./images/safety.png"
-              className="bg-green-500 p-3 w-16 rounded-full mb-6"
+              className="bg-purple-600 p-3 w-16 rounded-full mb-6"
             />
             <h1 className="text-2xl mb-4 font-bold"> Risk Management
 </h1>
@@ -331,7 +331,7 @@ a balanced and secure approach to trading.
             }}  className="max-w-[320px] py-6 rounded-xl   bg-neutral-900 px-6">
             <img
               src="./images/safety.png"
-              className="bg-green-500 p-3 w-16 rounded-full mb-6"
+              className="bg-purple-600 p-3 w-16 rounded-full mb-6"
             />
             <h1 className="text-2xl mb-4 font-bold"> Competitive Trading Fees</h1>
             <p className="text-gray-500">
@@ -351,7 +351,7 @@ reducing costs and expenses associated with trading
             }}  className="max-w-[320px] py-6 rounded-xl   bg-neutral-900 px-6">
             <img
               src="./images/safety.png"
-              className="bg-green-500 p-3 w-16 rounded-full mb-6"
+              className="bg-purple-600 p-3 w-16 rounded-full mb-6"
             />
             <h1 className="text-2xl mb-4 font-bold"> Regulatory Compliance</h1>
             <p className="text-gray-500">
@@ -371,7 +371,7 @@ providing a trustworthy and secure trading environment
             }}  className="max-w-[320px] py-6 rounded-xl   bg-neutral-900 px-6">
             <img
               src="./images/safety.png"
-              className="bg-green-500 p-3 w-16 rounded-full mb-6"
+              className="bg-purple-600 p-3 w-16 rounded-full mb-6"
             />
             <h1 className="text-2xl mb-4 font-bold">
             Continuous Innovation
