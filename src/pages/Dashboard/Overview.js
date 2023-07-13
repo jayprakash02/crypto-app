@@ -7,6 +7,8 @@ import axios from "axios";
 const Overview = ({ setNav }) => {
   const [data, setData] = useState([]);
   // Overview state
+  const [referralData, setReferralData] = useState([]);
+
   const [totalInvestmentRevenue, setTotalInvestmentRevenue] =
     useState("981.567.000");
 
@@ -48,7 +50,53 @@ const Overview = ({ setNav }) => {
           if (response.data.success) {
             setData(response.data.data);
             setdepositWallet(response.data.data[0].deposit_wallet_tec);
-            console.log(response.data.data.deposit_wallet_tec);
+            setroiWallet(response.data.data[0].roi_wallet_mac);
+            setrbWallet(response.data.data[0].binary_wallet);
+            setinterestWallet(response.data.data[0].referral_wallet_trade);
+            setozoToken(response.data.data[0].ozo_wallet);
+            setTotalInvestmentRevenue(response.data.data[0].total_investment);
+            settotalReturns(response.data.data[0].total_earning);
+            settotalWithdrawal(response.data.data[0].total_withdrawal);
+            settotalWithdrawalRemaining(
+              response.data.data[0].total_withdrawal_remaining
+            );
+            settotalEarning(response.data.data[0].total_earning);
+            settotalEarningByPercentage(
+              response.data.data[0].total_earning_percentage
+            );
+            setLeftReferral(response.data.data[0].left_level_1_earning);
+            setRightReferral(response.data.data[0].right_level_1_earning);
+          } else {
+            toast.error("Something went wrong");
+          }
+        })
+        .catch((error) => {
+          if (
+            error?.response?.data?.message ===
+            "Token email does not match request email"
+          ) {
+            toast.error("Invalid Request");
+          } else {
+            toast.error("Something went wrong");
+          }
+        });
+    } else {
+      toast.error("Please sign in again");
+    }
+    if (userData && userData.token && userData.email && userData.userId) {
+      const headers = {
+        Authorization: userData.token,
+      };
+
+      axios
+        .get(
+          `${baseURL}/api/investments/user/${userData.userId}?email=${userData.email}`,
+          { headers }
+        )
+        .then((response) => {
+          console.log(response);
+          if (response.data.success) {
+            setReferralData(response.data.data);
           } else {
             toast.error("Something went wrong");
           }
@@ -1428,11 +1476,11 @@ const Overview = ({ setNav }) => {
           </div>
         </div>
       </div>
-      <div className=" w-full max-w-full px-12 pb-24 ">
+      <div className="w-full max-w-full px-12 pb-24">
         <table className="w-full">
-          <h1 className="text-4xl my-8 font-semibold">Referral Details</h1>
+          <h1 className="text-4xl my-8 font-semibold">Investment Details</h1>
 
-          <thead className="bg-neutral-900 w-full text-left items-center px-12 py-4 justify-between flex ">
+          <thead className="bg-black w-full text-left items-center px-12 py-4 justify-between flex">
             <th>
               <input
                 type="checkbox"
@@ -1441,24 +1489,23 @@ const Overview = ({ setNav }) => {
                 id="referralDetail"
               />
             </th>
-            <th className="w-full   max-w-[80px] ">SI No</th>
-            <th className="w-full max-w-[100px] ">Package</th>
-            <th className="w-full max-w-[100px] ">Days</th>
-            <th className="w-full max-w-[100px] ">Invested</th>
-            <th className="w-full max-w-[200px] ">Email</th>
-            <th className="w-full max-w-[100px] ">Expiry</th>
+            <th className="w-full max-w-[80px]">SI No</th>
+            <th className="w-full max-w-[100px]">Package</th>
+            <th className="w-full max-w-[100px]">Days</th>
+            <th className="w-full max-w-[100px]">Invested</th>
+            <th className="w-full max-w-[200px]">Email</th>
+            <th className="w-full max-w-[100px]">Expiry</th>
             <th className="w-full max-w-[100px]">Payment through</th>
             <th className="w-full max-w-[100px]">Payment type</th>
           </thead>
           <tbody className="w-full">
-            {dummyDATA.map((e, key) => {
+            {referralData.map((e, key) => {
               return (
                 <tr
                   key={key}
-                  className="bg-neutral-900 text-left w-full items-center px-12 py-4  flex "
+                  className="bg-black text-left w-full items-center px-12 py-4  flex"
                 >
                   <td>
-                    {" "}
                     <input
                       type="checkbox"
                       className="rounded-sm bg-black border-2 p-2 mr-12"
@@ -1466,24 +1513,25 @@ const Overview = ({ setNav }) => {
                       id="referralDetail"
                     />
                   </td>
-                  <td className="w-full max-w-[80px] ml-4 ">{e.siNo}</td>
-                  <td className="w-full max-w-[100px]  ml-10 ">{e.package}</td>
-                  <td className="w-full max-w-[100px]  ml-14  ">
-                    {e.days} days
+                  <td className="w-full max-w-[80px] ml-4">
+                    {e.investment_id}
                   </td>
-                  <td className="w-full max-w-[100px]  ml-14  ">
-                    {e.invested}
+                  <td className="w-full max-w-[100px] ml-10">{e.package}</td>
+                  <td className="w-full max-w-[100px] ml-14">
+                    {e.daysPassed} days
                   </td>
-                  <td className="w-full max-w-[250px]  ml-12 overflow-hidden  ">
-                    {e.email}
+                  <td className="w-full max-w-[100px] ml-14">
+                    {e.invested_amount}
                   </td>
-                  <td className="w-full max-w-[100px]  ml-6 ">{e.expiry}</td>
-                  <td className="w-full max-w-[100px] ml-14 ">
-                    {" "}
-                    {e.paymentThrough}
+                  <td className="w-full max-w-[250px] ml-12 overflow-hidden">
+                    {e.user_id}
                   </td>
-                  <td className="w-full max-w-[100px] ml-16 ">
-                    {e.paymentType}
+                  <td className="w-full max-w-[100px] ml-6">{e.expires_on}</td>
+                  <td className="w-full max-w-[100px] ml-14">
+                    {e.payment_through}
+                  </td>
+                  <td className="w-full max-w-[100px] ml-16">
+                    {e.payment_type}
                   </td>
                 </tr>
               );

@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { baseURL } from "../../constants/Constant";
+import { toast } from "react-hot-toast";
+import axios from "axios";
 
 const Investment = ({ investmentState }) => {
   return (
@@ -71,17 +74,55 @@ const Package = () => {
     }
   };
 
- const  [packageDetailsForm,setpackageDetailsForm] = useState({
-  packageNameField: " ",
-  dailyReturnsFeild:"",
-  durationField:"",
-  amountToPay:"",
-  earning:""
- })
+  const [packageDetailsForm, setpackageDetailsForm] = useState({
+    packageNameField: " ",
+    dailyReturnsFeild: "",
+    durationField: "",
+    amountToPay: "",
+    earning: "",
+  });
 
- const handlePackageDetail = ()=>{
-  setpackageDetailModal((prev) => !prev);
- }
+  const handlePackageDetail = () => {
+    setpackageDetailModal((prev) => !prev);
+  };
+
+  const [referralData, setReferralData] = useState([]);
+
+  useEffect(() => {
+    const userData = JSON.parse(localStorage.getItem("user_data"));
+    if (userData && userData.token && userData.email && userData.userId) {
+      const headers = {
+        Authorization: userData.token,
+      };
+
+      axios
+        .get(
+          `${baseURL}/api/investments/user/${userData.userId}?email=${userData.email}`,
+          { headers }
+        )
+        .then((response) => {
+          console.log(response);
+          if (response.data.success) {
+            setReferralData(response.data.data);
+          } else {
+            toast.error("Something went wrong");
+          }
+        })
+        .catch((error) => {
+          if (
+            error?.response?.data?.message ===
+            "Token email does not match request email"
+          ) {
+            toast.error("Invalid Request");
+          } else {
+            toast.error("Something went wrong");
+          }
+        });
+    } else {
+      toast.error("Please sign in again");
+    }
+  }, []);
+
   return (
     <div className="min-h-[80vh] bg-neutral-900 pt-16   w-full">
       <h1 className="font-semibold text-4xl  text-center text-white">
@@ -287,16 +328,16 @@ const Package = () => {
         <div className="w-full flex justify-center absolute top-0 left-0 max-h-full z-40 h-full  items-center bg-black bg-opacity-70  ">
           <div className="max-w-[450px] rounded-2xl bg-neutral-900 p-6 min-h-[280px] relative">
             <button
-              onClick={() =>  setpackageDetailModal((prev) => !prev)}
+              onClick={() => setpackageDetailModal((prev) => !prev)}
               className="rounded-full absolute -top-4 -right-4 w-10 p-3  bg-gradient-to-r text-white from-indigo-600 to-fuchsia-600  "
             >
               <img src="./images/icons/close.png" className="w-8" />
             </button>
 
-     <h1 className="text-4xl font-medium mb-6">Package Detail</h1>
+            <h1 className="text-4xl font-medium mb-6">Package Detail</h1>
 
             <label htmlFor="packageName" className="text-sm ">
-     Package name
+              Package name
             </label>
             <input
               id="packageName"
@@ -306,7 +347,7 @@ const Package = () => {
             />
 
             <label htmlFor="dailyReturnsFeild" className="text-sm ">
-            Daily returns
+              Daily returns
             </label>
             <input
               id="dailyReturnsFeild"
@@ -354,11 +395,11 @@ const Package = () => {
         </div>
       )}
 
-      <div className=" w-full max-w-full px-12 pb-24 ">
+      <div className="w-full max-w-full px-12 pb-24">
         <table className="w-full">
-          <h1 className="text-4xl my-8 font-semibold">Referral Details</h1>
+          <h1 className="text-4xl my-8 font-semibold">Investment Details</h1>
 
-          <thead className="bg-black w-full text-left items-center px-12 py-4 justify-between flex ">
+          <thead className="bg-black w-full text-left items-center px-12 py-4 justify-between flex">
             <th>
               <input
                 type="checkbox"
@@ -367,24 +408,23 @@ const Package = () => {
                 id="referralDetail"
               />
             </th>
-            <th className="w-full   max-w-[80px] ">SI No</th>
-            <th className="w-full max-w-[100px] ">Package</th>
-            <th className="w-full max-w-[100px] ">Days</th>
-            <th className="w-full max-w-[100px] ">Invested</th>
-            <th className="w-full max-w-[200px] ">Email</th>
-            <th className="w-full max-w-[100px] ">Expiry</th>
+            <th className="w-full max-w-[80px]">SI No</th>
+            <th className="w-full max-w-[100px]">Package</th>
+            <th className="w-full max-w-[100px]">Days</th>
+            <th className="w-full max-w-[100px]">Invested</th>
+            <th className="w-full max-w-[200px]">Email</th>
+            <th className="w-full max-w-[100px]">Expiry</th>
             <th className="w-full max-w-[100px]">Payment through</th>
             <th className="w-full max-w-[100px]">Payment type</th>
           </thead>
           <tbody className="w-full">
-            {dummyDATA.map((e, key) => {
+            {referralData.map((e, key) => {
               return (
                 <tr
                   key={key}
-                  className="bg-black text-left w-full items-center px-12 py-4  flex "
+                  className="bg-black text-left w-full items-center px-12 py-4  flex"
                 >
                   <td>
-                    {" "}
                     <input
                       type="checkbox"
                       className="rounded-sm bg-black border-2 p-2 mr-12"
@@ -392,24 +432,25 @@ const Package = () => {
                       id="referralDetail"
                     />
                   </td>
-                  <td className="w-full max-w-[80px] ml-4 ">{e.siNo}</td>
-                  <td className="w-full max-w-[100px]  ml-10 ">{e.package}</td>
-                  <td className="w-full max-w-[100px]  ml-14  ">
-                    {e.days} days
+                  <td className="w-full max-w-[80px] ml-4">
+                    {e.investment_id}
                   </td>
-                  <td className="w-full max-w-[100px]  ml-14  ">
-                    {e.invested}
+                  <td className="w-full max-w-[100px] ml-10">{e.package}</td>
+                  <td className="w-full max-w-[100px] ml-14">
+                    {e.daysPassed} days
                   </td>
-                  <td className="w-full max-w-[250px]  ml-12 overflow-hidden  ">
-                    {e.email}
+                  <td className="w-full max-w-[100px] ml-14">
+                    {e.invested_amount}
                   </td>
-                  <td className="w-full max-w-[100px]  ml-6 ">{e.expiry}</td>
-                  <td className="w-full max-w-[100px] ml-14 ">
-                    {" "}
-                    {e.paymentThrough}
+                  <td className="w-full max-w-[250px] ml-12 overflow-hidden">
+                    {e.user_id}
                   </td>
-                  <td className="w-full max-w-[100px] ml-16 ">
-                    {e.paymentType}
+                  <td className="w-full max-w-[100px] ml-6">{e.expires_on}</td>
+                  <td className="w-full max-w-[100px] ml-14">
+                    {e.payment_through}
+                  </td>
+                  <td className="w-full max-w-[100px] ml-16">
+                    {e.payment_type}
                   </td>
                 </tr>
               );
@@ -557,7 +598,7 @@ const Downline = () => {
 
   // package Name
   const [packageName, setPackageName] = useState("");
- const [paymentAmount, setpaymentAmount] = useState("");
+  const [paymentAmount, setpaymentAmount] = useState("");
   const [packageDetailModal, setpackageDetailModal] = useState(false);
 
   const handleModal = () => {
@@ -567,17 +608,17 @@ const Downline = () => {
     }
   };
 
- const  [packageDetailsForm,setpackageDetailsForm] = useState({
-  packageNameField: " ",
-  dailyReturnsFeild:"",
-  durationField:"",
-  amountToPay:"",
-  earning:""
- })
+  const [packageDetailsForm, setpackageDetailsForm] = useState({
+    packageNameField: " ",
+    dailyReturnsFeild: "",
+    durationField: "",
+    amountToPay: "",
+    earning: "",
+  });
 
- const handlePackageDetail = ()=>{
-  setpackageDetailModal((prev) => !prev);
- }
+  const handlePackageDetail = () => {
+    setpackageDetailModal((prev) => !prev);
+  };
 
   const dummyDATA = [
     {
@@ -622,7 +663,6 @@ const Downline = () => {
     },
   ];
 
-
   return (
     <div className="min-h-[80vh] bg-neutral-900 pt-16   w-full">
       <h1 className="font-semibold text-4xl  text-center text-white">
@@ -648,32 +688,34 @@ const Downline = () => {
             <input
               id="paymentamount"
               name=""
-                value={paymentAmount}
-                  onChange={(e) => setpaymentAmount(e.target.value)}
+              value={paymentAmount}
+              onChange={(e) => setpaymentAmount(e.target.value)}
               className="bg-black px-6 py-3 mt-4 mb-6  rounded-2xl w-full"
             />
-            <button      onClick={handleModal} className="w-full  bg-gradient-to-r text-white from-indigo-700 to-fuchsia-700 rounded-xl p-3">
+            <button
+              onClick={handleModal}
+              className="w-full  bg-gradient-to-r text-white from-indigo-700 to-fuchsia-700 rounded-xl p-3"
+            >
               Continue
             </button>
           </div>
         </div>
       )}
 
-
-       {packageDetailModal && (
+      {packageDetailModal && (
         <div className="w-full flex justify-center absolute top-0 left-0 min-h-[120vh] h-full  items-center bg-black bg-opacity-70  ">
           <div className="max-w-[450px] rounded-2xl bg-neutral-900 p-6 min-h-[280px] relative">
             <button
-              onClick={() =>  setpackageDetailModal((prev) => !prev)}
+              onClick={() => setpackageDetailModal((prev) => !prev)}
               className="rounded-full absolute -top-4 -right-4 w-10 p-3  bg-gradient-to-r text-white from-indigo-600 to-fuchsia-600  "
             >
               <img src="./images/icons/close.png" className="w-8" />
             </button>
 
-     <h1 className="text-4xl font-medium mb-6">Package Detail</h1>
+            <h1 className="text-4xl font-medium mb-6">Package Detail</h1>
 
             <label htmlFor="packageName" className="text-sm ">
-     Package name
+              Package name
             </label>
             <input
               id="packageName"
@@ -683,7 +725,7 @@ const Downline = () => {
             />
 
             <label htmlFor="dailyReturnsFeild" className="text-sm ">
-            Daily returns
+              Daily returns
             </label>
             <input
               id="dailyReturnsFeild"
@@ -731,7 +773,6 @@ const Downline = () => {
         </div>
       )}
 
-      
       <div className="w-full flex space-x-6 max-w-7xl mx-auto px-6 py-12">
         <div className="border-2 border-zinc-400 bg-black  max-w-[340px] max-h-[500px]  rounded-2xl p-4">
           <p className="font-semibold text-white ">EXPLORER PACKAGE</p>
