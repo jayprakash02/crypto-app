@@ -74,9 +74,17 @@ const Signup = () => {
               };
 
               localStorage.setItem("user_data", JSON.stringify(userData));
-
+              axios
+                .post(baseURL + "/api/send-mail", { email: formData.email })
+                .then((response) => {
+                  console.log(response);
+                })
+                .catch((error) => {
+                  console.log(error);
+                  toast.error("Something went wromg");
+                });
               toast.success("Registration successful");
-           
+
               navigate("/verify");
             } else {
               toast.error("Something went wromg");
