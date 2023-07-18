@@ -23,7 +23,7 @@ const Navbar = ({isLoggedIn}) => {
       >
         <section class="relative mx-auto">
           {/*//        <!-- navbar -->*/}
-          <nav class="flex justify-between  bg-black text-opacity-100 text-white w-screen">
+          <nav class="flex justify-between  bg-black text-opacity-100 text-white w-screen sm:align-items:center">
             <div class="px-5 xl:px-12 py-2 flex w-full items-center">
               {/*//            <!-- Nav Links -->*/}
               <ul class="hidden md:flex px-4 mx-auto font-semibold font-poppins text-sm text-gray-400 items-center font-heading space-x-12 ">

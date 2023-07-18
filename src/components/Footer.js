@@ -175,13 +175,13 @@ export default function Footer() {
              <p>Subscribe now and unlock a world of financial possibilities with us.</p>
               </ul>
 
-              <ul class="flex gap-6 mt-8">
+              <ul class="flex gap-6 mt-8 sm:flex-col md:flex-row">
                 <li>
                   <a
                     href="/"
                     rel="noreferrer"
                     target="_blank"
-                    class=" transition hover:opacity-75 text-gray-400"
+                    class=" transition hover:opacity-75 text-gray-400 "
                   >
                     <span class="sr-only">Facebook</span>
 
@@ -298,44 +298,33 @@ export default function Footer() {
          
         </div>
       </footer>
-      <div class="min-h-[10vh] flex mt-12 w-full  border-gray-100 bg-black font-poppins ">
-            <div class="sm:flex sm:items-center w-full max-w-4xl mx-auto sm:justify-between">
-              <nav aria-label="Footer Navigation - Support">
-                <ul class="flex flex-wrap gap-4 text-sm">
-                  <li>
-                    <a
-                      href="#"
-                      class="text-gray-500 transition hover:opacity-75 "
-                    >
-                      Terms & Conditions
-                    </a>
-                  </li>
+      <div class="min-h-[10vh] flex mt-12 w-full border-gray-100 bg-black font-poppins">
+  <div class="sm:flex sm:items-center w-full max-w-4xl mx-auto sm:justify-between">
+    <nav aria-label="Footer Navigation - Support" class="flex flex-col sm:flex-row">
+      <ul class="flex flex-wrap gap-4 text-sm sm:mx-8">
+        <li>
+          <a href="#" class="text-gray-500 transition hover:opacity-75">
+            Terms & Conditions
+          </a>
+        </li>
+        <li>
+          <a href="#" class="text-gray-500 transition hover:opacity-75">
+            Privacy Policy
+          </a>
+        </li>
+        <li>
+          <a href="#" class="text-gray-500 transition hover:opacity-75">
+            Cookies
+          </a>
+        </li>
+      </ul>
+    </nav>
 
-                  <li>
-                    <a
-                      href="#"
-                      class="text-gray-500 transition hover:opacity-75 "
-                    >
-                      Privacy Policy
-                    </a>
-                  </li>
-
-                  <li>
-                    <a
-                      href="#"
-                      class="text-gray-500 transition hover:opacity-75 "
-                    >
-                      Cookies
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-
-              <p class="mt-8 text-sm text-gray-500  sm:mt-0">
-                &copy; All rights reserved by Ozo pay
-              </p>
-            </div>
-          </div>
+    <p class="mt-8 text-sm text-gray-500 sm:mt-0">
+      &copy; All rights reserved by Ozo pay
+    </p>
+  </div>
+</div>
     </div>
   );
 }

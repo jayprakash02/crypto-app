@@ -26,7 +26,7 @@ const item = {
 
 const Home = () => {
   return (
-    <div className="w-full flex items-start justify-center  flex-col">
+    <div className="w-full flex items-start justify-center flex-col">
       {/* <video
         autoplay="true"
         loop="true"
@@ -37,19 +37,18 @@ const Home = () => {
         <source src="./images/video/bganimation.mp4" />
       </video> */}
       {/* Main Page  */}
-      <div className="w-full flex min-h-[100vh] relative font-poppins justify-center items-center ">
+      <div className="w-full flex min-h-screen relative font-poppins justify-center items-center">
         <video
           autoplay="true"
           loop="true"
           muted="true"
-          class="absolute z-0 w-auto 
-            min-w-full object-cover max-h-screen "
+          class="absolute z-0 w-full h-auto object-cover max-h-screen"
         >
           <source src="./images/video/fronthomepage.mp4" />
         </video>
         {/* <img src="./images/animation/mainintro.gif" className=""/> */}
-        <div className="flex w-full max-w-7xl top-40 absolute items-center">
-          <div className="w-1/2 text-left">
+        <div className="flex w-full max-w-7xl top-70 absolute items-center">
+          <div className="w-1/2 text-left sm:ml-4 mt-5">
             {/* <h1 className="text-5xl mt-10  mb-12 font-poppins ">
               Step into a World of <span className="font-extrabold font-poppins text-6xl  text-teal-300 -600 -700 -400 ">Financial Freedom with Ozo Trade.</span>
             </h1> */}
@@ -62,7 +61,7 @@ const Home = () => {
                 ease: "anticipate",
               }}
             >
-              <img src="./images/text2.png" className="mb-6 " />
+              <img src="./images/text2.png" className="mb-6 sm:mb-0 " />
             </m.div>
             <m.div
               variants={item}
@@ -72,7 +71,7 @@ const Home = () => {
                 duration: 1.6,
                 ease: "anticipate",
               }}
-              className="font-poppins text-justify mb-1 "
+              className="font-poppins text-justify"
             >
               Discover the power of one Ozo, the leading investment platform for
               crypto, forex, casino, and commodities. With tailored packages and
@@ -125,7 +124,7 @@ const Home = () => {
         >
           <source src="./images/video/2ndVideo.mp4" />
         </video> */}
-        <div className="flex justify-center absolute top-40 items-center  px-16">
+        <div className="flex justify-center absolute top-40 items-center px-16 sm:flex">
           <div className="w-1/2 h-full  flex justify-center items-center">
             {/* <img src="./images/laptop.png" className="" /> */}
           </div>
@@ -943,7 +942,7 @@ Ozo and experience the power of trust in your investment endeavors
         >
           <source src="./images/video/finalbgvideo1.mp4" />
         </video>
-        <div className="absolute flex top-40 items-center w-full">
+        <div className="absolute flex top-40 items-center w-full sm:flex">
           <m.div
             initial={{ scale: 0.5, opacity: 0 }}
             whileInView={{
@@ -1033,7 +1032,8 @@ Ozo and experience the power of trust in your investment endeavors
           className="z-0 opacity-80 object-cover max-w-full "
         />
 
-        <div className=" absolute px-52 w-full font-poppins   bg-opacity-40 py-[202px] ">
+        <div className=" absolute px-52 w-full font-poppins bg-opacity-40 py-[202px]"
+        >
           <m.h1
             className="text-7xl font-bold  mb-6"
             initial={{ x: -50, opacity: 0 }}
@@ -1051,7 +1051,7 @@ Ozo and experience the power of trust in your investment endeavors
             matters seriously
           </m.h1>
           <m.p
-            className="text-3xl font-semibold mb-4   "
+            className="text-3xl font-semibold mb-4"
             initial={{ x: -50, opacity: 0 }}
             whileInView={{
               x: 0,
@@ -1105,7 +1105,7 @@ platform, so you can have peace of mind <br/>and enjoy worry-free financial stab
       {/* FAQ  */}
 
       <div className="w-full my-28 ">
-        <div className="font-poppins mx-auto max-w-6xl space-y-12 ">
+        <div className="font-poppins mx-auto max-w-6xl space-y-12 sm:mx-8 justify-center">
           <h1 className="text-4xl text-center font-bold mb-16">FAQs</h1>
 
           <div className="text-xl   ">
