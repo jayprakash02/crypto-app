@@ -298,10 +298,10 @@ export default function Footer() {
          
         </div>
       </footer>
-      <div class="min-h-[10vh] flex mt-12 w-full border-gray-100 bg-black font-poppins">
-  <div class="sm:flex sm:items-center w-full max-w-4xl mx-auto sm:justify-between">
+      <div class="min-h-[10vh] flex mt-12 w-full border-gray-100 bg-black font-poppins sm:px-8">
+  <div class="sm:flex sm:items-center w-full max-w-4xl mx-auto">
     <nav aria-label="Footer Navigation - Support" class="flex flex-col sm:flex-row">
-      <ul class="flex flex-wrap gap-4 text-sm sm:mx-8">
+      <ul class="flex flex-wrap gap-4 text-sm">
         <li>
           <a href="#" class="text-gray-500 transition hover:opacity-75">
             Terms & Conditions

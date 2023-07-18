@@ -47,8 +47,8 @@ const Home = () => {
           <source src="./images/video/fronthomepage.mp4" />
         </video>
         {/* <img src="./images/animation/mainintro.gif" className=""/> */}
-        <div className="flex w-full max-w-7xl top-70 absolute items-center">
-          <div className="w-1/2 text-left sm:ml-4 mt-5">
+        <div className="flex flex-col sm:flex-row w-full max-w-7xl top-70 absolute items-center">
+          <div class="w-1/2 text-left sm:ml-4 sm:text-left sm:pt-5">
             {/* <h1 className="text-5xl mt-10  mb-12 font-poppins ">
               Step into a World of <span className="font-extrabold font-poppins text-6xl  text-teal-300 -600 -700 -400 ">Financial Freedom with Ozo Trade.</span>
             </h1> */}
@@ -61,7 +61,7 @@ const Home = () => {
                 ease: "anticipate",
               }}
             >
-              <img src="./images/text2.png" className="mb-6 sm:mb-0 " />
+              <img src="./images/text2.png" class="lg:mb-6 lg:mt-0 sm:mb-1 sm:mt-20 sm:pd-10 " />
             </m.div>
             <m.div
               variants={item}
@@ -71,7 +71,7 @@ const Home = () => {
                 duration: 1.6,
                 ease: "anticipate",
               }}
-              className="font-poppins text-justify"
+              class="font-poppins text-justify"
             >
               Discover the power of one Ozo, the leading investment platform for
               crypto, forex, casino, and commodities. With tailored packages and
@@ -87,7 +87,7 @@ const Home = () => {
                 duration: 1.8,
                 ease: "anticipate",
               }}
-              className="flex space-x-0"
+              className="flex space-x-0 sm:mt-8"
             >
               {/* <button className="text-white my-2   bg-violet-700  shadow-white-700 shadow-md hover:bg-violet-800 hover:text-white  transition ease-in-out delay-150 hover:scale-95  hover:translate-y-1 border-2 rounded-full px-7 py-4 font-semibold text-lg tracking-wide">
                 Buy Tokens
@@ -110,7 +110,7 @@ const Home = () => {
             </div> */}
 
       {/* What is OZo Trade  */}
-      <div className="w-full flex h-full   relative justify-center items-center  ">
+      <div className="w-full flex h-full relative justify-center items-center ">
         <img
           src="./images/bgmain2.jpg"
           className="z-0 opacity-100 max-w-full object-cover min-h-screen h-full  w-full  "
@@ -124,13 +124,13 @@ const Home = () => {
         >
           <source src="./images/video/2ndVideo.mp4" />
         </video> */}
-        <div className="flex justify-center absolute top-40 items-center px-16 sm:flex">
-          <div className="w-1/2 h-full  flex justify-center items-center">
+        <div class="flex absolute top-30 text-left sm:top-40 px-4 justify-end sm:px-16">
+          {/* <div className="w-full sm:w-1/2 h-full flex justify-center items-center"> */}
             {/* <img src="./images/laptop.png" className="" /> */}
-          </div>
-          <div className="w-1/2 text-left ">
+          {/* </div> */}
+          <div class="w-full sm:max-w-full sm:mt-0 lg:pt-16 lg:w-1/2 h-1/2 ">
             <m.h1
-              className="text-5xl   mb-12 font-bold font-poppins"
+              className="text-5xl mb-12 font-bold font-poppins"
               initial={{ y: "20vh", opacity: 0 }}
               whileInView={{
                 y: 0,
@@ -159,7 +159,7 @@ const Home = () => {
                 },
               }}
               // viewport={{ once: true }}
-              className="font-poppins text-lg text-justify"
+              className="font-poppins text-justify lg:text-lg sm:text-base"
             >
               One Ozo is a leading investment platform that offers individuals
               the opportunity to invest in cryptocurrency, forex, casino, and
@@ -1026,16 +1026,15 @@ Ozo and experience the power of trust in your investment endeavors
 
       {/* youtube videos oage  */}
 
-      <div className="w-full min-h-[100vh] relative flex mb-16 mt-28  items-center  ">
+      <div className="w-full min-h-[100vh] relative flex flex-col sm:flex-row mb-16 mt-28 items-center">
         <img
           src="./images/skydiving.jpg"
           className="z-0 opacity-80 object-cover max-w-full "
         />
 
-        <div className=" absolute px-52 w-full font-poppins bg-opacity-40 py-[202px]"
-        >
+        <div className="absolute w-full font-poppins bg-opacity-40 py-4 text-justify sm:py-[202px] px-10">
           <m.h1
-            className="text-7xl font-bold  mb-6"
+            className="font-bold sm:mt-12 pt-12 md:mt-5 lg: mt-3 sm:mb-2 lg:text-7xl sm:text-3xl"
             initial={{ x: -50, opacity: 0 }}
             whileInView={{
               x: 0,
@@ -1051,7 +1050,7 @@ Ozo and experience the power of trust in your investment endeavors
             matters seriously
           </m.h1>
           <m.p
-            className="text-3xl font-semibold mb-4"
+            className="sm:text-xl mt-4 lg:text-3xl font-semibold mb-4"
             initial={{ x: -50, opacity: 0 }}
             whileInView={{
               x: 0,
@@ -1066,7 +1065,7 @@ Ozo and experience the power of trust in your investment endeavors
             so that you don’t have to.
           </m.p>
           <m.p
-            className="text-xl font-semibold mb-10 "
+            className="sm:text-lg mb-7 mt-5 lg:text-xl mb-10 mt-3 font-semibold  "
             initial={{ x: -50, opacity: 0 }}
             whileInView={{
               x: 0,
@@ -1082,8 +1081,9 @@ Ozo and experience the power of trust in your investment endeavors
 platform, so you can have peace of mind <br/>and enjoy worry-free financial stability.
 
           </m.p>
+          <div class="sm:mt-12 pt-6 md:mt-0"  >
           <m.button
-            className="rounded-full bg-white px-14 py-6 "
+            className="rounded-full bg-white sm:px-4 py-1 lg:px-14 py-6"
             initial={{ opacity: 0, scale: 0 }}
             whileInView={{
               opacity: 1,
@@ -1095,10 +1095,11 @@ platform, so you can have peace of mind <br/>and enjoy worry-free financial stab
             }}
             // viewport={{ once: true }}
           >
-            <span className="text-black text-2xl font-semibold">
+            <span className="text-black font-semibold sm:text-lg lg:text-2xl">
               Experience the upgrade
             </span>{" "}
           </m.button>
+          </div>
         </div>
       </div>
   

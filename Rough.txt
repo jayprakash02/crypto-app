@@ -1,0 +1,68 @@
+<div className="w-full flex h-full relative justify-center items-center  ">
+        <img
+          src="./images/bgmain2.jpg"
+          className="z-0 opacity-100 max-w-full object-cover min-h-screen h-full  w-full  "
+        />
+        {/* <video
+          autoplay="true"
+          loop="true"
+          muted="true"
+          class="absolute z-0 w-auto opacity-70
+            min-w-full object-cover max-h-screen max-w-none"
+        >
+          <source src="./images/video/2ndVideo.mp4" />
+        </video> */}
+        <div class="lg:flex justify-end absolute top-40 px-16 sm:flex justify-start">
+          {/* <div className="w-full sm:w-1/2 h-full flex justify-center items-center"> */}
+            {/* <img src="./images/laptop.png" className="" /> */}
+          {/* </div> */}
+          <div className="w-full sm:w-1/2 h-1/2">
+            <m.h1
+              className="text-5xl mb-12 font-bold font-poppins"
+              initial={{ y: "20vh", opacity: 0 }}
+              whileInView={{
+                y: 0,
+                opacity: 1,
+                transition: {
+                  duration: 1.1,
+                  ease: "anticipate",
+                },
+              }}
+              viewport={{ once: true }}
+              // ref={ref}
+              // variants={squareVariants}
+              // animate={{ scale: 2 }}
+              // initial="hidden"
+            >
+              Maximize Wealth with One Ozo
+            </m.h1>
+            <m.p
+              initial={{ x: 200, opacity: 0 }}
+              whileInView={{
+                x: 0,
+                opacity: 1,
+                transition: {
+                  duration: 1.6,
+                  ease: "anticipate",
+                },
+              }}
+              // viewport={{ once: true }}
+              className="font-poppins text-lg text-justify"
+            >
+              One Ozo is a leading investment platform that offers individuals
+              the opportunity to invest in cryptocurrency, forex, casino, and
+              commodities. With a range of tailored packages, investors can
+              diversify their portfolios and aim for substantial returns. Our
+              platform provides a user-friendly interface, ensuring a seamless
+              investing experience. Whether you're a seasoned investor or new to
+              the market,
+              <br/>
+              <br/>
+               One Ozo offers the tools and resources to make
+              informed investment decisions. Join us today and unlock the
+              potential of these dynamic markets. Grow your wealth and achieve
+              financial success with One Ozo's innovative and secure investment
+              solutions
+            </m.p>
+          </div>
+        </div>
