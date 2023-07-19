@@ -299,7 +299,7 @@ export default function Footer() {
         </div>
       </footer>
       <div class="min-h-[10vh] flex mt-12 w-full border-gray-100 bg-black font-poppins sm:px-8">
-  <div class="sm:flex sm:items-center w-full max-w-4xl mx-auto">
+  <div class="sm:flex sm:items-center w-full max-w-4xl px-8 pt-3 ">
     <nav aria-label="Footer Navigation - Support" class="flex flex-col sm:flex-row">
       <ul class="flex flex-wrap gap-4 text-sm">
         <li>
