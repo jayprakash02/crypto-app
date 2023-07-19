@@ -19,9 +19,9 @@ const Navbar = ({isLoggedIn}) => {
             ease: "anticipate",
           },
         }}
-        class="flex flex-wrap z-10"
+        class="flex flex-wrap z-10 "
       >
-        <section class="relative mx-auto">
+        <section class="overflow-x-hidden relative mx-auto">
           {/*//        <!-- navbar -->*/}
           <nav class="flex justify-between  bg-black text-opacity-100 text-white w-screen sm:align-items:center">
             <div class="px-5 xl:px-12 py-2 flex w-full items-center">

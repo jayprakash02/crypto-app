@@ -2,7 +2,7 @@ import React from "react";
 import {motion as m} from "framer-motion"
 const Trade = () => {
   return (
-    <div className="w-full font-poppins  mb-8 ">
+    <div className="overflow-x-hidden w-full font-poppins  mb-8 ">
       <div className="w-full relative ">
       <video
           autoplay="true"
@@ -14,7 +14,8 @@ const Trade = () => {
           <source src="./images/video/tradevideo.mp4" />
         </video>
         {/* <img src="./images/designbg1.jpg" /> */}
-        <div className=" absolute top-56 left-32 w-full max-w-7xl mx-auto flex justify-center items-center flex-col ">
+        <div className="absolute w-full mx-auto flex justify-center items-center flex-col xl:top-56 lg:top-8 sm:top-5">
+          {/* <div class="absolute flex flex-col justify-center items-center bottom-50 w-full max-auto"> */}
           <m.h1  initial={{ y:-50,opacity:0 }}
             whileInView={{
           
@@ -24,7 +25,7 @@ const Trade = () => {
        delay: 0.4,
        ease: [0, 0.71, 0.2, 1.01]
             }
-            }} className="text-6xl text-center font-semibold   mb-6">
+            }} className="sm:text-3xl lg:text-6xl text-center font-semibold mb-6">
           Enhanced Trade Standards: <br/>
           One Ozo Sets the Bar Higher for <br/>Exceptional Investment Opportunities
           </m.h1>
@@ -37,7 +38,7 @@ const Trade = () => {
        delay: 0.6,
        ease: [0, 0.71, 0.2, 1.01]
             }
-            }} className="text-xl text-center font-medium mb-6">
+            }} className="text-xl text-center font-medium mb-6 px-5">
           One Ozo is committed to raising the bar in trade standards, providing exceptional investment <br/> 
 opportunities that surpass industry norms and deliver superior results for investors
           </m.p>
@@ -56,7 +57,7 @@ opportunities that surpass industry norms and deliver superior results for inves
         </div>
       </div>
 
-      <div className="w-full max-w-6xl mx-auto text-white flex justify-between space-x-10 items-center mt-44">
+      <div className="max-w-6xl text-white grid mt-44 mx-auto lg:grid-cols-3 gap-6 sm:grid-cols-2 gap-3">
         <m.div  initial={{ opacity:0 }}
             whileInView={{
           
@@ -66,7 +67,8 @@ opportunities that surpass industry norms and deliver superior results for inves
        delay: 0.5,
        ease: [0, 0.71, 0.2, 1.01]
             }
-            }} className="max-w-[350px] min-h-[340px] py-6 rounded-xl flex flex-col items-center justify-center text-center bg-neutral-900 px-6">
+            }} className="max-w-[350px] min-h-[350px] py-6 rounded-xl flex flex-col items-center justify-center text-center bg-neutral-900 px-6 gap: 5px lg:mx-auto sm:mx-8">
+          {/* className="rounded-xl mx-8 bg-neutral-900 max-w-[350px] min-h-[350px] px-6 py-6"> */}
           <img
             src="./images/safety.png"
             className="bg-purple-600 p-4 w-24 rounded-full mb-6"
@@ -86,7 +88,7 @@ investments and ensuring trust and confidence
        delay: 0.6,
        ease: [0, 0.71, 0.2, 1.01]
             }
-            }} className="max-w-[350px] min-h-[340px] py-6 rounded-xl flex flex-col items-center justify-center text-center bg-neutral-900 px-6">
+            }} className="max-w-[350px] min-h-[350px] py-6 rounded-xl flex flex-col items-center justify-center text-center bg-neutral-900 px-6 gap: 5px lg:mx-auto sm:mx-8">
           <img
             src="./images/safety.png"
             className="bg-purple-600 p-4 w-24 rounded-full mb-6"
@@ -106,7 +108,7 @@ empowering investors to seize profitable moments
        delay: 0.7,
        ease: [0, 0.71, 0.2, 1.01]
             }
-            }} className="max-w-[350px] min-h-[340px] py-6 rounded-xl flex flex-col items-center justify-center text-center bg-neutral-900 px-6">
+            }} className="max-w-[350px] min-h-[350px] py-6 rounded-xl flex flex-col items-center justify-center text-center bg-neutral-900 px-6 gap: 5px lg:mx-auto sm:mx-8">
           <img
             src="./images/safety.png"
             className="bg-purple-600 p-4 w-24 rounded-full mb-6"
@@ -119,8 +121,8 @@ technology infrastructure and expert market analysis
         </m.div>
       </div>
 
-      <div className="w-full max-w-6xl mx-auto mt-28 mb-16 flex items-center justify-between min-h-[90vh] ">
-        <div className="text-5xl max-w-[250px] font-semibold w-full space-y-6">
+      <div className="flex justify-center items-center mt-28 lg:gap-12 sm:gap-6">
+        <div className="mx-5 font-semibold lg:text-5xl sm:text-3xl">
           <m.div  initial={{ y:50,opacity:0 }}
             whileInView={{
           
@@ -130,7 +132,8 @@ technology infrastructure and expert market analysis
        delay: 0.3,
        ease: [0, 0.71, 0.2, 1.01]
             }
-            }}>
+            }}
+            >
             <h1 className="mb-3">50,000</h1>
             <p className="text-xl text-purple-900">Active Investor Base</p>
           </m.div>
@@ -189,11 +192,11 @@ technology infrastructure and expert market analysis
           </m.div>
         </div>
 
-        <div className="max-w-[900px] pl-10 w-full min-h-[70vh] relative h-full ">
+        <div className="relative">
           <m.div  initial={{ x:50,opacity:0 }}
             whileInView={{
           
-             opacity: 1, x:0,
+             opacity: 0.5, x:0,
             transition:{
              duration: 0.9,
        delay: 0.8,
@@ -212,13 +215,13 @@ technology infrastructure and expert market analysis
        delay: 0.95,
        ease: [0, 0.71, 0.2, 1.01]
             }
-            }} className=" z-10 absolute top-40 left-72">
-            <h1 className="text-4xl font-semibold tracking-wider mb-4 ">
+            }} className="max-w-[450px] z-10 absolute md:top-5 sm:top-10 md:left-52  sm:left-0 text-left">
+            <h1 className="text-4xl font-semibold mb-4 tracking-wider">
             Impressive Investor Base<br/>
              and Satisfaction Rates: <br/>
              Unveiling One Ozo's Success
             </h1>
-            <p className="max-w-[450px] font-medium tracking-wider text-sm w-full">
+            <p className="max-w-[450px] font-medium text-sm tracking-wider w-full">
             One Ozo boasts a substantial number of investors, while maintaining a high percentage of 
 satisfied clients. Our experienced team of traders ensures top-notch performance and service
             </p>
@@ -226,7 +229,7 @@ satisfied clients. Our experienced team of traders ensures top-notch performance
         </div>
       </div>
 
-      <div className="w-full  mb-24  min-h-[150vh] ">
+      <div className="w-full  mb-24  min-h-[150vh] mx-2">
         {/* <img src="./images/security1.jpg" className="opacity-50 " /> */}
 
         <div className="w-full mt-44">
@@ -251,12 +254,12 @@ satisfied clients. Our experienced team of traders ensures top-notch performance
        delay: 0.75,
        ease: [0, 0.71, 0.2, 1.01]
             }
-            }}className="text-center max-w-[600px] mx-auto w-full text-xl mb-10 text-gray-500">
+            }}className="text-center max-w-[600px] text-xl mb-10 text-gray-500 lg:mx-auto sm:mx-10">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </m.p>
         </div>
-        <div className="w-full max-w-6xl  mx-auto text-white grid grid-cols-3 gap-6">
+        <div className="w-full max-w-6xl text-white grid grid-cols-3 mx-auto gap-6 sm:grid-cols-2 mx-auto md:grid-cols-2 lg:grid-cols-3">
           <m.div  initial={{opacity:0 }}
             whileInView={{
           
@@ -266,7 +269,7 @@ satisfied clients. Our experienced team of traders ensures top-notch performance
        delay: 0.4,
        ease: [0, 0.71, 0.2, 1.01]
             }
-            }} className="max-w-[320px] py-6 rounded-xl   bg-neutral-900 px-6">
+            }} className="rounded-xl mx-8 bg-neutral-900 max-w-[320px] px-6 py-6 sm:max-w-[300px] sm:px-3 sm:py-3 md:px-6 md:py-6">
             <img
               src="./images/safety.png"
               className="bg-purple-600 p-3 w-16 rounded-full mb-6"
@@ -287,7 +290,7 @@ optimize investment performance and generate consistent returns.
        delay: 0.5,
        ease: [0, 0.71, 0.2, 1.01]
             }
-            }}  className="max-w-[320px] py-6 rounded-xl   bg-neutral-900 px-6">
+            }} className="rounded-xl mx-8 bg-neutral-900 max-w-[320px] px-6 py-6 sm:max-w-[300px] sm:px-3 sm:py-3 md:px-6 md:py-6">
             <img
               src="./images/safety.png"
               className="bg-purple-600 p-3 w-16 rounded-full mb-6"
@@ -307,7 +310,7 @@ enabling informed investment decisions for maximum profitability.
        delay: 0.6,
        ease: [0, 0.71, 0.2, 1.01]
             }
-            }}  className="max-w-[320px] py-6 rounded-xl   bg-neutral-900 px-6">
+            }}  className="rounded-xl mx-8 bg-neutral-900 max-w-[320px] px-6 py-6 sm:max-w-[300px] sm:px-3 sm:py-3 md:px-6 md:py-6">
             <img
               src="./images/safety.png"
               className="bg-purple-600 p-3 w-16 rounded-full mb-6"
@@ -328,7 +331,7 @@ a balanced and secure approach to trading.
        delay: 0.7,
        ease: [0, 0.71, 0.2, 1.01]
             }
-            }}  className="max-w-[320px] py-6 rounded-xl   bg-neutral-900 px-6">
+            }}  className="rounded-xl mx-8 bg-neutral-900 max-w-[320px] px-6 py-6 sm:max-w-[300px] sm:px-3 sm:py-3 md:px-6 md:py-6">
             <img
               src="./images/safety.png"
               className="bg-purple-600 p-3 w-16 rounded-full mb-6"
@@ -348,7 +351,7 @@ reducing costs and expenses associated with trading
        delay: 0.8,
        ease: [0, 0.71, 0.2, 1.01]
             }
-            }}  className="max-w-[320px] py-6 rounded-xl   bg-neutral-900 px-6">
+            }}  className="rounded-xl mx-8 bg-neutral-900 max-w-[320px] px-6 py-6 sm:max-w-[300px] sm:px-3 sm:py-3 md:px-6 md:py-6">
             <img
               src="./images/safety.png"
               className="bg-purple-600 p-3 w-16 rounded-full mb-6"
@@ -368,7 +371,7 @@ providing a trustworthy and secure trading environment
        delay: 0.9,
        ease: [0, 0.71, 0.2, 1.01]
             }
-            }}  className="max-w-[320px] py-6 rounded-xl   bg-neutral-900 px-6">
+            }}  className="rounded-xl mx-8 bg-neutral-900 max-w-[320px] px-6 py-6 sm:max-w-[300px] sm:px-3 sm:py-3 md:px-6 md:py-6">
             <img
               src="./images/safety.png"
               className="bg-purple-600 p-3 w-16 rounded-full mb-6"

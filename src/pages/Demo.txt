@@ -1,0 +1,108 @@
+<div className="max-w-6xl mx-auto mt-28 mb-16 flex items-center justify-between">
+        <div className="text-5xl max-w-[250px] font-semibold w-full space-y-6">
+          <m.div  initial={{ y:50,opacity:0 }}
+            whileInView={{
+          
+             opacity: 1, y:0,
+            transition:{
+             duration: 0.9,
+       delay: 0.3,
+       ease: [0, 0.71, 0.2, 1.01]
+            }
+            }}
+            >
+            <h1 className="mb-3">50,000</h1>
+            <p className="text-xl text-purple-900">Active Investor Base</p>
+          </m.div>
+
+          <m.div  initial={{ y:50,opacity:0 }}
+            whileInView={{
+          
+             opacity: 1, y:0,
+            transition:{
+             duration: 0.9,
+       delay: 0.4,
+       ease: [0, 0.71, 0.2, 1.01]
+            }
+            }}>
+            <h1 className="mb-3">$500M</h1>
+            <p className="text-xl text-purple-900">Investment Capital</p>
+          </m.div>
+          <m.div  initial={{ y:50,opacity:0 }}
+            whileInView={{
+          
+             opacity: 1, y:0,
+            transition:{
+             duration: 0.9,
+       delay: 0.5,
+       ease: [0, 0.71, 0.2, 1.01]
+            }
+            }}>
+            <h1 className="mb-3">100</h1>
+            <p className="text-xl text-purple-900">Traders Team</p>
+          </m.div>
+          <m.div  initial={{ y:50,opacity:0 }}
+            whileInView={{
+          
+             opacity: 1, y:0,
+            transition:{
+             duration: 0.9,
+       delay: 0.6,
+       ease: [0, 0.71, 0.2, 1.01]
+            }
+            }}>
+            <h1 className="mb-3">85%</h1>
+            <p className="text-xl text-purple-900">Trade Success Rate</p>
+          </m.div>
+          <m.div  initial={{ y:50,opacity:0 }}
+            whileInView={{
+          
+             opacity: 1, y:0,
+            transition:{
+             duration: 0.9,
+       delay: 0.6,
+       ease: [0, 0.71, 0.2, 1.01]
+            }
+            }}>
+            <h1 className="mb-3">97%</h1>
+            <p className="text-xl text-purple-900">Investor Satisfaction</p>
+          </m.div>
+        </div>
+
+
+<div className="max-w-[900px] pl-10 w-full min-h-[70vh] relative h-full ">
+          <m.div  initial={{ x:50,opacity:0 }}
+            whileInView={{
+          
+             opacity: 1, x:0,
+            transition:{
+             duration: 0.9,
+       delay: 0.8,
+       ease: [0, 0.71, 0.2, 1.01]
+            }
+            }} className="max-w-[500px] min-h-[70vh] z-0 rounded-2xl  w-full ">
+              <img src="./images/trade1.jpg"  className="w-full h-full"/>
+            </m.div>
+
+          <m.div  initial={{ x:-50,opacity:0 }}
+            whileInView={{
+          
+             opacity: 1, x:0,
+            transition:{
+             duration: 0.9,
+       delay: 0.95,
+       ease: [0, 0.71, 0.2, 1.01]
+            }
+            }} className=" z-10 absolute top-40 left-72">
+            <h1 className="text-4xl font-semibold tracking-wider mb-4 ">
+            Impressive Investor Base<br/>
+             and Satisfaction Rates: <br/>
+             Unveiling One Ozo's Success
+            </h1>
+            <p className="max-w-[450px] font-medium tracking-wider text-sm w-full">
+            One Ozo boasts a substantial number of investors, while maintaining a high percentage of 
+satisfied clients. Our experienced team of traders ensures top-notch performance and service
+            </p>
+          </m.div>
+        </div>
+      </div>

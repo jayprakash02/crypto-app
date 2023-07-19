@@ -26,7 +26,7 @@ const item = {
 
 const Home = () => {
   return (
-    <div className="w-full flex items-start justify-center flex-col">
+    <div className="overflow-x-hidden w-full flex items-start justify-center flex-col">
       {/* <video
         autoplay="true"
         loop="true"
@@ -110,7 +110,7 @@ const Home = () => {
             </div> */}
 
       {/* What is OZo Trade  */}
-      <div className="w-full flex h-full relative justify-center items-center ">
+      <div className="w-full flex h-full relative justify-center items-center mt-44 ">
         <img
           src="./images/bgmain2.jpg"
           className="z-0 opacity-100 max-w-full object-cover min-h-screen h-full  w-full  "
