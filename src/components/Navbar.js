@@ -204,7 +204,7 @@ const Navbar = ({isLoggedIn}) => {
         </section>
       </div>
 
-      <div class="absolute bottom-0 right-0 mb-4 mr-4 z-10">
+      {/* <div class="absolute bottom-0 right-0 mb-4 mr-4 z-10">
         <div>
           <a
             title="Follow me on twitter"
@@ -218,7 +218,7 @@ const Navbar = ({isLoggedIn}) => {
             />
           </a>
         </div>
-      </div>
+      </div> */}
     </m.div>
   );
 };

@@ -40,7 +40,7 @@ export default function Footer() {
 
         </div>
 
-            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 font-poppins  text-left">
+            <div class="px-4 grid grid-cols-1 gap-4 sm:grid-cols-2 font-poppins text-left px-auto">
               <div>
                 <p class="font-medium text-2xl text-gray-200  ">
                   Useful Links
@@ -158,7 +158,7 @@ export default function Footer() {
             </div>
 
 
-            <div className="font-poppins">
+            <div className="font-poppins px-4">
               <p>
                 {/* <span class="text-xs tracking-wide uppercase text-gray-500">
                   Call us

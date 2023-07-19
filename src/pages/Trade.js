@@ -2,7 +2,7 @@ import React from "react";
 import {motion as m} from "framer-motion"
 const Trade = () => {
   return (
-    <div className="overflow-x-hidden w-full font-poppins  mb-8 ">
+    <div className="mx-auto overflow-x-hidden w-full font-poppins  mb-8 ">
       <div className="w-full relative ">
       <video
           autoplay="true"
@@ -25,7 +25,7 @@ const Trade = () => {
        delay: 0.4,
        ease: [0, 0.71, 0.2, 1.01]
             }
-            }} className="sm:text-3xl lg:text-6xl text-center font-semibold mb-6">
+            }} className="lg:text-6xl text-center font-semibold mb-6sm:text-3xl">
           Enhanced Trade Standards: <br/>
           One Ozo Sets the Bar Higher for <br/>Exceptional Investment Opportunities
           </m.h1>
