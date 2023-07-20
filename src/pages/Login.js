@@ -4,6 +4,7 @@ import { FiLoader } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import { baseURL } from "../constants/Constant";
 import { toast } from "react-hot-toast";
+import './Login.css'
 
 const Login = ({ setIsLoggedIn }) => {
   const navigate = useNavigate();
@@ -60,14 +61,15 @@ const Login = ({ setIsLoggedIn }) => {
   };
 
   return (
-    <div className="w-full max-w-full font-poppins max-h-[100vh] relative">
+    <div className="overflow-hiddden">
+    <div className="Login_div font-poppins">
       <img
         src="./images/signupbg.jpg"
-        className="w-full object-cover max-h-[100vh]"
+        className="w-full object-cover max-h-[100vh] h-auto"
         alt="Signup Background"
       />
-      <div className="w-1/2 px-24 flex flex-col items-center text-center absolute top-32 ">
-        <h1 className="mb-6 text-5xl font-semibold">Welcome to one ozo</h1>
+      <div className="login_content xl:px-60  sm:px-0">
+        <h1 className="mb-6 text-5xl font-semibold md:px-10 sm:px-0">Welcome to one ozo</h1>
         <p className="mb-6">
           Please{" "}
           <Link to="/signup" className="font-semibold">
@@ -76,7 +78,7 @@ const Login = ({ setIsLoggedIn }) => {
           if you don't have an account
         </p>
 
-        <div className="flex flex-col mb-4 space-y-8 max-w-[380px] w-full justify-center text-center font-semibold items-center">
+        <div className="login_info">
           <h1 className="font-poppins text-left  font-semibold text-4xl ">
             Ozo Login
           </h1>
@@ -107,6 +109,7 @@ const Login = ({ setIsLoggedIn }) => {
           </button>
         </div>
       </div>
+    </div>
     </div>
   );
 };
