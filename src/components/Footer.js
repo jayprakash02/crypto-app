@@ -19,8 +19,6 @@ export default function Footer() {
         
         </div> */}
 
-       
-
         <div class="px-4 py-16 sm:px-6 lg:col-span-5 lg:px-8 text-left">
           
           <div class="grid grid-cols-1 gap-8 sm:grid-cols-3">
