@@ -68,7 +68,7 @@ export default App;
 function OutletLayout({isLoggedIn}) {
   return (
     <>
-      {/* <Navbar isLoggedIn={isLoggedIn} /> */}
+      <Navbar isLoggedIn={isLoggedIn} />
       <Outlet />
       {/* <Footer /> */}
     </>
