@@ -3,200 +3,169 @@ import {motion as m } from "framer-motion"
 const AboutUs = () => {
   const [values, setValues] = useState("think");
   return (
-    <div className="overflow-x-hidden bg-black w-full flex flex-col justify-center items-center">
-    <m.h1
-  initial={{ opacity: 0, y: -50 }}
-  whileInView={{
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.7,
-      delay: 0.23,
-      ease: "anticipate",
-    },
-  }}
-  className="text-xl mt-6 sm:mt-8 lg:mt-16 text-fuchsia-800 mb-3 sm:mb-4 lg:mb-6 font-semibold uppercase font-poppins"
->
-  Our Vision
-</m.h1>
-<m.h1
-  initial={{ opacity: 0, y: -50 }}
-  whileInView={{
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.7,
-      delay: 0.38,
-      ease: "anticipate",
-    },
-  }}
-  className="text-3xl sm:text-4xl lg:text-5xl text-center mb-6 sm:mb-8 lg:mb-12 font-semibold px-6 sm:px-10 lg:px-20 font-poppins"
->
-Empowering <br/>Financial Success,<br/> Innovatively
-</m.h1>
-
-<m.img
-  initial={{ opacity: 0, y: -20 }}
-  whileInView={{
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.7,
-      delay: 0.51,
-      ease: "anticipate",
-    },
-  }}
-  src="./images/logo.png"
-  className="w-full max-w-[550px] mx-auto mb-3"
-/>
-
-<m.h1
-  initial={{ opacity: 0, y: -50 }}
-  whileInView={{
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.7,
-      delay: 0.23,
-      ease: "anticipate",
-    },
-  }}
-  className="text-xl mt-6 sm:mt-8 lg:mt-16 text-fuchsia-800 text-center mb-3 sm:mb-4 lg:mb-6 font-semibold uppercase font-poppins"
->
-  Our Mission
-</m.h1>
-<m.h1
-  initial={{ opacity: 0, y: -50 }}
-  whileInView={{
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.7,
-      delay: 0.38,
-      ease: "anticipate",
-    },
-  }}
-  className="text-2xl sm:text-3xl lg:text-4xl text-center font-semibold font-poppins mb-12"
->
-Empowering Investors with<br/> Innovative Solutions in Cryptocurrency<br/> for Financial Prosperity
-</m.h1>
-
-  
-  {/* First Section */}
-  <div className="max-w-full w-full relative flex items-center">
-    <img src="./images/aboutusbg.jpg" className="opacity-60 object-cover" />
-    <div className="absolute top-0 sm:top-1/4 lg:top-1/2 px-6 sm:px-10 lg:px-20 py-5 text-center">
-      <m.p
-        initial={{ opacity: 0, y: -50 }}
-        whileInView={{
-          y: 0,
-          opacity: 1,
-          transition: {
-            duration: 0.7,
-            delay: 0.2,
-            ease: "anticipate",
-          },
-        }}
-        className="text-xl sm:text-3xl text-fuchsia-800 mb-6 font-semibold uppercase font-poppins"
-      >
-        WHY it Matters
-      </m.p>
-      <m.h1
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{
-          y: 0,
-          opacity: 1,
-          transition: {
-            duration: 0.7,
-            delay: 0.34,
-            ease: "anticipate",
-          },
-        }}
-        className="text-xl sm:text-3xl py-6 lg:py-10 font-semibold font-poppins line-clamp-5 mb-5"
-      >
-        Diversify your portfolio and maximize returns with cryptocurrency and forex investments
-        Tap into the growth potential of cryptocurrency and forex markets.
-        Achieve financial independence by investing in cryptocurrency and forex
-        Participate in global investing opportunities with accessible cryptocurrency and forex market
+    <div className="overflow-x-hidden bg-black w-full flex justify-center items-center flex-col gap-3 px-3">
+      <m.h1  initial={{ opacity: 0,y:-50 }}
+              whileInView={{
+                y:0,
+                opacity: 1,
+                transition: {
+                  duration: 0.7,
+                  delay: 0.23,
+                  ease: "anticipate",
+                },
+              }}  className="text-xl mt-16 text-fuchsia-800  mb-6 font-semibold uppercase font-poppins">
+        Our Vision
       </m.h1>
-      <m.button
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{
-          y: 0,
-          opacity: 1,
-          transition: {
-            duration: 0.7,
-            delay: 0.41,
-            ease: "anticipate",
-          },
-        }}
-        className="text-white w-48 sm:w-56 border-2 font-poppins hover:bg-black hover:opacity-80 hover:border-2 py-4 shadow-grey-700 shadow-2xl transition ease-in-out delay-150 hover:scale-95 hover:translate-y-1 rounded-full font-semibold text-lg tracking-wide"
-      >
-        Start the Journey
-      </m.button>
-    </div>
-  </div>
-
-  {/* Second Section */}
-  <div className="max-w-full w-full relative flex items-center mt-20">
-    <video
-      src="./images/video/aboutusvideo.mp4"
-      autoPlay
-      loop
-      muted
-      className="absolute inset-0 opacity-80 object-cover w-full h-full z-0"
-    />
-
-    <div className="relative z-10 px-6 sm:px-10 lg:px-20 py-5 text-center">
-      <m.p
-        initial={{ opacity: 0, y: -50 }}
-        whileInView={{
-          y: 0,
-          opacity: 1,
-          transition: {
-            duration: 0.7,
-            delay: 0.2,
-            ease: "anticipate",
-          },
-        }}
-        className="text-2xl mt-16 text-fuchsia-900 text-center mb-6 font-semibold uppercase font-poppins"
-      >
-        Commitment to Excellence
-      </m.p>
-      <m.h1
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{
-          y: 0,
-          opacity: 1,
-          transition: {
-            duration: 0.7,
-            delay: 0.32,
-            ease: "anticipate",
-          },
-        }}
-        className="text-2xl sm:text-5xl text-center mb-20 font-semibold font-poppins"
-      >
-        At One Ozo, we strive for excellence in everything we do, continuously improving our services to deliver
-        unparalleled value and satisfaction to our investors.
+      <m.h1  initial={{ opacity: 0,y:-50 }}
+              whileInView={{
+                y:0,
+                opacity: 1,
+                transition: {
+                  duration: 0.7,
+                  delay: 0.38,
+                  ease: "anticipate",
+                },
+              }}  className="text-5xl text-center mb-12 font-semibold px-10 font-poppins">
+       Empowering <br/>Financial Success,<br/> Innovatively
       </m.h1>
-      <m.button
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{
-          y: 0,
-          opacity: 1,
-          transition: {
-            duration: 0.7,
-            delay: 0.32,
-            ease: "anticipate",
-          },
-        }}
-        className="text-white w-56 border-2 font-poppins hover:bg-black hover:opacity-80 hover:border-2 py-4 shadow-grey-700 shadow-2xl transition ease-in-out delay-150 hover:scale-95 hover:translate-y-1 rounded-full font-semibold text-lg tracking-wide"
-      >
-        Learn More
-      </m.button>
-    </div>
-  </div>
-  {/* Parent  */}
+
+      <m.img  initial={{ opacity: 0,y:-20 }}
+              whileInView={{
+                y:0,
+                opacity: 1,
+                transition: {
+                  duration: 0.7,
+                  delay: 0.51,
+                  ease: "anticipate",
+                },
+              }}  src="./images/logo.png" className="w-[550px] " />
+      <m.h1 initial={{ opacity: 0,y:-50 }}
+              whileInView={{
+                y:0,
+                opacity: 1,
+                transition: {
+                  duration: 0.7,
+                  delay: 0.23,
+                  ease: "anticipate",
+                },
+              }}  className="text-xl mt-16 text-fuchsia-800 text-center   mb-6 font-semibold uppercase font-poppins">
+        Our Mission
+      </m.h1>
+      <m.h1  initial={{ opacity: 0,y:-50 }}
+              whileInView={{
+                y:0,
+                opacity: 1,
+                transition: {
+                  duration: 0.7,
+                  delay: 0.38,
+                  ease: "anticipate",
+                },
+              }}  className="text-4xl sm:text-5xl text-center font-semibold  font-poppins">
+       Empowering Investors with<br/> Innovative Solutions in Cryptocurrency<br/> for Financial Prosperity
+      </m.h1>
+
+      <div className="w-full min-h-[110vh] mt-20 relative  flex justify-center items-center flex-col mb-20">
+        <img src="./images/aboutusbg.jpg" className="opacity-60" />
+        <div className="absolute top-20 sm:top-40 flex flex-col mx-auto mx-w-6xl justify-center items-center mb-6 ">
+          <m.p  initial={{ opacity: 0,y:-50 }}
+              whileInView={{
+                y:0,
+                opacity: 1,
+                transition: {
+                  duration: 0.7,
+                  delay: 0.2,
+                  ease: "anticipate",
+                },
+              }}  className="text-2xl text-fuchsia-800 text-center mb-6 font-semibold uppercase font-poppins">
+            WHY it Matters
+          </m.p>
+          <m.h1  initial={{ opacity: 0,y:50 }}
+              whileInView={{
+                y:0,
+                opacity: 1,
+                transition: {
+                  duration: 0.7,
+                  delay: 0.34,
+                  ease: "anticipate",
+                },
+              }}  className="text-2xl sm:text-4xl py-10 items-center text-center mb-10 font-semibold  font-poppins">
+            Diversify your portfolio and<br/> maximize returns with cryptocurrency<br/> and forex investments
+            <br /> <br />
+            Tap into the growth potential<br/> of cryptocurrency and forex markets.
+
+          
+            <br /> <br />
+            Achieve financial independence by investing<br/> in cryptocurrency and forex
+            
+            <br /> <br /> Participate in global investing opportunities with accessible cryptocurrency and forex market
+          </m.h1>
+          <m.button  initial={{ opacity: 0,y:50 }}
+              whileInView={{
+                y:0,
+                opacity: 1,
+                transition: {
+                  duration: 0.7,
+                  delay: 0.41,
+                  ease: "anticipate",
+                },
+              }}  className="text-white w-56 border-2 font-poppins hover:bg-black hover:opacity-80 hover:border-2 py-4 shadow-grey-700 shadow-2xl  transition ease-in-out delay-150 hover:scale-95  hover:translate-y-1 rounded-full  font-semibold text-lg tracking-wide">
+            Start the Journey
+          </m.button>
+        </div>
+      </div>
+      <div className="w-full min-h-[110vh] mt-80 mb-20 sm:mt-20 relative flex justify-center items-center flex-col mx-auto">
+        <video
+          src="./images/video/aboutusvideo.mp4"
+          autoplay="true"
+          loop="true"
+          muted="true"
+          class="absolute z-0 w-auto opacity-80
+            min-w-full object-cover max-h-[110vh] max-w-none"
+        />
+        
+        <div className="absolute top-20 sm:top-40 flex flex-col justify-center items-center mt-6">
+          <m.p  initial={{ opacity: 0,y:-50 }}
+              whileInView={{
+                y:0,
+                opacity: 1,
+                transition: {
+                  duration: 0.7,
+                  delay: 0.2,
+                  ease: "anticipate",
+                },
+              }}  className="text-2xl mt-16 text-fuchsia-900 text-center mb-6 font-semibold uppercase font-poppins">
+           Commitment to Excellence
+          </m.p>
+          <m.h1  initial={{ opacity: 0,y:50 }}
+              whileInView={{
+                y:0,
+                opacity: 1,
+                transition: {
+                  duration: 0.7,
+                  delay: 0.32,
+                  ease: "anticipate",
+                },
+              }}  className="text-2xl sm:text-5xl text-center  mb-20 font-semibold  font-poppins">
+           At One Ozo, we strive for excellence in everything we do, continuously improving our services to deliver 
+unparalleled value and satisfaction to our investors.
+
+          </m.h1>
+          <m.button  initial={{ opacity: 0,y:50 }}
+              whileInView={{
+                y:0,
+                opacity: 1,
+                transition: {
+                  duration: 0.7,
+                  delay: 0.32,
+                  ease: "anticipate",
+                },
+              }}  className="text-white w-56 border-2 font-poppins hover:bg-black hover:opacity-80 hover:border-2 py-4 shadow-grey-700 shadow-2xl  transition ease-in-out delay-150 hover:scale-95  hover:translate-y-1 rounded-full  font-semibold text-lg tracking-wide">
+            Learn More
+          </m.button>
+        </div>
+      </div>
+
+      {/* Parent  */}
       {/* <div className="flex max-w-7xl p-8 mb-12 w-full  justify-center items-center">
     
         <div className="w-1/2 text-left ">
@@ -1124,8 +1093,7 @@ expenditures, yet boldly invest in what holds significance, fostering growth and
           </div>
         </div>
       </div>
-</div>
-
+    </div>
   );
 };
 
