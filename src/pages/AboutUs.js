@@ -3,7 +3,7 @@ import {motion as m } from "framer-motion"
 const AboutUs = () => {
   const [values, setValues] = useState("think");
   return (
-    <div className="overflow-x-hidden bg-black w-full flex flex-col justify-center items-center">
+    <div className="overflow-x-hidden pt-20 bg-black w-full flex flex-col justify-center items-center">
     <m.h1
   initial={{ opacity: 0, y: -50 }}
   whileInView={{

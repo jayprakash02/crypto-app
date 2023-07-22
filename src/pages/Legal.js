@@ -2,7 +2,7 @@ import React from "react";
 
 const Legal = () => {
   return (
-    <div className="overflow-x-hidden w-full flex justify-center min-h-screen items-center ">
+    <div className="overflow-x-hidden pt-10 w-full flex justify-center min-h-screen items-center ">
       <div className=" p-16 max-w-6xl justify-center items-center space-y-5  flex-col w-full flex">
         <img src="./images/usa.png" className="lg:w-[450px] sm:w-[400px]" />
         <h2 className="font-poppins text-5xl">USA</h2>
