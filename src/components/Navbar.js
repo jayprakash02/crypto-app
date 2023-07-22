@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({isLoggedIn}) => {
   const [navOpen, setNavOpen] = useState(false);
   const [earningOpen, setEarningOpen] = useState(false);
 
@@ -93,9 +93,14 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="lg:ml-10 lg:my-0 my-7 hover:text-gray-100">
-            <Link className="text-lg" to="/login" onClick={() => { setNavOpen(false) }}>
-              Login
-            </Link>
+          {isLoggedIn ? (<Link to="/dashboard" className="" href="#">
+                  <img
+                    class="h-14  "
+                    src="./images/dashboard2.png"
+                    alt="logo"
+                  />
+                </Link>) :<Link className="text-lg" to="/login" onClick={() => { setNavOpen(false) }}>Login</Link>
+               }
           </li>
         </ul>
       </div>
