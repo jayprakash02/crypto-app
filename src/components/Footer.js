@@ -3,7 +3,7 @@ import React from "react";
 export default function Footer() {
   return (
     <div className="overflow-x-hidden overflow-y-auto text-white bg-neutral-950  w-full font-poppins">
-      <footer aria-label="Site Footer" class="bg-z max-w-5xl mx-auto px-6 py-6">
+      <footer aria-label="Site Footer" class="bg-z max-w-5xl mx-auto px-6 py-3">
         <div>
           <div class="flex flex-col gap-6 sm:flex-row">
             <div className="text-left text-gray-200 text-sm font-normal ">
@@ -83,7 +83,7 @@ export default function Footer() {
                 </nav>
               </div>
 
-              <div>
+              <div className="">
                 <nav aria-label="Footer Navigation - Company" className="mt-14 sm:mt-14">
                   <ul class="space-y-4 text-sm ">
                     <li>
@@ -133,7 +133,7 @@ export default function Footer() {
               </div>
             </div>
 
-            <div className="font-poppins">
+            <div className="font-poppins flex flex-col gap-2 ml-0 md:ml-5">
               <p>
                 {/* <span class="text-xs tracking-wide uppercase text-gray-500">
                   Call us
@@ -274,7 +274,7 @@ export default function Footer() {
       </footer>
       <div class="min-h-[10vh] flex mt-12 max-w-full w-full border-gray-100 bg-black font-poppins px-6 ">
   <div class="sm:flex sm:items-center max-w-full w-full pt-3 my-3 pb-3 items-center justify-center gap-36 mx-auto">
-    <nav aria-label="Footer Navigation - Support" class="flex flex-col sm:flex-row gap-12 my-6">
+    <nav aria-label="Footer Navigation - Support" class="flex flex-col sm:flex-row gap-12">
       <ul class="flex flex-wrap gap-4 text-sm">
         <li>
           <a href="#" class="text-gray-500 transition hover:opacity-75">
