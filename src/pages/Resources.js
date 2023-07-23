@@ -5,7 +5,8 @@ import "./Resources.css";
 const Resources = () => {
   return (
     <div className="overflow-x-hidden w-full font-poppins pb-24 mx-auto   ">
-      <div className="mt-28 explore">
+      {/* section 1 */}
+      <div className="mt-28 explore px-6">
         <div>
           <m.h1
             initial={{ opacity: 0, y: -50 }}
@@ -145,6 +146,8 @@ const Resources = () => {
           </div>
         </div>
       </div>
+
+      {/* section 2 */}
       <m.h1
         initial={{ opacity: 0, y: -50 }}
         whileInView={{
@@ -210,11 +213,13 @@ const Resources = () => {
           </m.div>
         </div>
       </div>
+
+      {/* section 3 */}
     
-      <div className="w-full relative mt-28">
+      <div className="w-full relative mt-28 my-44">
         <img src="./images/trade2.jpg" />
-        <div className="language_plan">
-          <div className="w-[350px] mx-auto">
+        <div className="w-full max-w-7xl absolute top-0  md:top-28 flex flex-col md:flex-row justify-between  mx-auto gap-12 ">
+          <div className="w-full mx-auto max-w-[90%] lg:max-w-[800px]">
             <m.h1
               initial={{ opacity: 0, y: -50 }}
               whileInView={{
@@ -226,12 +231,12 @@ const Resources = () => {
                   ease: "anticipate",
                 },
               }}
-              className="text-4xl font-semibold text-center"
+              className="text-4xl font-semibold text-center py-6"
             >
               Different Language Business Plan
             </m.h1>
           </div>
-          <div className="px-16 py-24 max-w-[550px] overflow-y-auto no-scrollbar max-h-[550px] space-y-8 lang_choice">
+          <div className="px-6 md:px-16 py-12 max-w-[90%] lg:max-w-[800px] overflow-y-auto no-scrollbar max-h-[70vh] lang_choice">
             <m.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{
@@ -243,7 +248,7 @@ const Resources = () => {
                   ease: "anticipate",
                 },
               }}
-              className="w-full  bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 "
+              className="w-full bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 my-4 "
             >
               <img src="./images/countries/unitedstates.png" className="w-12" />
               <p className="pl-6 text-2xl">United States</p>
@@ -259,7 +264,7 @@ const Resources = () => {
                   ease: "anticipate",
                 },
               }}
-              className="w-full  bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 "
+              className="w-full bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 my-4"
             >
               <img
                 src="./images/countries/unitedkingdom.png"
@@ -278,7 +283,7 @@ const Resources = () => {
                   ease: "anticipate",
                 },
               }}
-              className="w-full  bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 "
+              className="w-full bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 my-4  "
             >
               <img src="./images/countries/canada.png" className="w-12" />
               <p className="pl-6 text-2xl">Canada</p>
@@ -294,7 +299,7 @@ const Resources = () => {
                   ease: "anticipate",
                 },
               }}
-              className="w-full  bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 "
+              className="w-full  bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 my-4  "
             >
               <img src="./images/countries/germany.png" className="w-12" />
               <p className="pl-6 text-2xl">Germany</p>
@@ -310,7 +315,7 @@ const Resources = () => {
                   ease: "anticipate",
                 },
               }}
-              className="w-full  bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 "
+              className="w-full  bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 my-4 "
             >
               <img src="./images/countries/france.png" className="w-12" />
               <p className="pl-6 text-2xl">France</p>
@@ -326,7 +331,7 @@ const Resources = () => {
                   ease: "anticipate",
                 },
               }}
-              className="w-full  bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 "
+              className="w-full  bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 my-4 "
             >
               <img src="./images/countries/china.png" className="w-12" />
               <p className="pl-6 text-2xl">China</p>
@@ -342,7 +347,7 @@ const Resources = () => {
                   ease: "anticipate",
                 },
               }}
-              className="w-full  bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 "
+              className="w-full  bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 my-4 "
             >
               <img src="./images/countries/italy.png" className="w-12" />
               <p className="pl-6 text-2xl">Italy</p>
@@ -358,7 +363,7 @@ const Resources = () => {
                   ease: "anticipate",
                 },
               }}
-              className="w-full  bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 "
+              className="w-full  bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 my-4 "
             >
               <img src="./images/countries/japan.png" className="w-12" />
               <p className="pl-6 text-2xl">Japan</p>
@@ -374,7 +379,7 @@ const Resources = () => {
                   ease: "anticipate",
                 },
               }}
-              className="w-full  bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 "
+              className="w-full  bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 my-4 "
             >
               <img src="./images/countries/norway.png" className="w-12" />
               <p className="pl-6 text-2xl">Norway</p>
@@ -390,7 +395,7 @@ const Resources = () => {
                   ease: "anticipate",
                 },
               }}
-              className="w-full  bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 "
+              className="w-full  bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 my-4 "
             >
               <img src="./images/countries/russia.png" className="w-12" />
               <p className="pl-6 text-2xl">Russia</p>
@@ -406,7 +411,7 @@ const Resources = () => {
                   ease: "anticipate",
                 },
               }}
-              className="w-full  bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 "
+              className="w-full  bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 my-4 "
             >
               <img src="./images/countries/southkorea.png" className="w-12" />
               <p className="pl-6 text-2xl">South Korea</p>
@@ -422,7 +427,7 @@ const Resources = () => {
                   ease: "anticipate",
                 },
               }}
-              className="w-full  bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 "
+              className="w-full  bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 my-4 "
             >
               <img src="./images/countries/singapore.png" className="w-12" />
               <p className="pl-6 text-2xl">Singapore</p>
@@ -438,7 +443,7 @@ const Resources = () => {
                   ease: "anticipate",
                 },
               }}
-              className="w-full  bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 "
+              className="w-full  bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 my-4 "
             >
               <img src="./images/countries/spain.png" className="w-12" />
               <p className="pl-6 text-2xl">Spain</p>
@@ -454,7 +459,7 @@ const Resources = () => {
                   ease: "anticipate",
                 },
               }}
-              className="w-full  bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 "
+              className="w-full  bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 my-4 "
             >
               <img src="./images/countries/sweden.png" className="w-12" />
               <p className="pl-6 text-2xl">Sweden</p>
@@ -470,7 +475,7 @@ const Resources = () => {
                   ease: "anticipate",
                 },
               }}
-              className="w-full  bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 "
+              className="w-full  bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 my-4 "
             >
               <img src="./images/countries/turkey.png" className="w-12" />
               <p className="pl-6 text-2xl">Turkey</p>
@@ -486,7 +491,7 @@ const Resources = () => {
                   ease: "anticipate",
                 },
               }}
-              className="w-full  bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 "
+              className="w-full  bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 my-4 "
             >
               <img src="./images/countries/ukraine.png" className="w-12" />
               <p className="pl-6 text-2xl">Ukraine</p>
@@ -502,7 +507,7 @@ const Resources = () => {
                   ease: "anticipate",
                 },
               }}
-              className="w-full  bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 "
+              className="w-full  bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 my-4 "
             >
               <img src="./images/countries/ireland.png" className="w-12" />
               <p className="pl-6 text-2xl">Ireland</p>
@@ -518,7 +523,7 @@ const Resources = () => {
                   ease: "anticipate",
                 },
               }}
-              className="w-full  bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 "
+              className="w-full  bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 my-4 "
             >
               <img src="./images/countries/finland.png" className="w-12" />
               <p className="pl-6 text-2xl">Finland</p>
@@ -534,7 +539,7 @@ const Resources = () => {
                   ease: "anticipate",
                 },
               }}
-              className="w-full  bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 "
+              className="w-full  bg-neutral-900 shadow-lg shadow-black flex text-xl items-center font-semibold rounded-xl border-2 border-purple-800 px-6 py-4 my-4 "
             >
               <img src="./images/countries/hong-kong.png" className="w-12" />
               <p className="pl-6 text-2xl">Hong Kong</p>
@@ -542,6 +547,7 @@ const Resources = () => {
           </div>
         </div>
       </div>
+
 {/* 
       <m.h1
         initial={{ opacity: 0, y: -50 }}

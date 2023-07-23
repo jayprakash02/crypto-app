@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { motion as m, useScroll, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import "swiper/css";
@@ -25,6 +25,26 @@ const item = {
 };
 
 const Home = () => {
+
+    const [isLargeScreen, setIsLargeScreen] = useState(true);
+  
+    useEffect(() => {
+      const handleResize = () => {
+        setIsLargeScreen(window.innerWidth >= 768);
+      };
+  
+      // Add event listener to handle screen size changes
+      window.addEventListener('resize', handleResize);
+  
+      // Initial check for screen size on component mount
+      handleResize();
+  
+      // Clean up event listener on component unmount
+      return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+
+
   return (
     <div className="overflow-x-hidden w-full flex items-start justify-center flex-col pt-16">
       {/* <video
@@ -554,7 +574,9 @@ const Home = () => {
     </m.button>
   </div>
 </div>
- 
+
+{isLargeScreen && (
+    <>
 <div className="font-poppins flex flex-col justify-center w-full relative h-full max-h-screen text-black mt-44 mb-44 py-10">
   <div className="max-w-[380px] max-h-[280px] ease-in-out z-10 duration-300 h-full hover:rotate-0 hover:z-50 hover:cursor-pointer transform transition delay-300 hover:-translate-y-36 absolute left-[280px] bottom-6 -rotate-6 px-6 py-8 w-full bg-white rounded-2xl shadow-xl">
     <h2 className="mb-4 text-gray-600">Lorem ipsum</h2>
@@ -565,7 +587,6 @@ const Home = () => {
       make a type specimen book.
     </p>
   </div>
-
   <div className="max-w-[420px] absolute z-8 left-[500px] ease-in-out duration-300 bottom-0 hover:z-9 hover:rotate-0 hover:cursor-pointer transform transition delay-300 hover:-translate-y-36 rotate-12 max-h-[250px] h-full rounded-2xl bg-white p-3">
     <img src="./images/yt2.jpg" className="rounded-2xl" />
   </div>
@@ -585,6 +606,8 @@ const Home = () => {
     </p>
   </div>
 </div>
+</>
+  )}
 
 <div className="w-full h-full mt-4 px-6 py-8 shadow-xl">
   <div></div>
@@ -1265,14 +1288,16 @@ const Home = () => {
         </div>
       </div>
 
+{/* already comment section */}
+
       {/* <div className=" w-full flex min-h-[80vh] h-full relative justify-center items-center ">
         <img src="./images/bg5.png " className="object-cover  " />
-      </div> */}
-      {/* <div className=" w-full flex min-h-[80vh] h-full relative justify-center items-center ">
+      </div>
+      <div className=" w-full flex min-h-[80vh] h-full relative justify-center items-center ">
         <img src="./images/bg4.jpg " className="object-cover  " />
-      </div> */}
-      {/* What we do  */}
-      {/* <div className="w-full flex justify-center mb-16 items-center flex-col">
+      </div>
+      What we do 
+      <div className="w-full flex justify-center mb-16 items-center flex-col">
         
         <h1 className="text-4xl mt-16  mb-12 uppercase font-semibold font-poppins">
           What WE do
@@ -1365,10 +1390,10 @@ const Home = () => {
                 financing options for a better-quality life.
               </p>
             </div>
-          </div>
+          </div> */}
 
          
-          <div className="flex  space-x-4 py-4  px-4 ">
+          {/* <div className="flex  space-x-4 py-4  px-4 ">
             <div className="max-w-[450px] p-8 rounded-2xl shadow-lg   bg-yellow-600">
               <h1 className="font-semibold  text-xl mb-3">
                 Business Execution
