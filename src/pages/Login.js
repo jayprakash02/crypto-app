@@ -60,7 +60,7 @@ const Login = ({ setIsLoggedIn }) => {
   };
 
   return (
-    <div className="w-full max-w-full font-poppins max-h-[100vh] relative">
+    <div className="overflow-y-hidden w-full max-w-full font-poppins max-h-[100vh] relative">
   <img
     src="./images/signupbg.jpg"
     class="w-full h-screen object-cover"

@@ -16,7 +16,7 @@ const Navbar = ({isLoggedIn}) => {
   return (
     <div className="w-full fixed top-0 left-0 z-10 position-fixed">
       <div className="lg:flex bg-black text-opacity-100 text-white items-center justify-center py-4 lg:px-10 px-7">
-        <div className="cursor-pointer flex items-center font-poppins justify-center">
+        <div className="flex items-center font-poppins justify-center">
           <img
             className="max-h-10 min-w-10 pt-2 pl-2"
             src="./images/navlogo.png"
@@ -31,7 +31,7 @@ const Navbar = ({isLoggedIn}) => {
           )}
         </div>
 
-        <ul className={`lg:flex lg:items-center bg-black lg:pb-0 pb-12 absolute lg:static lg:z-auto z-[-5] left-0 w-full lg-auto lg:pl-0 pl-9 transition-all duration-500 ease-in ${navOpen ? 'top-20 opacity-100 ': 'top-[-490px]'} lg:opacity-100 opacity-0 font-semibold font-poppins text-sm text-gray-400 font-heading justify-center `}>
+        <ul className={`lg:flex lg:items-center bg-black lg:pb-0 pb-12 absolute lg:static lg:z-auto z-[-5] left-0 w-full lg-auto lg:pl-0 pl-9 transition-all duration-500 ease-in ${navOpen ? 'top-15 opacity-100 ': 'top-[-490px]'} lg:opacity-100 opacity-0 font-semibold font-poppins text-sm text-gray-400 font-heading justify-center `}>
           <li className="lg:ml-10 lg:my-0 my-7 hover:text-gray-100">
             <Link className="text-lg" to="/" onClick={() => { setNavOpen(false) }}>
               Home
@@ -45,7 +45,7 @@ const Navbar = ({isLoggedIn}) => {
           <li
             className={`relative lg:ml-10 lg:my-0 my-7 hover:text-gray-100 ${earningOpen ? 'cursor-pointer' : ''}`}
           >
-            <a className="text-lg flex items-center gap-3" href="#" onClick={handleEarningOpen}>
+            <a className="text-lg flex items-center gap-3" onClick={handleEarningOpen}>
               Earnings 
               {earningOpen ? (
                 <ion-icon name="caret-up-outline"></ion-icon>
@@ -103,8 +103,8 @@ const Navbar = ({isLoggedIn}) => {
                }
           </li>
         </ul>
+        </div>
       </div>
-    </div>
   );
 };
 

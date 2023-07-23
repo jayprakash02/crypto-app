@@ -124,7 +124,7 @@ const Blog = () => {
           </m.div>
         </div>
 
-        <div className="my-24 flex flex-col">
+        <div className="my-24 flex flex-col px-6">
           <m.h1 initial={{ opacity: 0,x:-50 }}
                 whileInView={{
                   x:0,
@@ -134,7 +134,7 @@ const Blog = () => {
                   delay:0.5,
                     ease: "anticipate",
                   },
-                }} className="text-purple-800 border-b-2 pb-6 text-3xl font-semibold px-6 sm:px-0">
+                }} className="text-purple-800 border-b-2 pb-6 text-3xl font-semibold">
             ALL STORIES
           </m.h1>
           <m.div initial={{ opacity: 0,y:50 }}

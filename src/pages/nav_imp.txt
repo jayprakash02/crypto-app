@@ -1,0 +1,63 @@
+<div className="max-w-5xl text-xl mt-16 mb-6 text-left bg-neutral-900 px-16 mx-auto rounded-3xl divide-x-2 py-2 flex gap-12 flex-col md:flex-row justify-between items-center font-medium uppercase">
+          <div className="flex flex-col relative px-2">
+            <span>Packages</span>
+            <button
+              onClick={() => setOpenTOKEN((prev) => !prev)}
+              className="flex items-center space-x-2"
+            >
+              <span> {token}</span>
+              {!token ? (
+                <AiOutlineCaretDown className="h-8 text-white" />
+              ) : (
+                <AiOutlineCaretUp className="h-8 text-white" />
+              )}
+            </button>
+            {openTOKEN && (
+              <div className="absolute z-10 text-sm font-light no-scrollbar font-medium  min-w-[200px]  space-y-2  w-full rounded-lg  bg-neutral-900 top-24 max-h-[400px] overflow-y-scroll  text-white py-3">
+                <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Bitcoin");
+                    }}
+                    to="earning"
+                  >
+                    Bitcoin
+                  </button>
+                </div>
+                <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Cronos");
+                    }}
+                    to="earning"
+                  >
+                    Cronos
+                  </button>
+                </div>{" "}
+                <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Ethereum");
+                    }}
+                    to="earning"
+                  >
+                    Ethereum
+                  </button>
+                </div>{" "}
+                <div className="hover:bg-gray-900 px-4 py-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setOpenTOKEN((prev) => !prev);
+                      setToken("Tether");
+                    }}
+                    to="earning"
+                  >
+                    Tether
+                  </button>
+                </div>{" "}
+                </div>
+                            )}
+          </div>

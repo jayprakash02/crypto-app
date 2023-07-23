@@ -2,9 +2,9 @@ import React from "react";
 import { motion as m } from "framer-motion";
 const Trade = () => {
   return (
-    <div class="overflow-x-hidden w-full flex flex-col justify-center items-start">
+    <div class="overflow-x-hidden w-full flex flex-col justify-center items-start pt-44">
       {/* section 1 */}
-      <div className="flex mx-auto min-h-screen font-poppins relative w-full justify-center items-center mt-44 mb-0 md:mb-44">
+      <div className="flex mx-auto min-h-screen font-poppins relative w-full justify-center items-center ">
       <video
           autoplay="true"
           loop="true"
@@ -17,7 +17,7 @@ const Trade = () => {
 
         <div className="absolute px-6 md:px-52 w-full bg-opacity-40 py-8 md:py-[202px]">
           <m.h1
-            className="text-4xl md:text-6xl text-left md:text-center font-semibold  mb-6"
+            className="text-3xl md:text-5xl text-left md:text-left font-semibold  mb-6"
            
             initial={{ x: 50, opacity: 0 }}
             whileInView={{
@@ -45,7 +45,7 @@ const Trade = () => {
             }}
             // viewport={{ once: true }}
             // text-xl text-center font-medium mb-6
-            className="text-xl md:text-3xl md:text-center font-semibold mb-6"
+            className="text-xl md:text-3xl md:text-left font-semibold mb-6"
           >
             One Ozo is committed to raising the bar in trade standards, providing exceptional investment <br/> 
 opportunities that surpass industry norms and deliver superior results for investors

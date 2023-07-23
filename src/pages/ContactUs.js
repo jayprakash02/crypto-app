@@ -6,7 +6,7 @@ const ContactUs = () => {
   return (
     <div className="overflow-x-hidden font-poppins w-full">
       {/* <div className="w-full flex flex-wrap items-center justify-center min-h-[450px] mx-0 px-30 space-x-10  bg-gradient-to-r from-violet-500 to-fuchsia-500 shadow-fuchsia-500"> */}
-      <div className="text-center w-full bg-gradient-to-r from-violet-500 to-fuchsia-500 shadow-fuchsia-500 section_top ">
+      <div className="text-center w-full bg-gradient-to-r from-violet-500 to-fuchsia-500 shadow-fuchsia-500 section_top mt-32">
         <div>
           <m.h1
             initial={{ opacity: 0, y: 50 }}
