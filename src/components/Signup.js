@@ -6,11 +6,11 @@ const Signup = () => {
     initialValues: {
       Username: "",
       SponsorName: "",
-      FullName:"",
+      FullName: "",
       contactNumber: "",
       Email: "",
       password: "",
-      country:""
+      country: "",
     },
     validate,
     onSubmit: () => {
@@ -99,19 +99,18 @@ const Signup = () => {
                       </h1>
                       <div className="flex space-x-2">
                         <div>
- <input
-                          type="text"
-                          className="block border border-grey-light w-full p-3 rounded mb-4"
-                          name="Username"
-                          placeholder="TMT- FUND"
-                          {...formik.getFieldProps("Username")}
-                        />
-                        {/* {formik.touched.Username &&
+                          <input
+                            type="text"
+                            className="block border border-grey-light w-full p-3 rounded mb-4"
+                            name="Username"
+                            placeholder="TMT- FUND"
+                            {...formik.getFieldProps("Username")}
+                          />
+                          {/* {formik.touched.Username &&
                         formik.errors.Username ? (
                           <div>{formik.errors.Username}</div>
                         ) : null} */}
                         </div>
-                       
 
                         <input
                           type="text"

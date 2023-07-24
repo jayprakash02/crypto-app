@@ -2,7 +2,7 @@ import React from "react";
 import { motion as m } from "framer-motion";
 const Trade = () => {
   return (
-    <div class="overflow-x-hidden w-full flex flex-col justify-center items-start pt-44">
+    <div class="overflow-x-hidden w-full flex flex-col justify-center items-start pt-44 md:pt-6">
       {/* section 1 */}
       <div className="flex mx-auto min-h-screen font-poppins relative w-full justify-center items-center ">
       <video
@@ -72,7 +72,7 @@ opportunities that surpass industry norms and deliver superior results for inves
 
       {/* section 2 */}
 
-      <div class="max-w-6xl text-white grid my-10 mx-auto lg:grid-cols-3 gap-6 sm:grid-cols-2 gap-3 px-6 my-44">
+      <div class="max-w-6xl text-white grid my-10 mx-auto lg:grid-cols-3 gap-6 sm:grid-cols-2 gap-3 px-6">
     <m.div
       initial={{ opacity: 0 }}
       whileInView={{
@@ -143,7 +143,7 @@ opportunities that surpass industry norms and deliver superior results for inves
 
       {/* section 3 */}
 
-      <div className="flex flex-col lg:flex-row items-center justify-center mt-6 gap-4 px-6">
+      <div className="flex flex-col lg:flex-row items-center justify-center gap-4 px-6">
   <div className="font-semibold lg:text-5xl sm:text-3xl flex flex-col gap-4 justify-center text-center lg:w-1/2">
     <m.div
       initial={{ y: 50, opacity: 0 }}
@@ -269,9 +269,9 @@ opportunities that surpass industry norms and deliver superior results for inves
 
       {/* section 4 */}
 {/* <img src="./images/security1.jpg" className="opacity-50 " /> */}
-      <div className="w-full  mb-24  min-h-[150vh] px-6">
+      <div className="w-full  min-h-[150vh] px-6">
 
-        <div className="w-full mt-44">
+        <div className="w-full">
           <m.h1
             initial={{ y: -50, opacity: 0 }}
             whileInView={{
@@ -305,7 +305,7 @@ opportunities that surpass industry norms and deliver superior results for inves
           </m.p>
         </div>
         
-        <div className="max-w-6xl text-white grid my-10 mx-auto lg:grid-cols-3 gap-6 sm:grid-cols-2 gap-3 px-6 my-44">
+        <div className="max-w-6xl text-white grid my-10 mx-auto lg:grid-cols-3 gap-6 sm:grid-cols-2 gap-3 px-6">
           <m.div
             initial={{ opacity: 0 }}
             whileInView={{

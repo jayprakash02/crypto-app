@@ -164,7 +164,7 @@ const Resources = () => {
         Browse by Category
       </m.h1>
 
-      <div className="">
+      <div className="px-6">
         <div className="category_div">
           <m.div
             initial={{ opacity: 0, x: -50 }}

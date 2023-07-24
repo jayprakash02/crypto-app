@@ -17,11 +17,13 @@ const Navbar = ({isLoggedIn}) => {
     <div className="w-full fixed top-0 left-0 z-10 position-fixed">
       <div className="lg:flex bg-black text-opacity-100 text-white items-center justify-center py-4 lg:px-10 px-7">
         <div className="flex items-center font-poppins justify-center">
+          <Link to="/">
           <img
-            className="max-h-10 min-w-10 pt-2 pl-2"
+            className="max-h-10 min-w-10 pt-2 pl-2 cursor-pointer"
             src="./images/navlogo.png"
             alt="logo"
           />
+          </Link>
         </div>
         <div onClick={handleNavToggle} className="text-3xl absolute right-8 top-6 cursor-pointer lg:hidden">
           {navOpen ? (
