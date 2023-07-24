@@ -39,3 +39,13 @@
     font-family: "Zighead";
     src: url("../public/font/Zighead Display FontZighead/Zighead.otf");
 }
+
+#root{
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    /* overflow-x: hidden; */
+    /* Comment for contact Page */
+    /* Comment for About page */
+}

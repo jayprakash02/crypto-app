@@ -60,54 +60,50 @@ const Login = ({ setIsLoggedIn }) => {
   };
 
   return (
-    <div className="w-full max-w-full font-poppins max-h-[100vh] relative">
-      <img
-        src="./images/signupbg.jpg"
-        className="w-full object-cover max-h-[100vh]"
-        alt="Signup Background"
+    <div className="overflow-y-hidden w-full max-w-full font-poppins max-h-[100vh] relative">
+  <img
+    src="./images/signupbg.jpg"
+    class="w-full h-screen object-cover"
+    alt="Signup Background"
+  />
+  <div className="w-full px-8 py-8 text-center absolute top-8 mx-auto my-0 max-w-[380px] max-h-[100vh] md:left-80 md:top-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2">
+    <h1 className="mb-6 text-5xl font-semibold">Welcome to one ozo</h1>
+    <p className="mb-4">
+      Please <a href="/signup" className="font-semibold">register</a> if you don't have an account
+    </p>
+
+    <div className="flex flex-col mb-4 w-full">
+
+      <h1 className="font-poppins text-leftfont-semibold text-4xl mb-4">Ozo Login</h1>
+
+      <input
+        placeholder="Enter your email address"
+        type="text"
+        className="w-full rounded-md font-thin
+               bg-neutral-900 py-2 px-4 mb-4"
+        name="email"
+        value={loginForm.email}
+        onChange={handleChange}
       />
-      <div className="w-1/2 px-24 flex flex-col items-center text-center absolute top-32 ">
-        <h1 className="mb-6 text-5xl font-semibold">Welcome to one ozo</h1>
-        <p className="mb-6">
-          Please{" "}
-          <Link to="/signup" className="font-semibold">
-            register
-          </Link>{" "}
-          if you don't have an account
-        </p>
-
-        <div className="flex flex-col mb-4 space-y-8 max-w-[380px] w-full justify-center text-center font-semibold items-center">
-          <h1 className="font-poppins text-left  font-semibold text-4xl ">
-            Ozo Login
-          </h1>
-
-          <input
-            placeholder="Enter your email address"
-            type="text"
-            className="w-full rounded-md font-thin
-               bg-neutral-900 py-2 px-4"
-            name="email"
-            value={loginForm.email}
-            onChange={handleChange}
-          />
-          <input
-            placeholder="Enter your password "
-            type="text"
-            className="w-full rounded-md font-thin
-               bg-neutral-900 py-2 px-4"
-            name="password"
-            value={loginForm.password}
-            onChange={handleChange}
-          />
-          <button
-            className="w-full py-3 bg-gradient-to-tr from-indigo-400 to bg-fuchsia-500 rounded-lg"
-            onClick={handleSubmit}
-          >
-            Login
-          </button>
-        </div>
-      </div>
+      <input
+        placeholder="Enter your password"
+        type="password"
+        className="w-full rounded-md font-thin
+               bg-neutral-900 py-2 px-4 mb-4"
+        name="password"
+        value={loginForm.password}
+        onChange={handleChange}
+      />
+      <button
+        class="w-full py-3 bg-gradient-to-tr from-indigo-400 to bg-fuchsia-500 rounded-lg"
+        onClick={handleSubmit}
+      >
+        Login
+      </button>
     </div>
+  </div>
+</div>
+
   );
 };
 

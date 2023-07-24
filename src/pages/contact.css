@@ -1,4 +1,4 @@
-.custom-shape-divider-bottom-1686818595 {
+/* .custom-shape-divider-bottom-1686818595 {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -17,4 +17,52 @@
 
 .custom-shape-divider-bottom-1686818595 .shape-fill {
     fill: #FFFFFF;
+} */
+
+
+
+
+
+.section_top{
+    max-height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 450px;
+    gap: 20px;
+    padding: 15px;
+}
+
+.contact_card{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+@media (min-width: 300px) and (max-width: 768px){
+    .section_top{
+        flex-direction: column;
+    }
+    .contact_card{
+        flex-direction: column;
+    }
+}
+
+@media (min-width:768px) and (max-width:1024px) {
+    .section_top{
+        /* display: flex; */
+        gap:5px;
+        
+    }
+}
+
+
+@media (min-width: 1024px) {
+    .section_top{
+        flex-direction: row;
+    }
+    .contact_card{
+        flex-direction: row;
+    }
 }

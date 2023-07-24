@@ -3,8 +3,9 @@ import { motion as m } from "framer-motion";
 const Referral = () => {
   const [referral, setReferral] = useState("Plain");
   return (
-    <div>
-      <div className="w-full flex justify-center bg-gradient-to-r from-deep-purple-900 to-fuchsia-800 items-center min-h-[15vh]">
+    <div className="overflow-x-hidden py-36">
+      {/* section top */}
+      <div className="w-full flex justify-center bg-gradient-to-r from-deep-purple-900 to-fuchsia-800 items-center min-h-[15vh] px-6 py-6">
         <div className="max-w-[20rem]   flex justify-between w-full rounded-full border-2  ">
           <button
             onClick={() => setReferral("Plain")}
@@ -20,7 +21,6 @@ const Referral = () => {
           </button>
         </div>
       </div>
-
       {referral == "Plain" && <Plain />}
       {referral == "Binary" && <Binary />}
     </div>
@@ -31,14 +31,14 @@ export default Referral;
 
 const Binary = () => {
   return (
-    <div className="font-poppins">
-      <div className="w-full relative    ">
+    <div className="overflow-x-hidden font-poppins">
+      <div className="relative mb-64 md:mb-0">
         <img
           src="./images/binary.jpg"
-          className="w-full max-h-[90vh] object-cover "
+          className="w-full max-h-[90vh] object-cover"
         />
-        <div className="w-full top-32 text-center absolute ">
-          <div className="w-full max-w-4xl mx-auto space-y-6">
+        <div className="pt-44 md:pt-0 absolute flex flex-col gap-6 px-6 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center px-4">
+          <div className="py-10 max-w-4xl mx-auto space-y-6">
             <h1 className="text-5xl font-bold">Unlock Exclusive Rewards</h1>
             <p className="font-medium text-3xl">
               Affiliates Earn Lucrative Commissions and <br /> More with One Ozo
@@ -49,12 +49,16 @@ const Binary = () => {
           </div>
         </div>
       </div>
-      <div className="text-center  my-16 w-full">
+
+      {/* section 2 */}
+
+      <div className="text-center my-16 w-full px-6">
         <h2 className="text-4xl mb-9 font-medium">
           Affiliate Programme Commissions
         </h2>
-        <div className="w-full max-w-5xl text-left font-medium mx-auto flex space-x-6 items-center">
-          <div className="w-1/2  min-h-[250px] h-full border-2 border-gray-800 rounded-xl p-6">
+        {/* w-full max-w-5xl text-left font-medium mx-auto flex space-x-6 items-center */}
+        <div className="flex flex-col md:flex-row gap-24 justify-center text-left items-center mt-12">
+          <div className="w-full md:w-1/2  min-h-[250px] h-full border-2 border-gray-800 rounded-xl p-6">
             <h2 className="text-2xl mb-4 px-2">Ozo Ventures</h2>
             <div className="mb-6 space-y-5 ">
               <div className="flex space-x-2">
@@ -73,10 +77,9 @@ const Binary = () => {
                 </p>
               </div>
             </div>
-           
           </div>
 
-          <div className="w-1/2 min-h-[282px] h-full border-2 border-gray-800 rounded-xl p-6">
+          <div className="w-full md:w-1/2 min-h-[282px] h-full border-2 border-gray-800 rounded-xl p-6">
             <h2 className="text-2xl mb-4 px-2">Securely Fast</h2>
             <div className="mb-6 space-y-5 ">
               <div className="flex space-x-2">
@@ -93,12 +96,13 @@ const Binary = () => {
                 </p>
               </div>
             </div>
-            
           </div>
         </div>
       </div>
 
-      <div className="w-full my-28 font-medium flex items-center max-w-6xl mx-auto ">
+      {/* section 3 */}
+
+      <div className="w-full my-28 font-medium flex items-center max-w-6xl mx-auto px-6">
         <div>
           <h2 className="text-4xl mb-12">Benefits For Your Community</h2>
           <h3 className="text-3xl mb-6">Accelerated Earnings</h3>
@@ -128,26 +132,32 @@ const Binary = () => {
             <div className="flex space-x-2">
               <img src="./images/download.png" className="w-6 h-6" />
               <span>
-              	Spillover Benefits: With the binary plan, you can benefit from spillover, where your upline may place new members under you. This can help you grow your network faster and increase your earning potential.
+                Spillover Benefits: With the binary plan, you can benefit from
+                spillover, where your upline may place new members under you.
+                This can help you grow your network faster and increase your
+                earning potential.
               </span>
             </div>
 
             <div className="flex space-x-2">
               <img src="./images/download.png" className="w-6 h-6" />
               <span>
-              	Balanced Structure: The binary plan promotes balance in your organization as you strive to build and maintain equal strength in both legs of your binary structure. This balance ensures stability and steady growth.
+                Balanced Structure: The binary plan promotes balance in your
+                organization as you strive to build and maintain equal strength
+                in both legs of your binary structure. This balance ensures
+                stability and steady growth.
               </span>
             </div>
           </div>
-          
         </div>
         <div className="w-full">
           <img className="./images/section.webp" />
         </div>
       </div>
 
-      <div className="flex max-w-2xl text-center my-24 mx-auto w-full ">
-        
+      {/* section 4 */}
+
+      <div className="flex max-w-2xl text-center my-24 mx-auto w-full px-6">
         <div className="w-full  flex flex-col items-center">
           <h3 className="text-4xl font-bold mb-6">
             Join Our Global Affiliate Team
@@ -163,34 +173,45 @@ const Binary = () => {
         </div>
       </div>
 
-      <div className="w-full max-w-6xl mx-auto text-center">
+      {/* section 5 */}
+
+      <div className="w-full max-w-6xl mx-auto text-center px-6">
         <h1 className="text-3xl font-medium mb-6">Getting Started</h1>
         <p className="mb-6">
           It takes just 3 steps to become a Crypto.com affiliate
         </p>
-        <div className="flex w-full  mb-6 justify-around">
-          <div className="max-w-[300px] w-full min-h-[250px] text-left">
-            <img src="./images/icons/register.png" className=" w-32 mb-6" />
+        <div className="flex flex-col md:flex-row w-full justify-around mb-6">
+          <div className="max-w-[300px] w-full min-h-[250px] text-center md:text-left mb-6 md:mb-0">
+            <img
+              src="./images/icons/register.png"
+              className="w-32 mb-6 mx-auto md:mx-0"
+            />
             <h2 className="text-xl font-medium mb-2">Register</h2>
             <p>Sign up to the one ozo</p>
           </div>
 
-          <div className="max-w-[300px] w-full min-h-[250px] text-left">
-            <img src="./images/icons/promote.png" className=" w-32 mb-6" />
+          <div className="max-w-[300px] w-full min-h-[250px] text-center md:text-left mb-6 md:mb-0">
+            <img
+              src="./images/icons/promote.png"
+              className="w-32 mb-6 mx-auto md:mx-0"
+            />
             <h2 className="text-xl font-medium mb-2">Promote one Ozo.com</h2>
             <p>Introduce the one ozo platform to your community</p>
           </div>
 
-          <div className="max-w-[300px] w-full min-h-[250px] text-left">
-            <img src="./images/icons/rewards.png" className=" w-32 mb-6" />
+          <div className="max-w-[300px] w-full min-h-[250px] text-center md:text-left">
+            <img
+              src="./images/icons/rewards.png"
+              className="w-32 mb-6 mx-auto md:mx-0"
+            />
             <h2 className="text-xl font-medium mb-2">Get Rewarded</h2>
             <p>Earn commission and enjoy your exclusive rewards</p>
           </div>
         </div>
-        <button className="border mb-6 px-8 py-3 rounded-lg">
+        <button className="border my-6 px-8 py-3 rounded-lg">
           Become an Affiliate
         </button>
-        <p className="max-w-xl mb-24 mx-auto text-xs text-center w-full ">
+        <p className="max-w-xl mb-24 mx-auto text-xs text-center w-full">
           Rest assured, One Ozo prioritizes the security of your information,
           ensuring the utmost confidentiality and protection in our binary plan.
         </p>
@@ -198,41 +219,40 @@ const Binary = () => {
     </div>
   );
 };
+
 const Plain = () => {
   return (
-    <div className="font-poppins">
-      <div className="w-full relative    ">
-        <img
-          src="./images/earningreferral.jpg"
-          className="w-full max-h-[110vh] bg-opacity-60"
-        />
-        <div className="absolute  left-44 top-52 w-full">
-          <h1 className="text-6xl mb-6 font-semibold text-black max-w-[650px]">
-            Multiply Your Earnings with One Ozo's Lucrative Referral Program
-          
-          </h1>
+    <div className="overflow-x-hidden font-poppins">
+      {/* section 1 */}
 
-          {/* <span className="bg-purple-900 px-2 py-1 text-[68px] rounded-xl  mt-1 ">
-              US$2,000
-            </span> */}
+      {/* <div className="w-full my-44 relative">
+  <img
+    src="./images/earningreferral.jpg"
+    className="w-full max-h-[110vh] bg-opacity-60"
+  />
+  <div className="px-6 absolute left-4 md:left-44 top-0 md:top-52 w-full text-center md:text-left">
+    <h1 className="text-4xl md:text-6xl mb-6 font-semibold text-black max-w-[650px]">
+      Multiply Your Earnings with One Ozo's Lucrative Referral Program
+    </h1>
+    <h2 className="text-xl md:text-2xl font-semibold text-white mb-4">
+      Earn up to 8% Referral Bonuses and Unlock Exciting Rewards
+    </h2>
+    <button className="text-xl px-6 py-3 bg-red-900 rounded-lg mt-1">
+      Refer now
+    </button>
+  </div>
+</div> */}
 
-          <h2 className="text-2xl font-semibold text-black mb-4 ">
-          Earn up to 8% Referral Bonuses and Unlock Exciting Rewards
-          </h2>
-          <button className="text-xl px-6 py-3 bg-red-900 rounded-lg mt-1">
-            Refer now
-          </button>
-        </div>
-      </div>
+{/* section 2 */}
 
-      <div className="my-40  w-full max-w-6xl mx-auto">
+      <div className="my-40  w-full max-w-6xl mx-auto px-6">
         <h3 className="text-3xl mb-3">How Do I Make A Referral?</h3>
         <p>
           Referring your friends to the world's fastest and most secure
           cryptocurrency exchange takes just seconds. Here's how:
         </p>
 
-        <div className="w-full max-w-6xl mx-auto text-white flex justify-between space-x-10 items-center mt-24">
+        <div className="flex flex-col md:flex-row gap-0 justify-center items-center mt-3">
           <m.div
             initial={{ opacity: 0 }}
             whileInView={{
@@ -300,13 +320,13 @@ const Plain = () => {
           </m.div>
         </div>
 
-        <div className="mt-32 flex ">
+        <div className="mt-32 flex flex-col md:flex-row gap-12 ">
           <h1 className="text-3xl font-bold">
             What You Stand
             <br />
             to Gain
           </h1>
-          <div className="space-y-4 ml-16">
+          <div className="space-y-4">
             <div className="bg-blue-gray-900 flex items-center rounded-xl border-2 px-6 py-4">
               <img
                 src="./images/download.png"
@@ -354,32 +374,30 @@ const Plain = () => {
             introduce others to One Ozo's rewarding investment opportunities.
           </p>
           <p>
-            <div className="flex justify-between items-center mb-5">
+            <div className="flex flex-wrap justify-between items-center mb-5">
               <div className="max-w-[280px] max-h-[320px] h-full flex flex-col justify-center items-center  text-center  p-6">
                 <img src="./images/logo.png" />
-                <span className="font-semibold">
-                Level 1
-                </span>
+                <span className="font-semibold">Level 1</span>
                 <p>
-                   Earn 5% referral bonus on direct referrals and expand
-                  your network.
+                  Earn 5% referral bonus on direct referrals and expand your
+                  network.
                 </p>
               </div>
               <div className="max-w-[280px] max-h-[320px] h-full flex flex-col justify-center items-center  text-center p-6">
                 <img src="./images/logo.png" />
-                <span className="font-semibold"> Level 2</span> 
+                <span className="font-semibold"> Level 2</span>
                 <p>
-                  Enjoy 3% referral bonus on indirect referrals,
-                  increasing your earnings further.
+                  Enjoy 3% referral bonus on indirect referrals, increasing your
+                  earnings further.
                 </p>
               </div>
 
               <div className="max-w-[280px] max-h-[340px] h-full  pt-5 flex flex-col justify-center  items-stretch text-center  px-6">
                 <img src="./images/logo.png" className=" mb-2" />
-                <span className="font-semibold"> Level 3</span> 
+                <span className="font-semibold"> Level 3</span>
                 <p className="">
-                   Earn 1.5% referral bonus on referrals made by your
-                  Level 2 referrals, maximizing your rewards.
+                  Earn 1.5% referral bonus on referrals made by your Level 2
+                  referrals, maximizing your rewards.
                 </p>
               </div>
             </div>
@@ -388,21 +406,21 @@ const Plain = () => {
           </p>
         </div>
       </div>
-      <div className="w-full max-h-[60vh] mt-24 mb-44 relative">
+
+      {/* section 2 */}
+
+      <div className="w-full my-44 relative">
         <img
           src="./images/community.jpg"
-          className="w-full object-cover opacity-90 max-h-[60vh]"
+          className="w-full object-cover opacity-90"
         />
 
-        <div className="flex flex-col absolute max-w-5xl w-full top-44 left-64 justify-between items-center">
-          <div className="">
-            <h2 className="text-3xl text-center mb-6 font-bold">
-              Join a thriving community of over 50 million passionate crypto
-              investors, where knowledge, insights, and exciting opportunities
-              converge.
-            </h2>
-          </div>
-
+        <div className="px-6 flex flex-col absolute max-w-5xl w-full top-0 md:top-44 left-0 md:left-44 justify-between items-center">
+          <h2 className="md:text-3xl text-center mb-6 font-bold">
+            Join a thriving community of over 50 million passionate crypto
+            investors, where knowledge, insights, and exciting opportunities
+            converge.
+          </h2>
           <div>
             <button className="px-6 py-3 text-2xl font-bold bg-purple-900 rounded-md">
               Invite now

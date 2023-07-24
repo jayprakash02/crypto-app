@@ -2,60 +2,38 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <div className=" text-white bg-neutral-950  w-full font-poppins  ">
-      <footer
-        aria-label="Site Footer"
-        class="bg-z  max-w-5xl mx-auto lg:grid lg:grid-cols-5"
-      >
-        {/* <div class="relative block h-32 lg:col-span-2 lg:h-full">
-          <img
-            src={"./images/footer6.jpg"}
-            alt=""
-            className="absolute  inset-0 object-cover w-full h-full"
-          />
-          <h1 className=" text-white drop-shadow-lg font-serif text-7xl absolute top-1/2 left-1/2 -translate-x-1/2   -translate-y-1/2 text-center ">OZO</h1>
-          <p className="absolute 
-           -bottom-8 left-7 text-white text-xs font-serif tracking-widest font-thin ">Technology & Games</p>
-        
-        </div> */}
+    <div className="overflow-x-hidden overflow-y-auto text-white bg-neutral-950  w-full font-poppins">
+      <footer aria-label="Site Footer" class="bg-z max-w-5xl mx-auto px-6 py-6">
+        <div>
+          <div class="flex flex-col gap-6 sm:flex-row">
+            <div className="text-left text-gray-200 text-sm font-normal ">
+              {/* Logo  */}
+              <img src="./images/navlogo.png" className="w-20" />
+              <p className="mb-4 ">
+                Experience unparalleled financial growth and investment
+                opportunities with One Ozo: Your gateway to prosperity and
+                success.
+              </p>
 
-       
+              <ul className="space-y-4">
+                <li>support@ozopay.com</li>
+                <li>(+1) 452-764-9364</li>
+                <li>1353 Bingamon Branch Road Barrington, IL 6001</li>
+              </ul>
+            </div>
 
-        <div class="px-4 py-16 sm:px-6 lg:col-span-5 lg:px-8 text-left">
-          
-          <div class="grid grid-cols-1 gap-8 sm:grid-cols-3">
-          <div className="text-left space-y-4 text-gray-200 px-6  text-sm font-normal ">
-          {/* Logo  */}
-          <img src="./images/navlogo.png" className="w-20"/>
-          <p className="mb-4 ">Experience unparalleled financial growth and investment opportunities with One Ozo: Your gateway to prosperity and success.
-          </p>
+            <div class="flex gap-6 font-poppins text-left w-1/2">
+              <div className="space-y-3">
+                <p class="font-medium text-2xl text-gray-200">Useful Links</p>
 
-
-          <ul className="space-y-4">
-            <li>support@ozopay.com</li>
-            <li>(+1) 452-764-9364</li>
-            <li>1353 Bingamon Branch Road Barrington, IL 6001</li>
-
-          </ul>
-
-        </div>
-
-            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 font-poppins  text-left">
-              <div>
-                <p class="font-medium text-2xl text-gray-200  ">
-                  Useful Links
-                </p>
-
-                <nav aria-label="Footer Navigation - Services" class="mt-6">
+                <nav aria-label="Footer Navigation - Services" class="">
                   <ul class="space-y-4 text-sm tracking-wider">
-                 
-
                     <li>
                       <a
                         href="#"
                         class="text-gray-400 transition hover:opacity-75 "
                       >
-                       Home 
+                        Home
                       </a>
                     </li>
 
@@ -64,7 +42,7 @@ export default function Footer() {
                         href="#"
                         class="text-gray-400 transition hover:opacity-75 "
                       >
-                    About Us 
+                        About Us
                       </a>
                     </li>
 
@@ -105,17 +83,18 @@ export default function Footer() {
                 </nav>
               </div>
 
-              <div>
-                
-
-                <nav aria-label="Footer Navigation - Company" className="mt-14">
+              <div className="">
+                <nav
+                  aria-label="Footer Navigation - Company"
+                  className="mt-14 sm:mt-14"
+                >
                   <ul class="space-y-4 text-sm ">
                     <li>
                       <a
                         href="#"
                         class="text-gray-400 transition hover:opacity-75 "
                       >
-                       Our Process
+                        Our Process
                       </a>
                     </li>
 
@@ -157,31 +136,31 @@ export default function Footer() {
               </div>
             </div>
 
-
-            <div className="font-poppins">
+            <div className="font-poppins flex flex-col gap-2 ml-0 md:ml-5">
               <p>
                 {/* <span class="text-xs tracking-wide uppercase text-gray-500">
                   Call us
                 </span> */}
 
-                <a
-                  class="block text-2xl font-medium hover:opacity-75 text-white "
-                >
-                Subscribe Us
+                <a class="block text-2xl font-medium hover:opacity-75 text-white ">
+                  Subscribe Us
                 </a>
               </p>
 
-              <ul class="mt-8 space-y-1 text-sm text-gray-400">
-             <p>Subscribe now and unlock a world of financial possibilities with us.</p>
+              <ul class="text-sm text-gray-400">
+                <p>
+                  Subscribe now and unlock a world of financial possibilities
+                  with us.
+                </p>
               </ul>
 
-              <ul class="flex gap-6 mt-8">
+              <ul class="flex gap-6 my-6">
                 <li>
                   <a
                     href="/"
                     rel="noreferrer"
                     target="_blank"
-                    class=" transition hover:opacity-75 text-gray-400"
+                    class=" transition hover:opacity-75 text-gray-400 "
                   >
                     <span class="sr-only">Facebook</span>
 
@@ -294,48 +273,38 @@ export default function Footer() {
               </ul>
             </div>
           </div>
-
-         
         </div>
       </footer>
-      <div class="min-h-[10vh] flex mt-12 w-full  border-gray-100 bg-black font-poppins ">
-            <div class="sm:flex sm:items-center w-full max-w-4xl mx-auto sm:justify-between">
-              <nav aria-label="Footer Navigation - Support">
-                <ul class="flex flex-wrap gap-4 text-sm">
-                  <li>
-                    <a
-                      href="#"
-                      class="text-gray-500 transition hover:opacity-75 "
-                    >
-                      Terms & Conditions
-                    </a>
-                  </li>
+      <div class="min-h-[10vh] flex mt-12 max-w-full w-full border-gray-100 bg-black font-poppins px-6 ">
+        <div class="sm:flex sm:items-center max-w-full w-full pt-3 my-3 pb-3 items-center justify-center gap-36 mx-auto">
+          <nav
+            aria-label="Footer Navigation - Support"
+            class="flex flex-col sm:flex-row gap-12"
+          >
+            <ul class="flex flex-wrap gap-4 text-sm">
+              <li>
+                <a href="#" class="text-gray-500 transition hover:opacity-75">
+                  Terms & Conditions
+                </a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-500 transition hover:opacity-75">
+                  Privacy Policy,
+                </a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-500 transition hover:opacity-75">
+                  Cookies
+                </a>
+              </li>
+            </ul>
+          </nav>
 
-                  <li>
-                    <a
-                      href="#"
-                      class="text-gray-500 transition hover:opacity-75 "
-                    >
-                      Privacy Policy
-                    </a>
-                  </li>
-
-                  <li>
-                    <a
-                      href="#"
-                      class="text-gray-500 transition hover:opacity-75 "
-                    >
-                      Cookies
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-
-              <p class="mt-8 text-sm text-gray-500  sm:mt-0">
-                &copy; All rights reserved by Ozo pay
-              </p>
-            </div>
-          </div>
+          <p class="mt-8 text-sm text-gray-500 sm:mt-0">
+            &copy; All rights reserved by Ozo pay
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
