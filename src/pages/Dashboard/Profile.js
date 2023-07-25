@@ -267,12 +267,12 @@ const Profile = ({ profileStateNav }) => {
                 </h1>
               </div>
             </div>
-            <div className="w-full">
+            <div className=" w-full">
               <div className="flex items-center space-x-4 border-b-2 pb-8">
-                <img
+                {/* <img
                   src="./images/dashboard/image.png"
                   className="w-20 rounded-full h-20 bg-gray-700 p-6"
-                />
+                /> */}
                 <div className="">
                   <h1 className="text-xl font-semibold">
                     {" "}

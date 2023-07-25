@@ -1139,7 +1139,7 @@ const Home = () => {
       {/* section 10 */}
 
       <div className="w-full mb-44 px-6">
-        <div className="font-poppins mx-auto max-w-6xl space-y-12 sm:mx-8 justify-center">
+        <div className="font-poppins mx-auto max-w-6xl space-y-12 sm:mx-8 justify-center items-center text-center">
           <h1 className="text-4xl text-center font-bold mb-16">FAQs</h1>
 
           <div className="text-xl   ">

@@ -124,7 +124,7 @@ const Package = () => {
   }, []);
 
   return (
-    <div className="min-h-[80vh] bg-neutral-900 pt-16   w-full">
+    <div className="overflow-x-hidden min-h-[80vh] bg-neutral-900 pt-16   w-full">
       <h1 className="font-semibold text-4xl  text-center text-white">
         Affordable Pricing List
       </h1>
@@ -487,7 +487,7 @@ const Offline = () => {
   //perfectMoneyID
   const [perfectMoneyID, setperfectMoneyID] = useState("123456789");
   return (
-    <div className="min-h-[80vh] bg-neutral-900 w-full ">
+    <div className="overflow-x-hidden min-h-[80vh] bg-neutral-900 w-full ">
       <div className="max-w-6xl flex justify-center items-center flex-col mx-auto w-full">
         <div className="max-w-[380px] mt-14 w-full flex rounded-2xl bg-neutral-800">
           <div className="max-w-[150px] w-full"></div>
@@ -664,7 +664,7 @@ const Downline = () => {
   ];
 
   return (
-    <div className="min-h-[80vh] bg-neutral-900 pt-16   w-full">
+    <div className="overflow-x-hidden min-h-[80vh] bg-neutral-900 pt-16   w-full">
       <h1 className="font-semibold text-4xl  text-center text-white">
         Affordable Pricing List
       </h1>
