@@ -141,13 +141,14 @@ const Signup = () => {
   };
 
   return (
-    <div className="w-full max-w-full font-poppins max-h-[100vh] relative">
+    <div className="oveflow-x-hidden w-full max-w-full font-poppins max-h-full md:pb-0 pb-36">
       <img
         src="./images/signupbg.jpg"
-        className="w-full object-cover max-h-[100vh]"
+        className="w-full object-cover md:max-h-full max-h-[100vh] relative"
         alt="Signup Background"
       />
-      <div className="w-1/2 px-24 text-center absolute top-20 ">
+      <div className="w-full md:w-1/2 px-6 md:px-24  text-left md:text-center md:absolute md:top-20 ">
+        <div className="md:relative absolute top-10 px-2">
         <h1 className="mb-6 text-5xl font-semibold">Welcome to one ozo</h1>
         <p className="mb-6">
           <Link to="/login" className="font-semibold">
@@ -155,9 +156,10 @@ const Signup = () => {
           </Link>{" "}
           if you already have an account
         </p>
+        </div>
 
-        <div className="flex space-x-6 mb-4 max-w-[350px] text-center font-semibold items-center">
-          <p className="">Do you have a sponsor?</p>
+        <div className="flex space-x-6 max-w-[350px] text-center font-semibold items-center md:mt-20 mt-32">
+          <p>Do you have a sponsor?</p>
           <div className="space-x-3">
             <input
               type="radio"

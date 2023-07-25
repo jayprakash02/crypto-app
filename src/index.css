@@ -40,6 +40,11 @@
     src: url("../public/font/Zighead Display FontZighead/Zighead.otf");
 }
 
+html, body{
+    /* background-color: black; */
+    height: 100%;
+}
+
 #root{
     height: 100%;
     width: 100%;

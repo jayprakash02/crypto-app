@@ -580,7 +580,7 @@ const Home = () => {
 <div className="font-poppins flex flex-col justify-center w-full relative h-full max-h-screen text-black mt-44 mb-44 py-10">
   <div className="max-w-[380px] max-h-[280px] ease-in-out z-10 duration-300 h-full hover:rotate-0 hover:z-50 hover:cursor-pointer transform transition delay-300 hover:-translate-y-36 absolute left-[280px] bottom-6 -rotate-6 px-6 py-8 w-full bg-white rounded-2xl shadow-xl">
     <h2 className="mb-4 text-gray-600">Lorem ipsum</h2>
-    <p>
+    <p className="text-gray-500">
       Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       Lorem Ipsum has been the industry's standard dummy text ever since the
       1500s, when an unknown printer took a galley of type and scrambled it to
@@ -750,7 +750,7 @@ const Home = () => {
 
       {/* section Sixth */}
 
-      <div className="flex mx-auto min-h-screen font-poppins relative w-full justify-end md:justify-center items-center mb-44">
+      <div className="flex mx-auto min-h-screen font-poppins relative w-full justify-end md:justify-center items-center mb-44 md:mt-0 mt-44">
         <img
           src="./images/dogbg.jpg"
           className="z-0 opacity-60 object-cover w-full h-full md:max-w-full md:h-auto"
@@ -905,7 +905,7 @@ const Home = () => {
 
       {/* section seven */}
 
-      <div className="w-full min-h-screen font-poppins relative flex items-center mb-44">
+      <div className="w-full min-h-screen font-poppins relative flex items-center mb-44 mt-44">
         <img
           src="./images/story.png"
           className="z-0 opacity-80 max-w-full h-auto object-cover"
@@ -1139,7 +1139,7 @@ const Home = () => {
       {/* section 10 */}
 
       <div className="w-full mb-44 px-6">
-        <div className="font-poppins mx-auto max-w-6xl space-y-12 sm:mx-8 justify-center">
+        <div className="font-poppins mx-auto max-w-6xl space-y-12 sm:mx-8 justify-center items-center text-center">
           <h1 className="text-4xl text-center font-bold mb-16">FAQs</h1>
 
           <div className="text-xl   ">

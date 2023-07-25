@@ -89,7 +89,7 @@ const ContactUs = () => {
       </div>
       {/* w-full max-w-7xl mt-24 mb-44 mx-auto flex space-x-10 */}
       <div className="w-full max-w-7xl flex flex-col md:flex-row px-10 mt-24 py-5 ">
-        <div className="text-left px-10 ">
+        <div className="text-left ">
           <m.h1
             initial={{ opacity: 0, y: 50 }}
             whileInView={{
@@ -101,7 +101,7 @@ const ContactUs = () => {
                 ease: "anticipate",
               },
             }}
-            className="text-6xl font-semibold mb-6"
+            className="text-5xl md:text-6xl font-semibold mb-6"
           >
             Send Us A <br /> Message
           </m.h1>
@@ -294,7 +294,7 @@ const ContactUs = () => {
           </m.div>
         </div>
         </div>
-        <div className="mx-10 my-28">
+        <div className="mx-10 my-28 px-3">
         <m.div  initial={{ opacity: 0,y:50,scale:0.5 }}
               whileInView={{
                 scale:1,
@@ -317,7 +317,7 @@ const ContactUs = () => {
 prospects and maximize returns in this interconnected digital landscape.
         </p>
 
-        <div className="flex w-full max-w-[450px] space-x-6 mb-20">
+        <div className="flex flex-col md:flex-row w-full max-w-[450px] space-x-0 md:space-x-6 mb-20">
           <button className="px-4 py-4 text-xl hover:bg-purple-900 rounded-full bg-purple-800 mt-6  w-full">
             Start free
           </button>

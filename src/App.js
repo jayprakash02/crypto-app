@@ -67,7 +67,7 @@ function OutletLayout({isLoggedIn}) {
     <>
       <Navbar isLoggedIn={isLoggedIn} />
       <Outlet/>
-      <Footer />
+      <Footer/>
    </>
   );
 }
