@@ -1,225 +1,112 @@
-import { Menu, MenuItem } from "@mui/material";
-import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
-import { motion as m } from "framer-motion";
-import { AiOutlineCaretDown, AiOutlineCaretUp } from "react-icons/ai";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 const Navbar = ({isLoggedIn}) => {
-  const [open, setOpen] = useState(false);
+  const [navOpen, setNavOpen] = useState(false);
+  const [earningOpen, setEarningOpen] = useState(false);
+
+  const handleNavToggle = () => {
+    setNavOpen(!navOpen);
+  };
+
+  const handleEarningOpen = () => {
+    setEarningOpen(!earningOpen);
+  };
 
   return (
-    <m.div>
-      <div
-        initial={{ y: -50, opacity: 0 }}
-        whileInView={{
-          y: 0,
-          opacity: 1,
-          transition: {
-            duration: 2.0,
-            delay: 0.7,
-            ease: "anticipate",
-          },
-        }}
-        class="flex flex-wrap z-10"
-      >
-        <section class="relative mx-auto">
-          {/*//        <!-- navbar -->*/}
-          <nav class="flex justify-between  bg-black text-opacity-100 text-white w-screen">
-            <div class="px-5 xl:px-12 py-2 flex w-full items-center">
-              {/*//            <!-- Nav Links -->*/}
-              <ul class="hidden md:flex px-4 mx-auto font-semibold font-poppins text-sm text-gray-400 items-center font-heading space-x-12 ">
-                <a class="text-3xl  font-bold font-heading" href="#">
-                  <img
-                    class="h-10 pt-2 pl-2"
-                    src="./images/navlogo.png"
-                    alt="logo"
-                  />
-                  {/*Logo Here.*/}
-                </a>
-                <li>
-                  <Link class="hover:text-gray-200" to="/">
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <Link class="hover:text-gray-200" to="/trade">
-                    Trade
-                  </Link>
-                </li>
-                <li className="relative">
-                  <button
-                    onClick={() => setOpen((prev) => !prev)}
-                    className="flex items-center space-x-2"
-                  >
-                    <span> Earning</span>
-                    {!open ? (
-                      <AiOutlineCaretDown className="h-8 text-white" />
-                    ) : (
-                      <AiOutlineCaretUp className="h-8 text-white" />
-                    )}
-                  </button>
-                  {open && (
-                    <div className="absolute z-10 text-sm font-light  min-w-[200px]  space-y-2  w-full rounded-lg bg-opacity-60  bg-black top-16  text-white">
-                        <div  className="hover:bg-gray-900 px-4 py-3 rounded-lg"> 
-                          <Link onClick={()=>setOpen(prev=> !prev)} to="earning">Investment</Link>
-                        </div>
-                        <div className="hover:bg-gray-900 px-4  py-3  rounded-lg">
-                          <Link onClick={()=>setOpen(prev=> !prev)} to="refferal">Referral and Binary</Link>
-                        </div>
-                        <div onClick={()=>setOpen(prev=> !prev)} className="hover:bg-gray-900 px-4  py-3  rounded-lg">
-                          <Link to="extrabonus">Extra bonus for referral</Link>
-                        </div>
-                    </div>
-                  )}
-                </li>
-                <li>
-                  <Link class="hover:text-gray-200" to="/resources">
-                    Resources
-                  </Link>
-                </li>
-                <li>
-                  <Link class="hover:text-gray-200" to="/legal">
-                    Legal
-                  </Link>
-                </li>
-                <li>
-                  <Link class="hover:text-gray-200" to="/contact">
-                    Contact
-                  </Link>
-                </li>
-                <li>
-                  <Link class="hover:text-gray-200" to="/aboutus">
-                    About
-                  </Link>
-                </li>
-                <li>
-                  <Link class="hover:text-gray-200" to="/blog">
-                    Blog
-                  </Link>
-                </li>
-                {isLoggedIn ? (   <Link to="/dashboard" className="" href="#">
+    <div className="w-full fixed top-0 left-0 z-10 position-fixed">
+      <div className="lg:flex bg-black text-opacity-100 text-white items-center justify-center py-4 lg:px-10 px-7">
+        <div className="flex items-center font-poppins justify-center">
+          <Link to="/">
+          <img
+            className="max-h-10 min-w-10 pt-2 pl-2 cursor-pointer"
+            src="./images/navlogo.png"
+            alt="logo"
+          />
+          </Link>
+        </div>
+        <div onClick={handleNavToggle} className="text-3xl absolute right-8 top-6 cursor-pointer lg:hidden">
+          {navOpen ? (
+            <ion-icon name="close"></ion-icon>
+          ) : (
+            <ion-icon name="menu"></ion-icon>
+          )}
+        </div>
+
+        <ul className={`lg:flex lg:items-center bg-black lg:pb-0 pb-12 absolute lg:static lg:z-auto z-[-5] left-0 w-full lg-auto lg:pl-0 pl-9 transition-all duration-500 ease-in ${navOpen ? 'top-15 opacity-100 ': 'top-[-490px]'} lg:opacity-100 opacity-0 font-semibold font-poppins text-sm text-gray-400 font-heading justify-center `}>
+          <li className="lg:ml-10 lg:my-0 my-7 hover:text-gray-100">
+            <Link className="text-lg" to="/" onClick={() => { setNavOpen(false) }}>
+              Home
+            </Link>
+          </li>
+          <li className="lg:ml-10 lg:my-0 my-7 hover:text-gray-100">
+            <Link className="text-lg" to="/trade" onClick={() => { setNavOpen(false) }}>
+              Trade
+            </Link>
+          </li>
+          <li
+            className={`relative lg:ml-10 lg:my-0 my-7 hover:text-gray-100 ${earningOpen ? 'cursor-pointer' : ''}`}
+          >
+            <a className="text-lg flex items-center gap-3" onClick={handleEarningOpen}>
+              Earnings 
+              {earningOpen ? (
+                <ion-icon name="caret-up-outline"></ion-icon>
+          ) : (
+            <ion-icon name="caret-down-outline"></ion-icon>
+          )}
+            </a>
+            {earningOpen && (
+              <div className="absolute top-full left-0 mt-4 mb-2 w-40 bg-black rounded-lg shadow-lg">
+                <Link to="earning" className="block px-4 py-2 text-white hover:bg-gray-700" onClick={() => { setNavOpen(false) }}>
+                  Investment
+                </Link>
+                <Link to="refferal" className="block px-4 py-2 text-white hover:bg-gray-700 "onClick={() => { setNavOpen(false) }}>
+                  Referral and Binary
+                </Link>
+                <Link to="extrabonus" className="block px-4 py-2 text-white hover:bg-gray-700 "onClick={() => { setNavOpen(false) }}>
+                  Extra bonus for referral
+                </Link>
+              </div>
+            )}
+          </li>
+          <li className="lg:ml-10 lg:my-0 my-7 hover:text-gray-100">
+            <Link className="text-lg" to="/resources" onClick={() => { setNavOpen(false) }}>
+              Resources
+            </Link>
+          </li>
+          <li className="lg:ml-10 lg:my-0 my-7 hover:text-gray-100">
+            <Link className="text-lg" to="/legal" onClick={() => { setNavOpen(false) }}>
+              Legal
+            </Link>
+          </li>
+          <li className="lg:ml-10 lg:my-0 my-7 hover:text-gray-100">
+            <Link className="text-lg" to="/contact" onClick={() => { setNavOpen(false) }}>
+              Contact
+            </Link>
+          </li>
+          <li className="lg:ml-10 lg:my-0 my-7 hover:text-gray-100">
+            <Link className="text-lg" to="/aboutus" onClick={() => { setNavOpen(false) }}>
+              About
+            </Link>
+          </li>
+          <li className="lg:ml-10 lg:my-0 my-7 hover:text-gray-100">
+            <Link className="text-lg" to="/blog" onClick={() => { setNavOpen(false) }}>
+              Blog
+            </Link>
+          </li>
+          <li className="lg:ml-10 lg:my-0 my-7 hover:text-gray-100">
+          {isLoggedIn ? (<Link to="/dashboard" className="" href="#">
                   <img
                     class="h-14  "
                     src="./images/dashboard2.png"
                     alt="logo"
                   />
-                </Link>) :<Link to="/login">Login</Link>
+                </Link>) :<Link className="text-lg" to="/login" onClick={() => { setNavOpen(false) }}>Login</Link>
                }
-              </ul>
-              {/*//            <!-- Header Icons -->*/}
-              {/*               
-             <div class="hidden xl:flex  space-x-5 items-center">
-                <Link class="hover:text-gray-200">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                    />
-                  </svg>
-                </Link>
-                <Link class="flex items-center hover:text-gray-200" href="#">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                    />
-                  </svg>
-                  <span class="flex absolute -mt-5 ml-4">
-                    <span class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
-                  </span>
-                </Link>
-           
-                <Link class="flex items-center hover:text-gray-200" href="#">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6 hover:text-gray-200"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </Link>
-              </div> */}
-            </div>
-            {/*//          <!-- Responsive navbar -->*/}
-            <a class="xl:hidden flex mr-6 items-center" href="#">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6 hover:text-gray-200"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                />
-              </svg>
-              <span class="flex absolute -mt-5 ml-4">
-                <span class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
-              </span>
-            </a>
-            <a class="navbar-burger self-center mr-12 xl:hidden" href="#">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6 hover:text-gray-200"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </a>
-          </nav>
-        </section>
-      </div>
-
-      <div class="absolute bottom-0 right-0 mb-4 mr-4 z-10">
-        <div>
-          <a
-            title="Follow me on twitter"
-            href="https://www.twitter.com/asad_codes"
-            target="_blank"
-            class="block w-16 h-16 rounded-full transition-all shadow hover:shadow-lg transform hover:scale-110 hover:rotate-12"
-          >
-            <img
-              class="object-cover object-center w-full h-full rounded-full"
-              src="https://www.imore.com/sites/imore.com/files/styles/large/public/field/image/2019/12/twitter-logo.jpg"
-            />
-          </a>
+          </li>
+        </ul>
         </div>
       </div>
-    </m.div>
   );
 };
 

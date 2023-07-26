@@ -29,7 +29,7 @@ function App() {
   };
   return (
     <div className="App bg-black text-white  min-h-screen    ">
-     
+     <div className="">
       <Routes>
         <Route path="/" element={<OutletLayout isLoggedIn={isLoggedIn} />}>
           <Route index element={<Home />} />
@@ -48,11 +48,8 @@ function App() {
         <Route path="signup" element={<Signup />} />
         <Route path="login" element={isLoggedIn ? <Navigate to="/dashboard"/> : <Login setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="verify" element={<Verification setIsLoggedIn={setIsLoggedIn}  />} />
-
-
-        
-
       </Routes>
+      </div>
       
       {/* <Signup/> */}
    
@@ -69,8 +66,8 @@ function OutletLayout({isLoggedIn}) {
   return (
     <>
       <Navbar isLoggedIn={isLoggedIn} />
-      <Outlet />
-      <Footer />
-    </>
+      <Outlet/>
+      <Footer/>
+   </>
   );
 }
